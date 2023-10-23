@@ -156,12 +156,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Error.cpp" />
+    <ClCompile Include="src\Game\GameStats.cpp" />
+    <ClCompile Include="src\Game\GameState.cpp" />
+    <ClCompile Include="src\Game\GameLog.cpp" />
+    <ClCompile Include="src\Game\GameConfig.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameObjectLib\GameObjectLib.vcxproj">
       <Project>{fae7003c-61cf-41e6-9b58-70e97d3f7878}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Error.h" />
+    <ClInclude Include="include\Game\GameStats.h" />
+    <ClInclude Include="include\Game\GameState.h" />
+    <ClInclude Include="include\Game\GameLog.h" />
+    <ClInclude Include="include\Game\GameConfig.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

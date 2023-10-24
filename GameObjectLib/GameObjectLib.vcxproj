@@ -22,12 +22,14 @@
     <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClInclude Include="include\Components\SquareCollider.h" />
     <ClInclude Include="include\Components\Component.h" />
+    <ClInclude Include="include\EnemyAbstract.h" />
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
     <ClCompile Include="src\Components\SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\EnemyAbstract.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\Components\SquareCollider.cpp" />

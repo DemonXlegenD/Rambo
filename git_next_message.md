@@ -1,4 +1,4 @@
-NEW: Création de l'architecture du projet
+ENH: Amélioration de l'architecture
 
-- Création de l'architecture du projet pour avoir une bonne base
-- Création d'un Trello : lien sur le discord du groupe
+- Déplacement de code dans le GameConfig
+- Ajout d'une fonction update dans le GameConfig

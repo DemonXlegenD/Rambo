@@ -37,6 +37,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Enemy\Grunt.h">
+    <ClInclude Include="include\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -63,11 +64,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Enemy\Grunt.cpp">
+    <ClCompile Include="src\Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="include\Vector.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

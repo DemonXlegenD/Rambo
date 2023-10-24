@@ -5,7 +5,7 @@ void Game::run() {
     Scene scene;
 
     sf::Texture ImageBongo;
-    ImageBongo.loadFromFile("menu1.bmp");
+    ImageBongo.loadFromFile("Sprite/player/john_static.png");
 
     GameObject* player = scene.CreateDummyGameObject("Player", 200.f, ImageBongo);
 

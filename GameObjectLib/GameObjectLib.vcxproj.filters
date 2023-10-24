@@ -33,6 +33,9 @@
     <ClInclude Include="include\Components\ShapeRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Maths\Vector2.cpp">
@@ -53,9 +56,15 @@
     <ClCompile Include="src\Components\ShapeRenderer.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="include\Vector.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

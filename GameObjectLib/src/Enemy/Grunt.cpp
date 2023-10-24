@@ -3,13 +3,7 @@
 #include <stdlib.h>
 #include <time.h>   
 
-Grunt::Grunt() {
-	enemy.vie = 200;
-	enemy.degate = 10;
-	enemy.speed = 20;
-
-
-}
+Grunt::Grunt(): EnemyAbstract(200,10,20){}
 
 //int Grunt::getPosition() {
 //	enemy.p
@@ -21,26 +15,21 @@ void Grunt::mouvementGrunt() {
 	int rand_mouve = rand() % 3 + 1;
 
 	if (rand_mouve == 1) {
-		enemy.enemyAbstact.loadFromFile("Sprite/enemy/grunt_idle.png");
-	}
-	else if (rand_mouve == 1 && rand_attack == 1) {
-		enemy.enemyAbstact.loadFromFile("Sprite/enemy/grunt_shoot.png");
+		enemy.loadFromFile("Sprite/enemy/grunt_idle.png");
+		if (rand_attack == 1) {
+			enemy.loadFromFile("Sprite/enemy/grunt_shoot.png");
+		}
 	}
 	else if (rand_mouve == 2) {
-		enemy.enemyAbstact.loadFromFile("Sprite/enemy/grunt_run.png");
-	}
-	else if (rand_mouve == 2 && rand_attack == 1) {
-		enemy.enemyAbstact.loadFromFile("Sprite/enemy/grunt_shoot.png");
+		enemy.loadFromFile("Sprite/enemy/grunt_run.png");
 	}
 	else if (rand_mouve == 3) {
-		enemy.enemyAbstact.loadFromFile("Sprite/enemy/grunt_crouch.png");
+		enemy.loadFromFile("Sprite/enemy/grunt_crouch.png");
+		if (rand_attack == 1) {
+			enemy.loadFromFile("Sprite/enemy/grunt__crouch_shoot_front.png");
+		}
 	}
-	else if (rand_mouve == 3 && rand_attack == 1) {
-		enemy.enemyAbstact.loadFromFile("Sprite/enemy/grunt_crouch_shoot_front.png");
+	else if (hp == 0) {
+		enemy.loadFromFile("Sprite/enemy/grunt_death.png");
 	}
-	else if (enemy.vie == 0) {
-		enemy.enemyAbstact.loadFromFile("Sprite/enemy/grunt_death.png");
-	}
-
-
 }

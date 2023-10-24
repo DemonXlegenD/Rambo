@@ -3,7 +3,6 @@ class Grunt : public EnemyAbstract
 {
 public:
 	
-	EnemyAbstract enemy;
 	Grunt();
 	int getPosition();
 	void mouvementGrunt();

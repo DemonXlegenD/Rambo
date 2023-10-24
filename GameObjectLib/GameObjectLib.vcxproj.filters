@@ -36,6 +36,9 @@
     <ClInclude Include="include\EnemyAbstract.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Enemy\Grunt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Maths\Vector2.cpp">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="src\EnemyAbstract.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enemy\Grunt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

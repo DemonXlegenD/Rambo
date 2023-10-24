@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClCompile Include="src\Vector.cpp" />
     <ClInclude Include="include\Components\ShapeRenderer.h" />
     <ClInclude Include="include\Components\SquareCollider.h" />
@@ -26,6 +27,7 @@
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
+    <ClCompile Include="src\Components\SpriteRenderer.cpp" />
     <ClCompile Include="src\Components\ShapeRenderer.cpp" />
     <ClInclude Include="include\Vector.h" />
   </ItemGroup>

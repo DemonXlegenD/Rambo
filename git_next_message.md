@@ -1,4 +1,4 @@
-NEW: Création de l'architecture du projet
+ENH: Amélioration
 
-- Création de l'architecture du projet pour avoir une bonne base
-- Création d'un Trello : lien sur le discord du groupe
+- Ajout de nouveaux fichiers pour les Vectors
+- Ajout de fonctions pour les Vector2

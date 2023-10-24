@@ -14,6 +14,8 @@
 class Game
 {
 public:
+	Game();
+
 	void run();
 	GameConfig* getConfig() const { return config; }
 	GameLog* getLog() const { return log; }
@@ -21,9 +23,9 @@ public:
 	GameStats* getStats() const { return stats; }
 
 private:
-	GameConfig* config;
-	GameLog* log;
-	GameState* state;
-	GameStats* stats;
+	GameConfig* config = nullptr;
+	GameLog* log = nullptr;
+	GameState* state = nullptr;
+	GameStats* stats = nullptr;
 };
 

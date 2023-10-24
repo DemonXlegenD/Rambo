@@ -12,6 +12,7 @@ void Game::run() {
 	sf::Texture ImageBongo;
 	ImageBongo.loadFromFile("Sprite/player/john_static.png");
 
+
 	GameObject* player = config->getActualScene()->CreateCharacterGameObject("Player", 200.f, ImageBongo, 2.5f, 2.5f);
 
 	sf::RenderWindow* window = config->getWindow();

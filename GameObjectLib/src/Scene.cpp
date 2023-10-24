@@ -29,7 +29,7 @@ GameObject* Scene::CreateGameObject(const std::string& _name)
 	return gameObject;
 }
 
-GameObject* Scene::CreateDummyGameObject(const std::string& name, float position, const sf::Texture texture)
+GameObject* Scene::CreateCharacterGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley)
 {
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(position, position));
@@ -40,6 +40,7 @@ GameObject* Scene::CreateDummyGameObject(const std::string& name, float position
 
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
+	sprite->SetScale(scalex, scaley);
 
 	return gameObject;
 }

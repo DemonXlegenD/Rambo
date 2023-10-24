@@ -17,6 +17,7 @@ void Sprite::Render(sf::RenderWindow* _window)
 	sf::Sprite sprite(texture);
 	sprite.setPosition(position.x, position.y);
 	sprite.setTexture(texture);
+	sprite.setScale(scalex, scaley);
 
 	_window->draw(sprite);
 }

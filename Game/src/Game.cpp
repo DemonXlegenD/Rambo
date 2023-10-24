@@ -7,7 +7,7 @@ void Game::run() {
     sf::Texture ImageBongo;
     ImageBongo.loadFromFile("Sprite/player/john_static.png");
 
-    GameObject* player = scene.CreateDummyGameObject("Player", 200.f, ImageBongo);
+    GameObject* player = scene.CreateCharacterGameObject("Player", 200.f, ImageBongo, 2.5f, 2.5f);
 
     auto window = new sf::RenderWindow(sf::VideoMode(600, 600), "SFML PROJECTTTTTTTTTTTTTTTTTT", sf::Style::Fullscreen);
 

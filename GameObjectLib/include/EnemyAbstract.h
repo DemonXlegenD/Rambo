@@ -3,11 +3,14 @@
 #include "../GameObjectLib/include/Scene.h"
 
 class EnemyAbstract {
-private: 
+protected: 
 	int vie; 
 	int degat; 
+	int speed;
 	Scene scene;
-	sf::Texture ImageBongo;
+	sf::Texture enemy;
 
-	//GameObject* enemy = scene.CreateCharacterGameObject("Player", 200.f, ImageBongo, 2.5f, 2.5f);
+	GameObject* enemy = scene.CreateCharacterGameObject("Enemy", 200.f, enemy, 2.5f, 2.5f);
+
+	int pvEnemy(int degat);
 };

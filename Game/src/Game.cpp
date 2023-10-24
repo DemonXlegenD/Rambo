@@ -36,7 +36,7 @@ void Game::run() {
 			if (event.key.code == sf::Keyboard::S)
 				player->SetPosition(player->GetPosition() + Maths::Vector2f::Up);
 		}
-
+		// TODO: Ceci est un exemple de TODO
 		config->Update();
 
 	}

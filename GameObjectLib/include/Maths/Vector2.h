@@ -1,4 +1,6 @@
 #pragma once
+#include "../Game/include/Error.h"
+#include "../Game/include/Game/GameLog.h"
 
 namespace Maths
 {
@@ -20,10 +22,13 @@ namespace Maths
 		Vector2& operator=(const Vector2& _other) = default;
 		Vector2& operator=(Vector2&& _other) noexcept = default;
 
+		T operator[](int& index) const;
 		//Addition
 		Vector2 operator+(const Vector2& rhs);
 		//Subtraction
 		Vector2 operator-(const Vector2& rhs);
+		//Negative Vector
+		Vector2 operator-() const;
 		//Multiplication
 		Vector2 operator*(const Vector2& rhs);
 		//Division
@@ -67,12 +72,26 @@ namespace Maths
 		//Rotate
 		Vector2 Rotate(const T& angle) const;
 
+		//Dot 
+		static float Dot(const Vector2& lhs, const Vector2& rhs);
 		//Lerp
 		static Vector2 Lerp(const Vector2& lhs, const Vector2& rhs, const T& alpha);
+		//Lerp Unclamped
+		static Vector2<T> LerpUnclamped(const Vector2& vector2_1, const Vector2& vector2_2, double t);
+		//Clamp Magnitude
+		static Vector2<T> ClampMagnitude(const Vector2& vector, double maxMagnitude);
 		//Max
 		static Vector2 Max(const Vector2& lhs, const Vector2& rhs);
 		//Min
 		static Vector2 Min(const Vector2& lhs, const Vector2& rhs);
+		//Reflect
+		static Vector2 Reflect(const Vector2& vector2, const Vector2& normal);
+		//Perpendicular
+		static Vector2<T> Perpendicular(const Vector2& vector2);
+		//Scale
+		static Vector2<T> Scale(const Vector2& vector2, const Vector2& normal);
+		//Signed Angled
+		static double SignedAngle(const Vector2& from, const Vector2& to);
 
 		//Get the X value
 		T GetX();
@@ -87,6 +106,7 @@ namespace Maths
 		//Set the X and Y values
 		void SetXY(const Vector2& rhs);
 		//Set the X and Y values
+		void ShowVector();
 
 		static const Vector2 Zero;
 		static const Vector2 One;
@@ -112,7 +132,6 @@ namespace Maths
 }
 
 template class Maths::Vector2<int>;
-template class Maths::Vector2<unsigned int>;
 template class Maths::Vector2<float>;
 template class Maths::Vector2<double>;
 

@@ -15,6 +15,23 @@ namespace Maths
 	Vector2<T>::Vector2(T x, T y) : x(x), y(y) {}
 
 	template<typename T>
+	T Vector2<T>::operator[](int& index) const
+	{
+		if (index == 0)
+		{
+			return x;
+		}
+		else if (index == 1)
+		{
+			return y;
+		}
+		else
+		{
+			Error::RaiseOutOfRangeError(std::string("Pas de valeur"));
+		}
+	}
+
+	template<typename T>
 	Vector2<T> Vector2<T>::operator+(const Vector2& rhs)
 	{
 		return Vector2(x + rhs.x, y + rhs.y);
@@ -24,6 +41,12 @@ namespace Maths
 	Vector2<T> Vector2<T>::operator-(const Vector2& rhs)
 	{
 		return Vector2(x - rhs.x, y - rhs.y);
+	}
+
+	template<typename T>
+	Vector2<T> Vector2<T>::operator-() const
+	{
+		return Vector2(-x, -y);
 	}
 
 	template<typename T>
@@ -153,9 +176,37 @@ namespace Maths
 	}
 
 	template<typename T>
+	float Vector2<T>::Dot(const Vector2& lhs, const Vector2& rhs)
+	{
+		return lhs.x * rhs.x + lhs.y * rhs.y;
+	}
+
+	template<typename T>
 	Vector2<T> Vector2<T>::Lerp(const Vector2& lhs, const Vector2<T>& rhs, const T& alpha)
 	{
 		return Vector2(lhs.x * (1 - alpha) + rhs.x * alpha, lhs.y * (1 - alpha) + rhs.y * alpha);
+	}
+
+	template<typename T>
+	Vector2<T> Vector2<T>::LerpUnclamped(const Vector2& vector2_1, const Vector2& vector2_2, double t)
+	{
+		T interpolatedX = (1 - t) * vector2_1.x + t * vector2_2.x;
+		T interpolatedY = (1 - t) * vector2_1.y + t * vector2_2.y;
+
+		return Vector2(interpolatedX, interpolatedY);
+	}
+
+	template<typename T>
+	Vector2<T> Vector2<T>::ClampMagnitude(const Vector2& vector, double maxMagnitude)
+	{
+		double currentMagnitude = vector.Magnitude();
+
+		if (currentMagnitude > maxMagnitude) {
+			double scaleFactor = maxMagnitude / currentMagnitude;
+
+			return Vector2(vector.x * scaleFactor, vector.y * scaleFactor);
+		}
+		return Vector2(vector.x, vector.y);
 	}
 
 	template<typename T>
@@ -168,6 +219,32 @@ namespace Maths
 	Vector2<T> Vector2<T>::Min(const Vector2& lhs, const Vector2& rhs)
 	{
 		return Vector2(lhs.x < rhs.x ? lhs.x : rhs.x, lhs.y < rhs.y ? lhs.y : rhs.y);
+	}
+
+	template<typename T>
+	Vector2<T> Vector2<T>::Reflect(const Vector2& vector2, const Vector2& normal)
+	{
+		T dotProduct = Dot(vector2, normal);
+		T reflectX = vector2.x - 2 * dotProduct * normal.x;
+		T reflectY = vector2.y - 2 * dotProduct * normal.y;
+
+		return Vector2(reflectX, reflectY);
+	}
+
+	template<typename T>
+	Vector2<T> Vector2<T>::Perpendicular(const Vector2& vector2) {
+		return Vector2(-vector2.y, vector2.x);
+	}
+
+	template<typename T>
+	Vector2<T> Vector2<T>::Scale(const Vector2& vector2_1, const Vector2& vector2_2) {
+		return Vector2(vector2_1.x * vector2_2.x, vector2_1.y * vector2_2.y);
+	}
+
+	template<typename T>
+	double Vector2<T>::SignedAngle(const Vector2& from, const Vector2& to) {
+		double angle = std::atan2(from.y, from.x) - atan2(to.y, to.x);
+		return angle;
 	}
 
 	template<typename T>
@@ -206,6 +283,12 @@ namespace Maths
 	{
 		x = rhs.x;
 		y = rhs.y;
+	}
+
+	template<typename T>
+	void Vector2<T>::ShowVector() {
+		std::string result = "Vector : (" + std::to_string(x) + "," + std::to_string(y) + ")";
+		GameLog::log(std::string(result));
 	}
 
 	template<typename T>

@@ -30,7 +30,7 @@
     <ClInclude Include="include\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Components\ShapeRenderer.h">
+    <ClInclude Include="include\Components\SpriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClCompile Include="src\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Components\ShapeRenderer.cpp">
+    <ClCompile Include="src\Components\SpriteRenderer.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>

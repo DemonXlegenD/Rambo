@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "Components/ShapeRenderer.h"
+#include "Components/SpriteRenderer.h"
 #include "Components/SquareCollider.h"
 
 void Scene::Update()
@@ -29,7 +29,7 @@ GameObject* Scene::CreateGameObject(const std::string& _name)
 	return gameObject;
 }
 
-GameObject* Scene::CreateDummyGameObject(const std::string& name, float position, const sf::Color color)
+GameObject* Scene::CreateDummyGameObject(const std::string& name, float position, const sf::Texture texture)
 {
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(position, position));
@@ -38,8 +38,8 @@ GameObject* Scene::CreateDummyGameObject(const std::string& name, float position
 	squareCollider->SetWidth(20.f);
 	squareCollider->SetHeight(20.f);
 
-	ShapeRenderer* shapeRenderer = gameObject->CreateComponent<ShapeRenderer>();
-	shapeRenderer->SetColor(color);
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(texture);
 
 	return gameObject;
 }

@@ -14,7 +14,6 @@ void Game::run() {
 
 
 	GameObject* player = config->getActualScene()->CreateCharacterGameObject("Player", 200.f, ImageBongo, 2.5f, 2.5f);
-
 	sf::RenderWindow* window = config->getWindow();
 
 	while (window->isOpen())
@@ -40,6 +39,4 @@ void Game::run() {
 		config->Update();
 
 	}
-
-
 }

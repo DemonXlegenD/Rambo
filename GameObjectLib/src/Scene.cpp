@@ -29,10 +29,10 @@ GameObject* Scene::CreateGameObject(const std::string& _name)
 	return gameObject;
 }
 
-GameObject* Scene::CreateCharacterGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley)
+GameObject* Scene::CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
 {
 	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(position, position));
+	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
 
 	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
 	squareCollider->SetWidth(20.f);

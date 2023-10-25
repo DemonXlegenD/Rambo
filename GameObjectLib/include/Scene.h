@@ -14,7 +14,7 @@ public:
 
 	GameObject* CreateGameObject(const std::string& _name);
 
-	GameObject* CreateCharacterGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
+	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
 
 private:
 	std::vector<GameObject*> gameObjects;

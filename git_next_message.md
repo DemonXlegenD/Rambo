@@ -1,4 +1,4 @@
-ENH: Amélioration
+ENH: Amélioration de l'architecture
 
-- Ajout de nouveaux fichiers pour les Vectors
-- Ajout de fonctions pour les Vector2
+- Déplacement de code dans le GameConfig
+- Ajout d'une fonction update dans le GameConfig

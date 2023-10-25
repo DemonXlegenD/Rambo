@@ -5,6 +5,13 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/SquareCollider.h"
 
+
+void Scene::Awake() {
+	for (GameObject* const& gameObject : gameObjects)
+	{
+		gameObject->Awake();
+	}
+}
 void Scene::Update(sf::Time _delta)
 {
 	for (GameObject* const& gameObject : gameObjects)

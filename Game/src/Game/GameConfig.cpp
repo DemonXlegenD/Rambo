@@ -5,6 +5,12 @@ GameConfig::GameConfig() {
 	this->actualScene = new Scene();
 }
 
+
+void GameConfig::Preload() {
+	actualScene->Awake();
+}
+
+
 void GameConfig::Update() {
 	// Mesurer le temps écoulé depuis le dernier frame
 	sf::Time delta = clock.restart();

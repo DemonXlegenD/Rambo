@@ -8,7 +8,7 @@ class Scene
 public:
 	Scene() = default;
 	virtual ~Scene() = default;
-
+	void Awake();
 	void Update(sf::Time delta);
 	void Render(sf::RenderWindow* _window);
 

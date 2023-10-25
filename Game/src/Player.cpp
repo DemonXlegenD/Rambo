@@ -1,8 +1,11 @@
 #include "Player.h"
 
+
 Player::Player()
 {
-	int playerPV = 200;
-	int degatsPlayer = 10;
-	int boostDegatsPlayer = 1;
+	int health = 200;
+	int damage = 10;
+	int boostDamage = 1;
+
+
 }

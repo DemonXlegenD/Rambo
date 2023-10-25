@@ -1,7 +1,7 @@
 #include "Game/GameConfig.h"
 
 GameConfig::GameConfig() {
-	this->window = new sf::RenderWindow(sf::VideoMode(600, 600), "RAMBO", sf::Style::Fullscreen);
+	this->window = new sf::RenderWindow(sf::VideoMode(600, 600), "RAMBO");
 	this->actualScene = new Scene();
 }
 

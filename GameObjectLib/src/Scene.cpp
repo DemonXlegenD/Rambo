@@ -3,10 +3,22 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "Components/SpriteRenderer.h"
+#include "Components/CharacterControl.h"
 #include "Components/SquareCollider.h"
+
+bool booll = false;
 
 void Scene::Update(sf::Time _delta)
 {
+	if (!booll)
+	{
+		sf::Texture ImageBongo;
+		ImageBongo.loadFromFile("Sprite/player/john_static.png");
+
+		GameObject* player = CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
+
+		booll = true;
+	}
 	for (GameObject* const& gameObject : gameObjects)
 	{
 		gameObject->Update(_delta);
@@ -41,6 +53,8 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
+
+	CharacterControl* characterControl = gameObject->CreateComponent<CharacterControl>();
 
 	return gameObject;
 }

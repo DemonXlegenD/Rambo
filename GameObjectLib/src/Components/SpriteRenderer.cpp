@@ -2,7 +2,12 @@
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 
-Sprite::Sprite() {}
+Sprite::Sprite()
+{
+	texture.create(100, 100);
+	scalex = 1.0f;
+	scaley = 1.0f;
+}
 
 Sprite::~Sprite() {}
 

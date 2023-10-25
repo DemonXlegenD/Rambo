@@ -5,6 +5,6 @@ Component::Component(GameObject* owner)
 	this->owner = owner;
 }
 
-void Component::Update() {}
+void Component::Update(sf::Time _delta) {}
 
 void Component::Render(sf::RenderWindow* _window) {}

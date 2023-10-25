@@ -9,7 +9,7 @@ public:
 	Scene() = default;
 	virtual ~Scene() = default;
 
-	void Update();
+	void Update(sf::Time delta);
 	void Render(sf::RenderWindow* _window);
 
 	GameObject* CreateGameObject(const std::string& _name);

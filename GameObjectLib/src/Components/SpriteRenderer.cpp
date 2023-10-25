@@ -2,10 +2,7 @@
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 
-Sprite::Sprite()
-{
-	texture.create(0, 0);
-}
+Sprite::Sprite() {}
 
 Sprite::~Sprite() {}
 

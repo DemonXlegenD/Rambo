@@ -16,6 +16,5 @@ public:
 
 private:
 	sf::Texture texture;
-	float scalex;
-	float scaley;
+	float scalex, scaley;
 };

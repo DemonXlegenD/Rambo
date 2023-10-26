@@ -14,11 +14,13 @@ class Scene
 public:
 	Scene() = default;
 	virtual ~Scene() = default;
+	
 	Scene(sf::RenderWindow* _window);
 
 	virtual void Update(sf::Time _delta);
 	virtual void Render(sf::RenderWindow* _window);
-
+  
+  virtual void Awake();
 	static sf::RenderWindow* GetWindow() { return window; }
 	static void SetWindow(sf::RenderWindow* _window) { window = _window; }
 

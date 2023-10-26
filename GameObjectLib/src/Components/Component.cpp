@@ -4,6 +4,7 @@ Component::Component(GameObject* owner)
 {
 	this->owner = owner;
 }
+void Component::Start() {}
 
 void Component::Update(sf::Time _delta) {}
 

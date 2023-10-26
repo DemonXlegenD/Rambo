@@ -11,6 +11,12 @@ void GameObject::RemoveComponent(Component* _component)
 	components.erase(std::remove(components.begin(), components.end(), _component), components.end());
 }
 
+void GameObject::Start() {
+	for (Component* const& component : components) {
+		component->Start();
+	}
+}
+
 void GameObject::Update(sf::Time _delta) const
 {
 	for (Component* const& component : components)

@@ -9,8 +9,10 @@ Game::Game() {
 
 void Game::run() {
 
-	//sf::Texture ImageBongo;
-	//ImageBongo.loadFromFile("Sprite/player/john_static.png");
+	sf::Texture ImageBongo;
+	config->Preload();
+	ImageBongo.loadFromFile("assets/Sprite/player/john_static.png");
+
 
 
 	//GameObject* player = config->getActualScene()->CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);

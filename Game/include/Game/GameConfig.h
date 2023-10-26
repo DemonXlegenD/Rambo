@@ -9,7 +9,6 @@ class GameConfig
 public:
 
 	GameConfig();
-
 	int getFps() const { return FPS; }
 	sf::Clock getClock() const { return clock; }
 	sf::RenderWindow* getWindow() const { return window; }
@@ -17,6 +16,7 @@ public:
 
 	Scene* getActualScene() const { return actualScene; }
 
+	void Preload();
 	void Update();
 
 	~GameConfig();

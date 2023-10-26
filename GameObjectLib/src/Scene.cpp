@@ -9,6 +9,13 @@ Scene::Scene(sf::RenderWindow* _window) {
 
 bool booll = false;
 
+
+void Scene::Awake() {
+	for (GameObject* const& gameObject : gameObjects)
+	{
+		gameObject->Awake();
+	}
+}
 void Scene::Update(sf::Time _delta)
 {
 	if (!booll)

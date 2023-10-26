@@ -6,8 +6,19 @@ Scene::Scene(sf::RenderWindow* _window) {
 	window = _window;
 }
 
+bool booll = false;
+
 void Scene::Update(sf::Time _delta)
 {
+	if (!booll)
+	{
+		sf::Texture ImageBongo;
+		ImageBongo.loadFromFile("Sprite/player/john_static.png");
+
+		GameObject* player = CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
+
+		booll = true;
+	}
 	for (GameObject* const& gameObject : gameObjects)
 	{
 		gameObject->Update(_delta);
@@ -30,10 +41,10 @@ GameObject* Scene::CreateGameObject(const std::string& _name)
 	return gameObject;
 }
 
-GameObject* Scene::CreateCharacterGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley)
+GameObject* Scene::CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
 {
 	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(position, position));
+	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
 
 	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
 	squareCollider->SetWidth(20.f);
@@ -42,6 +53,8 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
+
+	CharacterControl* characterControl = gameObject->CreateComponent<CharacterControl>();
 
 	return gameObject;
 }

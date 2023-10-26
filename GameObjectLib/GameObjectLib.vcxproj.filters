@@ -10,6 +10,7 @@
     <ClCompile Include="src\Components\SquareCollider.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Maths\Vector2.cpp" />
+    <ClCompile Include="src\Components\CharacterControl.cpp" />
     <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />
     <ClCompile Include="src\Components\Button.cpp" />
   </ItemGroup>
@@ -23,6 +24,7 @@
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
     <ClInclude Include="include\Vector.h" />
+    <ClInclude Include="include\Components\CharacterControl.h" />
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
     <ClInclude Include="include\Components\Button.h" />
   </ItemGroup>

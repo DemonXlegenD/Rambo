@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Components\CharacterControl.h" />
+    <ClInclude Include="include\Components\SpriteRenderer.h" />
+    <ClCompile Include="src\Components\CharacterControl.cpp" />
     <ClInclude Include="include\Components\Button.h" />
     <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClCompile Include="src\Components\Button.cpp" />

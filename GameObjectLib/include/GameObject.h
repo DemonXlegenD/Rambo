@@ -1,9 +1,11 @@
 #pragma once
+
 #include <string>
 #include <vector>
 
 #include "Maths/Vector2.h"
 #include "Components/Component.h"
+
 
 class Component;
 
@@ -15,6 +17,7 @@ public:
 
 	std::string GetName() const { return name; }
 	Maths::Vector2<float> GetPosition() const { return position; }
+	//Scene* GetScene() const { return scene; }
 
 	void SetName(const std::string& _name) { name = _name; }
 	void SetPosition(const Maths::Vector2<float>& _position) { position = _position; }
@@ -35,8 +38,9 @@ public:
 	void Update(sf::Time _delta) const;
 	void Render(sf::RenderWindow* _window) const;
 
-private:
+protected:
 	std::string name = "GameObject";
 	Maths::Vector2<float> position = Maths::Vector2f::Zero;
 	std::vector<Component*> components;
+	//Scene* scene;
 };

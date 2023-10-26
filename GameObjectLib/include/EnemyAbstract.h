@@ -1,18 +1,17 @@
 #pragma once
-#include "../../Game/include/Game.h"
-#include "../GameObjectLib/include/Scene.h"
+#include "Components/Component.h"
+#include "Scene.h"
 
-class EnemyAbstract {
+class EnemyAbstract : public Component {
 public:
-	EnemyAbstract();
-	EnemyAbstract(int _hp, int _damage, int _speed);
-protected: 
-	int hp;
-	int damage;
-	int speed;
-	Scene scene;
-	sf::Texture enemy;
+    EnemyAbstract();
+    EnemyAbstract(int _hp, int _damage, int _speed);
+protected:
+    int hp;
+    int damage;
+    int speed;
+    Scene scene;
 
 
-	int pvEnemy(int degat);
+    int pvEnemy(int degat);
 };

@@ -8,4 +8,6 @@ void Component::Start() {}
 
 void Component::Update(sf::Time _delta) {}
 
-void Component::Render(sf::RenderWindow* _window) {}
+void Component::Render(sf::RenderWindow* _window) {
+
+}

@@ -2,7 +2,8 @@
 
 GameConfig::GameConfig() {
 	this->window = new sf::RenderWindow(sf::VideoMode(600, 600), "RAMBO", sf::Style::Fullscreen);
-	this->actualScene = new Scene();
+	this->actualScene = new SceneMainMenu(this->window);
+	this->scenes.insert(std::make_pair("SceneMainMenu", this->actualScene));
 }
 
 
@@ -12,10 +13,10 @@ void GameConfig::Preload() {
 
 
 void GameConfig::Update() {
-	// Mesurer le temps écoulé depuis le dernier frame
+	// Mesurer le temps Ã©coulÃ© depuis le dernier frame
 	sf::Time delta = clock.restart();
 
-	// Si vous souhaitez limiter à un nombre fixe de FPS
+	// Si vous souhaitez limiter Ã  un nombre fixe de FPS
 	sf::Time frameTime = sf::seconds(1.0f / FPS);
 	//Delta time for the update
 	if (delta < frameTime)

@@ -16,6 +16,12 @@ public:
 
 	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
 
+	GameObject* CreateGruntGameObject(const std::string& _name);
+
+	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
+
 private:
 	std::vector<GameObject*> gameObjects;
+	std::vector<GameObject*> gameObjectsGrunt;
+
 };

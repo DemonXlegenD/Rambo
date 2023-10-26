@@ -63,7 +63,7 @@ void Button::Render(sf::RenderWindow* _window) {
 }
 
 void Button::Update(sf::Time _delta) {
-	sf::Event event;
+	/*sf::Event event;
 	while (window->pollEvent(event))
 	{
 		if (event.type == sf::Event::MouseButtonPressed) {
@@ -74,7 +74,7 @@ void Button::Update(sf::Time _delta) {
 			}
 
 		}
-	}
+	}*/
 }
 
 bool Button::isClicked(const sf::Vector2f& mousePosition) {

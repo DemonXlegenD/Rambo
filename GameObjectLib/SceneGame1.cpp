@@ -17,5 +17,5 @@ void SceneGame1::Render(sf::RenderWindow* _window) {
 }
 
 void SceneGame1::createSceneButtons() {
-	pause = CreateButtonGameObject(, 1200.0f, 900.0f, 50);
+	pause = CreateButtonGameObject("Pause", 1200.0f, 900.0f, 50);
 }

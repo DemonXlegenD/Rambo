@@ -4,7 +4,6 @@ GameConfig::GameConfig() {
 	this->window = new sf::RenderWindow(sf::VideoMode(600, 600), "RAMBO", sf::Style::Fullscreen);
 	this->actualScene = new SceneMainMenu(this->window);
 	this->scenes.insert(std::make_pair("SceneMainMenu", this->actualScene));
-	this->scenes.insert(std::make_pair("SceneGame", );
 }
 
 

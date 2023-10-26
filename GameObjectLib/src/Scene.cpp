@@ -109,3 +109,19 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 
 	return gameObject;
 }
+
+GameObject* Scene::CreateButtonGameObject(const std::string& name,const sf::Texture texture, float x, float y, float scalex, float scaley) {
+	
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(x, y));
+
+	Button* button = gameObject->CreateComponent<Button>();
+	button->setPosition(x, y);
+
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(texture);
+	sprite->SetScale(scalex, scaley);
+
+	return gameObject;
+
+}

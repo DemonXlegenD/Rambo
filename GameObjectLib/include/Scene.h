@@ -20,7 +20,7 @@ public:
 	virtual void Update(sf::Time _delta);
 	virtual void Render(sf::RenderWindow* _window);
   
-  virtual void Awake();
+	virtual void Awake();
 	static sf::RenderWindow* GetWindow() { return window; }
 	static void SetWindow(sf::RenderWindow* _window) { window = _window; }
 
@@ -33,6 +33,7 @@ public:
 	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
 
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
+	GameObject* CreateButtonGameObject(const std::string& name, const sf::Texture texture, float x, float y);
 	
 
 protected:

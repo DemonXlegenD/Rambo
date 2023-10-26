@@ -1,8 +1,7 @@
 #pragma once
 #include <iostream>
 #include "SFML/Graphics.hpp"
-#include "Game.h"
-#include "../../include/SFML/System/Vector2.hpp"
+#include "../GameObjectLib/include/Scene.h"
 
 class Player : public Component
 {
@@ -13,6 +12,4 @@ private:
     int health;
     int damage;
     int boostDamage;
-
-    int velocity;
 };

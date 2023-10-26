@@ -14,7 +14,6 @@ void Game::run() {
 	ImageBongo.loadFromFile("assets/Sprite/player/john_static.png");
 
 
-
 	//GameObject* player = config->getActualScene()->CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
 	sf::RenderWindow* window = config->getWindow();
 
@@ -29,13 +28,13 @@ void Game::run() {
 				window->close();
 			//if (event.type == sf::Event::KeyPressed)
 			//	if (event.key.code == sf::Keyboard::D)
-			//		player->SetPosition(player->GetPosition() + Maths::Vector2f::Right);
+			//		player.SetPosition(player.GetPosition() + Maths::Vector2f::Right);
 			//if (event.key.code == sf::Keyboard::Q)
-			//	player->SetPosition(player->GetPosition() + Maths::Vector2f::Left);
+			//	player.SetPosition(player.GetPosition() + Maths::Vector2f::Left);
 			//if (event.key.code == sf::Keyboard::Z)
-			//	player->SetPosition(player->GetPosition() + Maths::Vector2f::Down);
+			//	player.SetPosition(player.GetPosition() + Maths::Vector2f::Down);
 			//if (event.key.code == sf::Keyboard::S)
-			//	player->SetPosition(player->GetPosition() + Maths::Vector2f::Up);
+			//	player.SetPosition(player.GetPosition() + Maths::Vector2f::Up);
 		}
 		// TODO: Ceci est un exemple de TODO
 		config->Update();

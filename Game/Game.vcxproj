@@ -163,6 +163,7 @@
     <ClCompile Include="src\Game\GameLog.cpp" />
     <ClCompile Include="src\Game\GameConfig.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +178,7 @@
     <ClInclude Include="include\Game\GameState.h" />
     <ClInclude Include="include\Game\GameLog.h" />
     <ClInclude Include="include\Game\GameConfig.h" />
+    <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

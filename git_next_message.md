@@ -1,3 +1,3 @@
-FIX: Master
+ENH: Amélioration Menu
 
-- réparation de la branche master
+- Boutons clickable (bug qu'un seul bouton clickable)

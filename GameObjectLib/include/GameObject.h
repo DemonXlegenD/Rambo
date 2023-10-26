@@ -42,5 +42,4 @@ protected:
 	std::string name = "GameObject";
 	Maths::Vector2<float> position = Maths::Vector2f::Zero;
 	std::vector<Component*> components;
-	//Scene* scene;
 };

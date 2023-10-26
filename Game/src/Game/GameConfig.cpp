@@ -17,7 +17,7 @@ void GameConfig::Update() {
 	// Mesurer le temps écoulé depuis le dernier frame
 	sf::Time delta = clock.restart();
 
-	// Si vous souhaitez limiter à un nombre fixe de FPS
+	// limiter à un nombre fixe de FPS
 	sf::Time frameTime = sf::seconds(1.0f / FPS);
 	//Delta time for the update
 	if (delta < frameTime)

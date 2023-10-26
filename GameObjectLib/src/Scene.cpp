@@ -106,6 +106,7 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 	Button* button = gameObject->CreateComponent<Button>();
 	button->setPosition(x, y);
 	button->setButton(fontSize);
+	button->setOrigin();
 
 	return gameObject;
 }

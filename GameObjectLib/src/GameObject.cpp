@@ -12,7 +12,9 @@ void GameObject::RemoveComponent(Component* _component)
 }
 
 void GameObject::Start() {
-
+	for (Component* const& component : components) {
+		component->Start();
+	}
 }
 
 void GameObject::Update(sf::Time _delta) const

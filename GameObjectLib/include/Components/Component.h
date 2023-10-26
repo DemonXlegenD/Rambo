@@ -13,6 +13,7 @@ public:
 	Component(GameObject* owner);
 	virtual ~Component() = default;
 
+	virtual void Start();
 	virtual void Update(sf::Time _delta);
 	virtual void Render(sf::RenderWindow* _window);
 

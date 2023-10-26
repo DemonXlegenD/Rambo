@@ -29,16 +29,22 @@
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
-    <ClCompile Include="src\Components\SpriteRenderer.cpp" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="SceneGame1.h" />
+    <ClInclude Include="include\Scenes\SceneMainMenu.h" />
+    <ClInclude Include="include\Components\InputPlayer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\InputPlayer.cpp" />
+    <ClCompile Include="src\Vector.cpp" />
+    <ClCompile Include="src\Components\Button.cpp" />
+    <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />
     <ClCompile Include="src\EnemyAbstract.cpp" />
     <ClCompile Include="src\Enemy\Grunt.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\Components\SquareCollider.cpp" />
+    <ClCompile Include="src\Components\SpriteRenderer.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Maths\Vector2.cpp" />
   </ItemGroup>

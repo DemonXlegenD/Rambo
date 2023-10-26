@@ -5,8 +5,8 @@
 #include "GameObject.h"
 #include "Components/Button.h"
 #include "Components/SpriteRenderer.h"
+#include "Components/InputPlayer.h"
 #include "Components/SquareCollider.h"
-#include "Components/CharacterControl.h"
 
 
 class Scene

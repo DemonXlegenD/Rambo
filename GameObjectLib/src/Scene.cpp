@@ -13,7 +13,7 @@ bool booll = false;
 void Scene::Awake() {
 	for (GameObject* const& gameObject : gameObjects)
 	{
-		gameObject->Awake();
+		gameObject->Start();
 	}
 }
 void Scene::Update(sf::Time _delta)

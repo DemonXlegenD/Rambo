@@ -10,6 +10,7 @@ Button::Button() {
 
 
 void Button::setButton(unsigned int fontSize) {
+	
 
 	if (!font.loadFromFile("../Fonts/Roboto-Medium.ttf")) {
 		std::cout << "Font introuvable" << std::endl;
@@ -17,10 +18,12 @@ void Button::setButton(unsigned int fontSize) {
 	text = sf::Text(GetOwner()->GetName(), font, fontSize);
 	text.setFillColor(sf::Color::White);
 
-	sf::FloatRect textBounds = text.getLocalBounds();
-	setSize(textBounds.width + 20, textBounds.height + 20);
-
+	textBounds = text.getLocalBounds();
+	this->setSize(textBounds.width + fontSize *3, textBounds.height + fontSize * 1.5);
+	
 	rectangle = sf::RectangleShape(sf::Vector2f(width, height));
+	rectangle.setOutlineThickness(2);
+	rectangle.setOutlineColor(sf::Color::White);
 	rectangle.setFillColor(sf::Color::Blue);
 }
 
@@ -28,11 +31,16 @@ void Button::setButton(const sf::Font& font, unsigned int fontSize) {
 	text = sf::Text(GetOwner()->GetName(), font, fontSize);
 	text.setFillColor(sf::Color::White);
 
-	sf::FloatRect textBounds = text.getLocalBounds();
-	setSize(textBounds.width + 20, textBounds.height + 20);
+	textBounds = text.getLocalBounds();
+	this->setSize(textBounds.width + fontSize * 3, textBounds.height + fontSize * 1.5);
 
 	rectangle.setSize(sf::Vector2f(width, height));
 	rectangle.setFillColor(sf::Color::Blue);
+}
+
+void Button::setOrigin() {
+	rectangle.setOrigin(sf::Vector2f(width / 2, height / 2));
+	text.setOrigin(sf::Vector2f(textBounds.width / 2, textBounds.height / 2));
 }
 
 void Button::setSize(float _width, float _height) {
@@ -41,7 +49,7 @@ void Button::setSize(float _width, float _height) {
 }
 
 void Button::setPosition(float _x, float _y) {
-	text.setPosition(_x + 10, _y + 10);
+	text.setPosition(_x, _y);
 	rectangle.setPosition(_x, _y);
 }
 

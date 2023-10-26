@@ -10,9 +10,11 @@ void SceneMainMenu::Update(sf::Time _delta) {
 }
 
 void SceneMainMenu::createSceneButtons() {
-	playButton = CreateButtonGameObject("Play", 1200.0f, 900.0f, 50);
-	optionsButton = CreateButtonGameObject("Options", 1200.0f, 600.0f, 20);
-	quitButton = CreateButtonGameObject("Quit", 1200.0f, 300.0f, 50);
+	float widthScreen = Scene::GetWindow()->getSize().x;
+	float heightScreen = Scene::GetWindow()->getSize().y;
+	playButton = CreateButtonGameObject("Play", widthScreen / 2, heightScreen / 3, 50);
+	optionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
+	quitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen /1.5, 50);
 } 
 
 SceneMainMenu::~SceneMainMenu() {}

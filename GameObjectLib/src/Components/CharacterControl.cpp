@@ -4,7 +4,7 @@ GameObject player;
 
 void CharacterControl::Update(sf::Time _delta)
 {
-	sf::Event event{};
+	/*sf::Event event{};
 	Component::Update(_delta);
 
 	if (event.type == sf::Event::KeyPressed)
@@ -18,5 +18,5 @@ void CharacterControl::Update(sf::Time _delta)
 			}
 			player.SetPosition(Maths::Vector2f(10.0f, 10.0f));
 		}
-	}
+	}*/
 }

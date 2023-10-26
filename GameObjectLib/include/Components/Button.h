@@ -11,6 +11,7 @@ public:
 
 	void setButton(unsigned int fontSize);
 	void setButton(const sf::Font& font, unsigned int fontSize);
+	void setOrigin();
 	void setSize(float _width, float _height);
 	void setPosition(float _x, float _y);
 
@@ -25,6 +26,7 @@ private:
 	sf::Font font;
 	sf::RectangleShape rectangle;
 	sf::Text text;
+	sf::FloatRect textBounds;
 	bool clicked = false;
 };
 

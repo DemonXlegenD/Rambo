@@ -19,7 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Components\Button.h" />
     <ClInclude Include="include\Components\SpriteRenderer.h" />
+    <ClCompile Include="src\Components\Button.cpp" />
+    <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />
     <ClCompile Include="src\Vector.cpp" />
     <ClInclude Include="include\Components\SquareCollider.h" />
     <ClInclude Include="include\Components\Component.h" />
@@ -30,6 +33,7 @@
     <ClInclude Include="include\Maths\Vector2.h" />
     <ClCompile Include="src\Components\SpriteRenderer.cpp" />
     <ClInclude Include="include\Vector.h" />
+    <ClInclude Include="include\Scenes\SceneMainMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EnemyAbstract.cpp" />

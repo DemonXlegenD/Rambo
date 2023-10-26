@@ -1,4 +1,4 @@
 ENH: Amélioration de l'architecture
 
-- Déplacement de code dans le GameConfig
-- Ajout d'une fonction update dans le GameConfig
+- Scene::window permet de récupérer la variable static window
+- Création d'un créateur de bouton

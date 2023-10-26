@@ -21,12 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\Components\CharacterControl.h" />
     <ClInclude Include="include\Components\SpriteRenderer.h" />
-    <ClCompile Include="src\Components\CharacterControl.cpp" />
     <ClInclude Include="include\Components\Button.h" />
-    <ClInclude Include="include\Components\SpriteRenderer.h" />
-    <ClCompile Include="src\Components\Button.cpp" />
-    <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />
-    <ClCompile Include="src\Vector.cpp" />
     <ClInclude Include="include\Components\SquareCollider.h" />
     <ClInclude Include="include\Components\Component.h" />
     <ClInclude Include="include\EnemyAbstract.h" />
@@ -34,16 +29,20 @@
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
-    <ClCompile Include="src\Components\SpriteRenderer.cpp" />
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
   </ItemGroup>
   <ItemGroup>
+	  <ClCompile Include="src\Vector.cpp" />
+	  <ClCompile Include="src\Components\Button.cpp" />
+	  <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />
+	  <ClCompile Include="src\Components\CharacterControl.cpp" />
     <ClCompile Include="src\EnemyAbstract.cpp" />
     <ClCompile Include="src\Enemy\Grunt.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\Components\SquareCollider.cpp" />
+	  <ClCompile Include="src\Components\SpriteRenderer.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Maths\Vector2.cpp" />
   </ItemGroup>

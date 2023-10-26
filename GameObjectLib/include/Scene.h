@@ -6,6 +6,7 @@
 #include "Components/Button.h"
 #include "Components/SpriteRenderer.h"
 #include "Components/SquareCollider.h"
+#include "Components/CharacterControl.h"
 
 
 class Scene

@@ -26,10 +26,15 @@ public:
 
 	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
 
+	GameObject* CreateGruntGameObject(const std::string& _name);
+
+	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
+
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
 	
 
 protected:
 	std::vector<GameObject*> gameObjects;
 	static sf::RenderWindow* window;
+  std::vector<GameObject*> gameObjectsGrunt;
 };

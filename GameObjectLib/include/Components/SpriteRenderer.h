@@ -1,7 +1,7 @@
 #pragma once
 
+#include "GameObject.h"
 #include <SFML/Graphics/Texture.hpp>
-#include "Component.h"
 
 class Sprite : public Component
 {

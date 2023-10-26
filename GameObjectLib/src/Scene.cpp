@@ -7,7 +7,7 @@ Scene::Scene(sf::RenderWindow* _window) {
 	window = _window;
 }
 
-bool booll = false;
+//bool booll = false;
 
 
 void Scene::Awake() {
@@ -18,20 +18,20 @@ void Scene::Awake() {
 }
 void Scene::Update(sf::Time _delta)
 {
-	if (!booll)
-	{
-		sf::Texture ImageBongo;
-		sf::Texture TextureGrunt;
+	//if (!booll)
+	//{
+	//	sf::Texture ImageBongo;
+	//	sf::Texture TextureGrunt;
 
-		ImageBongo.loadFromFile("Sprite/player/john_static.png");
+	//	ImageBongo.loadFromFile("Sprite/player/john_static.png");
 
-		TextureGrunt.loadFromFile("Sprite/player/john_static.png");
+	//	TextureGrunt.loadFromFile("Sprite/player/john_static.png");
 
-		GameObject* player = CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
-		GameObject* grunt = CreateCharacterGameObject("Player", 200.f, 400.f, TextureGrunt, 2.5f, 2.5f);
+	//	GameObject* player = CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
+	//	GameObject* grunt = CreateCharacterGameObject("Player", 200.f, 400.f, TextureGrunt, 2.5f, 2.5f);
 
-		booll = true;
-	}
+	//	booll = true;
+	//}
 	for (GameObject* const& gameObject : gameObjects)
 	{
 		gameObject->Update(_delta);
@@ -67,7 +67,7 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
 
-	CharacterControl* characterControl = gameObject->CreateComponent<CharacterControl>();
+	InputPlayer* inputPlayer = gameObject->CreateComponent<InputPlayer>();
 
 	return gameObject;
 }
@@ -109,4 +109,20 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 	button->setOrigin();
 
 	return gameObject;
+}
+
+GameObject* Scene::CreateButtonGameObject(const std::string& name,const sf::Texture texture, float x, float y, float scalex, float scaley) {
+	
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(x, y));
+
+	Button* button = gameObject->CreateComponent<Button>();
+	button->setPosition(x, y);
+
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(texture);
+	sprite->SetScale(scalex, scaley);
+
+	return gameObject;
+
 }

@@ -1,3 +1,3 @@
 ENH: Amélioration Menu
 
-- Centrage des boutons dans le menu principal
+- Boutons clickable (bug qu'un seul bouton clickable)

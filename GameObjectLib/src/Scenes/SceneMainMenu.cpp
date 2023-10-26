@@ -13,8 +13,9 @@ void SceneMainMenu::createSceneButtons() {
 	float widthScreen = Scene::GetWindow()->getSize().x;
 	float heightScreen = Scene::GetWindow()->getSize().y;
 	playButton = CreateButtonGameObject("Play", widthScreen / 2, heightScreen / 3, 50);
-	optionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
 	quitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen /1.5, 50);
+	optionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
+	
 } 
 
 SceneMainMenu::~SceneMainMenu() {}

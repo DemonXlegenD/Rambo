@@ -28,5 +28,6 @@ private:
 	sf::Text text;
 	sf::FloatRect textBounds;
 	bool clicked = false;
+	sf::RenderWindow* window = nullptr;
 };
 

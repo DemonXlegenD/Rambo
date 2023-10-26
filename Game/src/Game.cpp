@@ -25,7 +25,6 @@ void Game::run() {
 		sf::Event event;
 		while (window->pollEvent(event))
 		{
-			std::cout << "loop" << std::endl;
 			if (event.type == sf::Event::Closed)
 				window->close();
 			if (event.type == sf::Event::KeyPressed) {

@@ -1,3 +1,3 @@
-FIX: Master
+ENH: Amélioration Menu
 
-- réparation de la branche master
+- Centrage des boutons dans le menu principal

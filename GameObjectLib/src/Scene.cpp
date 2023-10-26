@@ -1,11 +1,11 @@
 #include "Scene.h"
 #include "Enemy/Grunt.h"
 
-#include <SFML/Graphics/RenderWindow.hpp>
+sf::RenderWindow* Scene::window = nullptr;
 
-#include "Components/SpriteRenderer.h"
-#include "Components/CharacterControl.h"
-#include "Components/SquareCollider.h"
+Scene::Scene(sf::RenderWindow* _window) {
+	window = _window;
+}
 
 bool booll = false;
 
@@ -87,6 +87,18 @@ GameObject* Scene::CreateGruntGameObject(const std::string& name, float position
 	sprite->SetScale(scalex, scaley);
 
 	Grunt* grunt = gameObject->CreateComponent<Grunt>();
+
+	return gameObject;
+}
+
+GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(x, y));
+
+	Button* button = gameObject->CreateComponent<Button>();
+	button->setPosition(x, y);
+	button->setButton(fontSize);
 
 	return gameObject;
 }

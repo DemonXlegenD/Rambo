@@ -1,16 +1,26 @@
 #pragma once
+
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "GameObject.h"
+#include "Components/Button.h"
+#include "Components/SpriteRenderer.h"
+#include "Components/SquareCollider.h"
+#include "Components/CharacterControl.h"
+
 
 class Scene
 {
 public:
 	Scene() = default;
 	virtual ~Scene() = default;
+	Scene(sf::RenderWindow* _window);
 
-	void Update(sf::Time delta);
-	void Render(sf::RenderWindow* _window);
+	virtual void Update(sf::Time _delta);
+	virtual void Render(sf::RenderWindow* _window);
+
+	static sf::RenderWindow* GetWindow() { return window; }
+	static void SetWindow(sf::RenderWindow* _window) { window = _window; }
 
 	GameObject* CreateGameObject(const std::string& _name);
 
@@ -20,8 +30,11 @@ public:
 
 	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
 
-private:
-	std::vector<GameObject*> gameObjects;
-	std::vector<GameObject*> gameObjectsGrunt;
+	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
+	
 
+protected:
+	std::vector<GameObject*> gameObjects;
+	static sf::RenderWindow* window;
+  std::vector<GameObject*> gameObjectsGrunt;
 };

@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
-
-#include "Component.h"
+#include "GameObject.h"
 
 class SquareCollider : public Component
 {

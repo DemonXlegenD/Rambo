@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Components\Button.h" />
     <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClInclude Include="include\Components\SquareCollider.h" />
     <ClInclude Include="include\Components\Component.h" />
@@ -33,7 +34,7 @@
     <ClInclude Include="include\Components\InputPlayer.h" />
   </ItemGroup>
   <ItemGroup>
-	<ClCompile Include="SceneGame1.cpp" />
+    <ClCompile Include="SceneGame1.cpp" />
     <ClCompile Include="src\Components\InputPlayer.cpp" />
     <ClCompile Include="src\Vector.cpp" />
     <ClCompile Include="src\Components\Button.cpp" />

@@ -27,8 +27,8 @@
     <ClInclude Include="include\Vector.h" />
     <ClInclude Include="SceneGame1.h" />
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
-    <ClInclude Include="include\Components\Button.h" />
     <ClInclude Include="include\Components\InputPlayer.h" />
+    <ClInclude Include="include\Components\Button.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

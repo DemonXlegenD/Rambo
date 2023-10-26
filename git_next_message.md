@@ -1,3 +1,3 @@
-ENH: Amélioration Menu
+FIX: Pollevent
 
-- Boutons clickable (bug qu'un seul bouton clickable)
+- Pollevent bug

@@ -1,36 +1,42 @@
 #include "Components/inputPlayer.h"
 
-void InputPlayer::Update(sf::Time _delta)
-{
-	Gravity(GetOwner());
-	sf::Event event;
-	while (Scene::GetWindow()->pollEvent(event))
-	{
-		moveRight(GetOwner(), _delta);
-		moveLeft(GetOwner(), _delta);
-		
-	}
+
+InputPlayer::InputPlayer() {
+	KeyD_ = new MoveToLeftCommand(this);
+	KeyQ_ = new MoveToRightCommand(this);
+}
+//void InputPlayer::Update(sf::Time _delta)
+//{
+//	/*Gravity(GetOwner());
+//	sf::Event event;
+//	while (Scene::GetWindow()->pollEvent(event))
+//	{
+//		moveRight(GetOwner(), _delta);
+//		moveLeft(GetOwner(), _delta);
+//		
+//	}*/
+//}
+
+Command* InputPlayer::handleInput() {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) return KeyQ_;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) return KeyD_;
+
+	return nullptr;
 }
 
-void InputPlayer::moveRight(GameObject* player, sf::Time _delta)
+void InputPlayer::moveRight()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-		player->SetPosition(player->GetPosition() + Maths::Vector2f::Right);
-	};
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right);
 }
 
-void InputPlayer::moveLeft(GameObject* player, sf::Time _delta)
+void InputPlayer::moveLeft()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-	{
-		player->SetPosition(player->GetPosition() + Maths::Vector2f::Left);
-	};
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Left);
 }
 
-void InputPlayer::Gravity(GameObject* player) 
+void InputPlayer::Gravity() 
 {
-	player->SetPosition(player->GetPosition() + Maths::Vector2f::Up);
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Up);
 
 }
 

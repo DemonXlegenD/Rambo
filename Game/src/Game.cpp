@@ -15,7 +15,7 @@ void Game::run() {
 
 
 
-	GameObject* player = config->getActualScene()->CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
+	//GameObject* player = config->getActualScene()->CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
 	//GameObject* player = config->getActualScene()->CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
 	sf::RenderWindow* window = config->getWindow();
 
@@ -23,7 +23,7 @@ void Game::run() {
 	{
 
 
-		sf::Event event;
+		/*sf::Event event;
 		while (window->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
@@ -41,7 +41,7 @@ void Game::run() {
 				if (event.key.code == sf::Keyboard::S)
 					player->SetPosition(player->GetPosition() + Maths::Vector2f::Up);
 			}
-		}
+		}*/
 		// TODO: Ceci est un exemple de TODO
 		config->Update();
 

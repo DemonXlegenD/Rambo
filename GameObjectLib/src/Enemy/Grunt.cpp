@@ -1,6 +1,5 @@
 #include "Enemy/Grunt.h"
 
-GameObject grunt;
 Grunt::Grunt() : EnemyAbstract(200, 10, 20) {};
 
 

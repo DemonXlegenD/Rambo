@@ -1,10 +1,10 @@
 #include "Scene.h"
-#include "Enemy/Grunt.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
 Scene::Scene(sf::RenderWindow* _window) {
 	window = _window;
+	inputHandlerPlayer = new InputPlayer();
 }
 
 //bool booll = false;
@@ -18,6 +18,18 @@ void Scene::Awake() {
 }
 void Scene::Update(sf::Time _delta)
 {
+	sf::Event event;
+	while (window->pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+			window->close();
+		if (event.type == sf::Event::KeyPressed) {
+			Command* commandMoves = inputHandlerPlayer->handleInput();
+			if (commandMoves) {
+				commandMoves->execute();
+			}
+		}
+	}
 	//if (!booll)
 	//{
 	//	sf::Texture ImageBongo;

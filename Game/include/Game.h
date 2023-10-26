@@ -4,9 +4,6 @@
 
 #include "GameObject.h"
 #include "Scene.h"
-#include "Player.h"
-#include "../GameObjectLib/include/Components/InputPlayer.h"
-
 #include "Game/GameConfig.h"
 #include "Game/GameStats.h"
 #include "Game/GameState.h"

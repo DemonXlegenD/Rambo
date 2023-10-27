@@ -2,8 +2,8 @@
 
 
 InputPlayer::InputPlayer() {
-	KeyD_ = new MoveToLeftCommand(this);
-	KeyQ_ = new MoveToRightCommand(this);
+	KeyD_ = new MoveToRightCommand(this);
+	KeyQ_ = new MoveToLeftCommand(this);
 }
 //void InputPlayer::Update(sf::Time _delta)
 //{
@@ -18,8 +18,8 @@ InputPlayer::InputPlayer() {
 //}
 
 Command* InputPlayer::handleInput() {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) return KeyQ_;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) return KeyD_;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) return KeyQ_;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) return KeyD_;
 
 	return nullptr;
 }

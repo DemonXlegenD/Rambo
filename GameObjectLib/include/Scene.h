@@ -8,9 +8,9 @@
 #include "Components/SpriteRenderer.h"
 
 #include "Components/SquareCollider.h"
-#include "Components/Input.h"
 #include "Components/InputPlayer.h"
-#include "Enemy/Grunt.h"
+//#include "Enemy/Grunt.h"
+
 
 
 class Scene
@@ -43,5 +43,5 @@ protected:
 	std::vector<GameObject*> gameObjects;
 	static sf::RenderWindow* window;
 	std::vector<GameObject*> gameObjectsGrunt;
-	Input* inputHandlerPlayer;
+	InputPlayer* inputHandlerPlayer;
 };

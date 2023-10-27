@@ -1,4 +1,3 @@
-#include "GameObject.h"
 #include "EnemyAbstract.h"
 #include <stdio.h>
 #include <stdlib.h>

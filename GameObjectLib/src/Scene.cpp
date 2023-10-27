@@ -1,5 +1,4 @@
 #include "Scene.h"
-#include "Enemy/Grunt.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
@@ -18,6 +17,19 @@ void Scene::Awake() {
 }
 void Scene::Update(sf::Time _delta)
 {
+	sf::Event event;
+	while (window->pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+			window->close();
+		if (event.type == sf::Event::KeyPressed)
+		{
+			Command* commandMoves = inputHandlerPlayer->handleInput();
+			if (commandMoves) {
+				commandMoves->execute();
+			}
+		}
+	}
 	//if (!booll)
 	//{
 	//	sf::Texture ImageBongo;
@@ -68,7 +80,7 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	sprite->SetScale(scalex, scaley);
 
 	InputPlayer* inputPlayer = gameObject->CreateComponent<InputPlayer>();
-
+	inputHandlerPlayer = inputPlayer;
 	return gameObject;
 }
 
@@ -93,7 +105,7 @@ GameObject* Scene::CreateGruntGameObject(const std::string& name, float position
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
 
-	Grunt* grunt = gameObject->CreateComponent<Grunt>();
+	//Grunt* grunt = gameObject->CreateComponent<Grunt>();
 
 	return gameObject;
 }

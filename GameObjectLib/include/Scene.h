@@ -2,11 +2,15 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+
 #include "GameObject.h"
 #include "Components/Button.h"
 #include "Components/SpriteRenderer.h"
-#include "Components/InputPlayer.h"
+
 #include "Components/SquareCollider.h"
+#include "Components/InputPlayer.h"
+//#include "Enemy/Grunt.h"
+
 
 
 class Scene
@@ -14,12 +18,12 @@ class Scene
 public:
 	Scene() = default;
 	virtual ~Scene() = default;
-	
+
 	Scene(sf::RenderWindow* _window);
 
 	virtual void Update(sf::Time _delta);
 	virtual void Render(sf::RenderWindow* _window);
-  
+
 	virtual void Awake();
 	static sf::RenderWindow* GetWindow() { return window; }
 	static void SetWindow(sf::RenderWindow* _window) { window = _window; }
@@ -33,11 +37,11 @@ public:
 	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
 
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
-	GameObject* CreateButtonGameObject(const std::string& name, const sf::Texture texture, float x, float y);
-	
+
 
 protected:
 	std::vector<GameObject*> gameObjects;
 	static sf::RenderWindow* window;
-  std::vector<GameObject*> gameObjectsGrunt;
+	std::vector<GameObject*> gameObjectsGrunt;
+	InputPlayer* inputHandlerPlayer;
 };

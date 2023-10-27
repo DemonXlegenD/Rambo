@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Command.h" />
+    <ClInclude Include="include\Commands\CommandsPlayer.h" />
     <ClInclude Include="include\Components\Button.h" />
     <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClInclude Include="include\Components\SquareCollider.h" />
@@ -26,16 +28,20 @@
     <ClInclude Include="include\EnemyAbstract.h" />
     <ClInclude Include="include\Enemy\Grunt.h" />
     <ClInclude Include="include\GameObject.h" />
+    <ClInclude Include="include\Components\Input.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
     <ClInclude Include="include\Vector.h" />
-    <ClInclude Include="SceneGame1.h" />
+    <ClInclude Include="include\Scenes\SceneGame1.h" />
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
     <ClInclude Include="include\Components\InputPlayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SceneGame1.cpp" />
+    <ClCompile Include="src\Scenes\SceneGame1.cpp" />
+    <ClCompile Include="src\Command.cpp" />
+    <ClCompile Include="src\Commands\CommandsPlayer.cpp" />
     <ClCompile Include="src\Components\InputPlayer.cpp" />
+    <ClCompile Include="src\Components\Input.cpp" />
     <ClCompile Include="src\Vector.cpp" />
     <ClCompile Include="src\Components\Button.cpp" />
     <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />

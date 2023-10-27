@@ -1,4 +1,5 @@
 #include "Components/SquareCollider.h"
+#include "GameObject.h"
 
 bool SquareCollider::IsColliding(const SquareCollider& _colliderA, const SquareCollider& _colliderB)
 {

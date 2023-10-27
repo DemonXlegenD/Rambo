@@ -1,15 +1,9 @@
 #include "Components/inputPlayer.h"
+#include "Scene.h"
 
+InputPlayer::InputPlayer(){}
 void InputPlayer::Update(sf::Time _delta)
 {
-	Gravity(GetOwner());
-	sf::Event event;
-	while (Scene::GetWindow()->pollEvent(event))
-	{
-		moveRight(GetOwner(), _delta);
-		moveLeft(GetOwner(), _delta);
-		
-	}
 }
 
 void InputPlayer::moveRight(GameObject* player, sf::Time _delta)
@@ -28,9 +22,5 @@ void InputPlayer::moveLeft(GameObject* player, sf::Time _delta)
 	};
 }
 
-void InputPlayer::Gravity(GameObject* player) 
-{
-	player->SetPosition(player->GetPosition() + Maths::Vector2f::Up);
 
-}
 

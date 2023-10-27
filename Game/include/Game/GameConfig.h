@@ -3,6 +3,7 @@
 #include <SFML/System.hpp>
 #include "Scene.h"
 #include "Scenes/SceneMainMenu.h"
+#include "Scenes/SceneGame1.h"
 
 class GameConfig
 {

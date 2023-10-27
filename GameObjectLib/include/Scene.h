@@ -1,13 +1,15 @@
 #pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
-
+#include <SFML/Graphics.hpp>
 #include "GameObject.h"
-#include "Components/Button.h"
-#include "Components/SpriteRenderer.h"
-#include "Components/InputPlayer.h"
-#include "Components/SquareCollider.h"
 
+#include "Components/Button.h"
+#include "Components/InputPlayer.h"
+#include "Components/SpriteRenderer.h"
+#include "Components/SquareCollider.h"
+#include "Components/Platforme.h"
+#include "Components/Gravity.h"
 
 class Scene
 {
@@ -33,7 +35,8 @@ public:
 	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
 
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
-	GameObject* CreateButtonGameObject(const std::string& name, const sf::Texture texture, float x, float y);
+
+	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY);
 	
 
 protected:

@@ -1,5 +1,7 @@
 #include "Scene.h"
-#include "Enemy/Grunt.h"
+
+#include "Components/Button.h"
+#include "Components/SquareCollider.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
@@ -60,12 +62,15 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
 
 	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(20.f);
-	squareCollider->SetHeight(20.f);
+	squareCollider->SetWidth(60.f);
+	squareCollider->SetHeight(60.f);
 
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
+	
+	Gravity* gravity = gameObject->CreateComponent<Gravity>();
+
 
 	InputPlayer* inputPlayer = gameObject->CreateComponent<InputPlayer>();
 
@@ -93,7 +98,7 @@ GameObject* Scene::CreateGruntGameObject(const std::string& name, float position
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
 
-	Grunt* grunt = gameObject->CreateComponent<Grunt>();
+	//Grunt* grunt = gameObject->CreateComponent<Grunt>();
 
 	return gameObject;
 }
@@ -109,4 +114,22 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 	button->setOrigin();
 
 	return gameObject;
+}
+
+GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY) {
+
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(x, y));
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetWidth(scaleX);
+	squareCollider->SetHeight(scaleY);
+
+	Platforme* platform = gameObject->CreateComponent<Platforme>();
+	platform->setPosition(x, y);
+	platform->setPlatforme();
+	platform->setSize(scaleX, scaleY);
+
+	return gameObject;
+
 }

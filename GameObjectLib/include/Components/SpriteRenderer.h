@@ -1,13 +1,13 @@
 #pragma once
 
-#include "GameObject.h"
+#include "Component.h"
 #include <SFML/Graphics/Texture.hpp>
 
 class Sprite : public Component
 {
 public:
 	Sprite();
-	~Sprite() override;
+	~Sprite() override = default;
 
 	void SetTexture(const sf::Texture& _texture) { texture = _texture; }
 	void SetScale(float _scalex, float _scaley) { scalex = _scalex; scaley = _scaley;}

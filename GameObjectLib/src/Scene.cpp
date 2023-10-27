@@ -24,11 +24,13 @@ void Scene::Update(sf::Time _delta)
 			window->close();
 		if (event.type == sf::Event::KeyPressed)
 		{
-			Command* commandMoves = inputHandlerPlayer->handleInput();
-			if (commandMoves) {
-				commandMoves->execute();
-			}
+			if (event.key.code == sf::Keyboard::Escape) window->close();
 		}
+
+	}
+	Command* commandMoves = inputHandlerPlayer->handleInput();
+	if (commandMoves) {
+		commandMoves->execute();
 	}
 	//if (!booll)
 	//{

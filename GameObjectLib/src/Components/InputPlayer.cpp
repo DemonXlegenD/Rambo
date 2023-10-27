@@ -18,8 +18,8 @@ InputPlayer::InputPlayer() {
 //}
 
 Command* InputPlayer::handleInput() {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) return KeyQ_;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) return KeyD_;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) return KeyQ_;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) return KeyD_;
 
 	return nullptr;
 }

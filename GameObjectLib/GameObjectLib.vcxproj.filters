@@ -17,6 +17,8 @@
     <ClCompile Include="src\Commands\CommandsPlayer.cpp" />
     <ClCompile Include="src\Command.cpp" />
     <ClCompile Include="src\Components\Input.cpp" />
+    <ClCompile Include="src\Components\FireBullet.cpp" />
+    <ClCompile Include="src\Components\SpriteBullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Components\SpriteRenderer.h" />
@@ -35,6 +37,8 @@
     <ClInclude Include="include\Commands\CommandsPlayer.h" />
     <ClInclude Include="include\Command.h" />
     <ClInclude Include="include\Components\Input.h" />
+    <ClInclude Include="include\Components\FireBullet.h" />
+    <ClInclude Include="include\Components\SpriteBullet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

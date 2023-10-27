@@ -3,8 +3,11 @@
 sf::RenderWindow* Scene::window = nullptr;
 
 Scene::Scene(sf::RenderWindow* _window) {
+	this->setScene(this);
 	window = _window;
 }
+
+Scene* Scene::scene = nullptr;
 
 //bool booll = false;
 
@@ -121,6 +124,21 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 	button->setPosition(x, y);
 	button->setButton(fontSize);
 	button->setOrigin();
+
+	return gameObject;
+}
+
+GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
+
+	SpriteBullet* spriteBullet = gameObject->CreateComponent<SpriteBullet>();
+	spriteBullet->SetTexture(textureBullet);
+	spriteBullet->SetScale(scalex, scaley);
+
+	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
+
 
 	return gameObject;
 }

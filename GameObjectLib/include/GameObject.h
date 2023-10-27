@@ -6,7 +6,6 @@
 #include "Maths/Vector2.h"
 #include "Components/Component.h"
 
-
 class Component;
 
 class GameObject
@@ -32,6 +31,7 @@ public:
 		components.push_back(component);
 		return component;
 	}
+
 
 	void RemoveComponent(Component* _component);
 	virtual void Start();

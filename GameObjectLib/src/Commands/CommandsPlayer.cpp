@@ -14,3 +14,11 @@ MoveToLeftCommand::MoveToLeftCommand(InputPlayer* _inputPlayer) {
 void MoveToLeftCommand::execute() {
 	inputPlayer->moveLeft();
 }
+
+MoveToRightBulletCommand::MoveToRightBulletCommand(InputPlayer* _inputPlayer) {
+	this->inputPlayer = _inputPlayer;
+}
+
+void MoveToRightBulletCommand::execute() {
+	inputPlayer->moveRightBullet();
+}

@@ -18,3 +18,11 @@ public:
 	void execute() override;
 	InputPlayer* inputPlayer;
 };
+
+class MoveToRightBulletCommand : public Command
+{
+public:
+	MoveToRightBulletCommand(InputPlayer* _inputPlayer);
+	void execute() override;
+	InputPlayer* inputPlayer;
+};

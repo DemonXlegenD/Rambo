@@ -28,6 +28,6 @@ void SceneGame1::Update(sf::Time _delta) {
 }
 
 
-//void SceneGame1::Render(sf::RenderWindow* _window) {
-//
-//}
+void SceneGame1::Render(sf::RenderWindow* _window) {
+	Scene::Render(_window);
+}

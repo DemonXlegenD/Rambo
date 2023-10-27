@@ -12,6 +12,7 @@ public:
 	InputPlayer();
 
 	Command* handleInput();
+	Command* fireInput();
 	void moveRight();
 	void moveRightBullet();
 	void moveLeft();

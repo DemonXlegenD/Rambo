@@ -13,10 +13,6 @@ public:
   void Update(sf::Time _delta) override;
 	void Render(sf::RenderWindow* _window) override; 
 
-	void createSceneButtons();
-
-	~SceneGame1();
-
 private:
 	GameObject* platforme = nullptr;
 	GameObject* player = nullptr;

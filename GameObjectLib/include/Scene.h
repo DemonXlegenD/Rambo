@@ -54,4 +54,7 @@ protected:
 	static sf::RenderWindow* window;
 	std::vector<GameObject*> gameObjectsGrunt;
 	InputPlayer* inputHandlerPlayer;
+	bool balleTiree;
+	sf::Clock clock;
+	sf::Time interval;
 };

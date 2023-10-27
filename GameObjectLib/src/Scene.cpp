@@ -2,6 +2,8 @@
 
 #include "Components/Button.h"
 #include "Components/SquareCollider.h"
+#include "Components/FireBullet.h"
+#include "Components/SpriteBullet.h"
 
 
 sf::RenderWindow* Scene::window = nullptr;
@@ -9,6 +11,8 @@ sf::RenderWindow* Scene::window = nullptr;
 Scene::Scene(sf::RenderWindow* _window) {
 	this->setScene(this);
 	window = _window;
+	balleTiree = false;
+	sf::Time interval = sf::seconds(0.5f);
 }
 
 Scene* Scene::scene = nullptr;
@@ -38,6 +42,15 @@ void Scene::Update(sf::Time _delta)
 	Command* commandMoves = inputHandlerPlayer->handleInput();
 	if (commandMoves) {
 		commandMoves->execute();
+	}
+	Command* fireBullet = inputHandlerPlayer->fireInput();
+	if (fireBullet && !balleTiree) {
+		fireBullet->execute();
+		balleTiree = true;
+		clock.restart();
+	}
+	if (clock.getElapsedTime() >= interval) {
+		balleTiree = false; // Réinitialiser l'état de tir
 	}
 	//if (!booll)
 	//{
@@ -151,7 +164,7 @@ GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float 
 	platform->setSize(scaleX, scaleY);
 
 	return gameObject;
-
+}
 GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
 {
 	GameObject* gameObject = CreateGameObject(name);

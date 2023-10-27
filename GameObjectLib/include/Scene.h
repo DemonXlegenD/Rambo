@@ -6,12 +6,8 @@
 
 #include "GameObject.h"
 
-#include "Components/Button.h"
+
 #include "Components/InputPlayer.h"
-#include "Components/SpriteRenderer.h"
-#include "Components/SquareCollider.h"
-#include "Components/Platforme.h"
-#include "Components/Gravity.h"
 
 class Scene
 {

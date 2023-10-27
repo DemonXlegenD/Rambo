@@ -1,4 +1,6 @@
 #include "Scenes/SceneGame1.h"
+#include "Components/SquareCollider.h"
+#include "Components/Gravity.h"
 
 SceneGame1::SceneGame1(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
@@ -20,10 +22,10 @@ void SceneGame1::createPlayer(sf::Texture* imagePlayer) {
 void SceneGame1::Update(sf::Time _delta) {
 	Scene::Update(_delta);
 	if (SquareCollider::IsColliding(*(player->GetComponent<SquareCollider>()), *(platforme->GetComponent<SquareCollider>()))) {
-		//std::cout << player->getGravity()->isPlaying << std::endl;
 		player->GetComponent<Gravity>()->stop();
-
-		std::cout << "UWU" << std::endl;
+	}
+	else {
+		player->GetComponent<Gravity>()->start();
 	}
 }
 

@@ -4,12 +4,14 @@
 #include "Components/SquareCollider.h"
 #include "Components/FireBullet.h"
 #include "Components/SpriteBullet.h"
-
+#include "Components/SpriteRenderer.h"
+#include "Components/Gravity.h"
+#include "Components/Platforme.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
 Scene::Scene(sf::RenderWindow* _window) {
-	this->setScene(this);
+	Scene::setScene(this);
 	window = _window;
 	balleTiree = false;
 	sf::Time interval = sf::seconds(0.5f);

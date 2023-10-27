@@ -9,7 +9,7 @@ Sprite::Sprite()
 	scaley = 1.0f;
 }
 
-Sprite::~Sprite() {}
+
 
 void Sprite::Render(sf::RenderWindow* _window)
 {

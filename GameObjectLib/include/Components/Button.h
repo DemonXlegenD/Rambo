@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GameObject.h"
+#include "Component.h"
 #include "Scene.h"
 
 class Button : public Component

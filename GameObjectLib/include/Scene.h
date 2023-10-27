@@ -2,17 +2,16 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
+
 #include "Components/Button.h"
-#include "Components/SpriteRenderer.h"
-#include "Components/FireBullet.h"
-
-#include "Components/SquareCollider.h"
 #include "Components/InputPlayer.h"
-//#include "Enemy/Grunt.h"
-
-
+#include "Components/SpriteRenderer.h"
+#include "Components/SquareCollider.h"
+#include "Components/Platforme.h"
+#include "Components/Gravity.h"
 
 class Scene
 {
@@ -42,7 +41,12 @@ public:
 
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
 
+
+	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY);
+	
+
 	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
+
 
 protected:
 	static Scene* scene;

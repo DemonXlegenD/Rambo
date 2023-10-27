@@ -26,6 +26,7 @@ Command* InputPlayer::handleInput() {
 
 
 	return nullptr;
+
 }
 
 void InputPlayer::moveRight()

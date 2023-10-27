@@ -24,6 +24,7 @@ Command* InputPlayer::handleInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) return KeyD_;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) return KeySpace_;
 
+
 	return nullptr;
 }
 

@@ -45,6 +45,7 @@ public:
 	}
 
 
+
 	void RemoveComponent(Component* _component);
 	virtual void Start();
 	void Update(sf::Time _delta) const;

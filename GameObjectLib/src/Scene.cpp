@@ -3,11 +3,15 @@
 #include "Components/Button.h"
 #include "Components/SquareCollider.h"
 
+
 sf::RenderWindow* Scene::window = nullptr;
 
 Scene::Scene(sf::RenderWindow* _window) {
+	this->setScene(this);
 	window = _window;
 }
+
+Scene* Scene::scene = nullptr;
 
 //bool booll = false;
 
@@ -20,6 +24,21 @@ void Scene::Awake() {
 }
 void Scene::Update(sf::Time _delta)
 {
+	sf::Event event;
+	while (window->pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+			window->close();
+		if (event.type == sf::Event::KeyPressed)
+		{
+			if (event.key.code == sf::Keyboard::Escape) window->close();
+		}
+
+	}
+	Command* commandMoves = inputHandlerPlayer->handleInput();
+	if (commandMoves) {
+		commandMoves->execute();
+	}
 	//if (!booll)
 	//{
 	//	sf::Texture ImageBongo;
@@ -73,7 +92,7 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 
 
 	InputPlayer* inputPlayer = gameObject->CreateComponent<InputPlayer>();
-
+	inputHandlerPlayer = inputPlayer;
 	return gameObject;
 }
 
@@ -116,6 +135,7 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 	return gameObject;
 }
 
+
 GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY) {
 
 	GameObject* gameObject = CreateGameObject(name);
@@ -129,6 +149,20 @@ GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float 
 	platform->setPosition(x, y);
 	platform->setPlatforme();
 	platform->setSize(scaleX, scaleY);
+
+	return gameObject;
+
+GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
+
+	SpriteBullet* spriteBullet = gameObject->CreateComponent<SpriteBullet>();
+	spriteBullet->SetTexture(textureBullet);
+	spriteBullet->SetScale(scalex, scaley);
+
+	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
+
 
 	return gameObject;
 

@@ -10,12 +10,17 @@
     <ClCompile Include="src\Components\SquareCollider.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Maths\Vector2.cpp" />
+    <ClCompile Include="src\Components\Platforme.cpp" />
+    <ClCompile Include="src\Components\Gravity.cpp" />
+    <ClCompile Include="src\Scenes\SceneGame1.cpp" />
     <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />
     <ClCompile Include="src\Components\Button.cpp" />
     <ClCompile Include="src\Components\InputPlayer.cpp" />
-    <ClCompile Include="src\Components\Platforme.cpp" />
-    <ClCompile Include="src\Scenes\SceneGame1.cpp" />
-    <ClCompile Include="src\Components\Gravity.cpp" />
+    <ClCompile Include="src\Commands\CommandsPlayer.cpp" />
+    <ClCompile Include="src\Command.cpp" />
+    <ClCompile Include="src\Components\Input.cpp" />
+    <ClCompile Include="src\Components\FireBullet.cpp" />
+    <ClCompile Include="src\Components\SpriteBullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Components\SpriteRenderer.h" />
@@ -33,6 +38,11 @@
     <ClInclude Include="include\Components\Button.h" />
     <ClInclude Include="include\Components\Platforme.h" />
     <ClInclude Include="include\Components\Gravity.h" />
+    <ClInclude Include="include\Commands\CommandsPlayer.h" />
+    <ClInclude Include="include\Command.h" />
+    <ClInclude Include="include\Components\Input.h" />
+    <ClInclude Include="include\Components\FireBullet.h" />
+    <ClInclude Include="include\Components\SpriteBullet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

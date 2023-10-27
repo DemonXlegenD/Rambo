@@ -8,12 +8,14 @@ public:
 	SceneGame1(sf::RenderWindow* window);
 
 	void Awake() override;
+
 	void createPlayer(sf::Texture* texture);
-	void Update(sf::Time _delta) override;
-	//void Render(sf::RenderWindow* _window) override; 
+  void Update(sf::Time _delta) override;
+	void Render(sf::RenderWindow* _window) override; 
 
+	void createSceneButtons();
 
-	//~SceneGame1();
+	~SceneGame1();
 
 private:
 	GameObject* platforme = nullptr;

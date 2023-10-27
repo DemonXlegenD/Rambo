@@ -33,3 +33,4 @@ void GameObject::Render(sf::RenderWindow* _window) const
 		component->Render(_window);
 	}
 }
+

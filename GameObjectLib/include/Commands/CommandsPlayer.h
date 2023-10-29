@@ -1,5 +1,5 @@
 #pragma once
-#include "Components/InputPlayer.h"
+#include "Components/Inputs/InputPlayer.h"
 
 class InputPlayer;
 

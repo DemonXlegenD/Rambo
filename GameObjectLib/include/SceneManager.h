@@ -2,13 +2,18 @@
 #include <iostream>
 #include <map>
 #include "Scene.h"
+#include "Scenes/SceneGame1.h"
+#include "Scenes/SceneMainMenu.h"
 
 class SceneManager
 {
 public:
 
 	//Add a new scene to the scene list
-	static void AddScene(std::string _key, Scene _scene);
+	template <typename T> 
+	static void AddScene(std::string _key, T* _scene) {
+		SceneManager::scenes.insert(std::make_pair(_key, _scene));
+	}
 
 	//Run a scene
 	static void RunScene(std::string _key) {
@@ -17,13 +22,22 @@ public:
 				SceneManager::StopScene();
 			}
 			SceneManager::activeScene = scenes.at(_key);
-			//SceneManager::activeScene->Create();
-			/*if (SceneMainMenu* sceneMainMenu = dynamic_cast<SceneMainMenu*>(SceneManager::activeScene)) {
+			std::cout << activeScene << std::endl;
+			SceneMainMenu* sceneMainMenu = dynamic_cast<SceneMainMenu*>(SceneManager::activeScene);
+			SceneGame1* sceneGame1 = dynamic_cast<SceneGame1*>(SceneManager::activeScene);
+			std::cout << "Main " << sceneMainMenu << std::endl;
+			std::cout << "Game " << sceneGame1 << std::endl;
+			if (sceneMainMenu) {
+				std::cout << "main menu" << std:: endl;
 				sceneMainMenu->Create();
 			}
-			else if (SceneGame1* sceneGame1 = dynamic_cast<SceneGame1*>(SceneManager::activeScene)) {
+			else if (sceneGame1) {
+				std::cout << "game" << std::endl;
 				sceneGame1->Create();
-			}*/
+			}
+			else {
+				std::cout << "rien" << std::endl;
+			}
 		}
 	}
 

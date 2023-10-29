@@ -12,11 +12,13 @@ sf::RenderWindow* Scene::window = nullptr;
 
 Scene::Scene(sf::RenderWindow* _window) {
 	window = _window;
+	this->balleTiree = false;
+	this->inputHandlerPlayer = nullptr;
 }
 
 void Scene::Create() {
 	balleTiree = false;
-	sf::Time interval = sf::seconds(0.5f);
+	interval = sf::seconds(0.1f);
 }
 
 void Scene::Awake() {

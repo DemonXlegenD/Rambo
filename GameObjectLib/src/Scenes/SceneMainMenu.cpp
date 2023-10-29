@@ -1,27 +1,23 @@
 #include "Scenes/SceneMainMenu.h"
+#include "SceneManager.h"
+#include "Components/Button.h"
 
 SceneMainMenu::SceneMainMenu(sf::RenderWindow* _window) : Scene(_window) {
 	texture = nullptr;
 	textureBullet = nullptr;
-	this->Create();
 }
 
 void SceneMainMenu::Create() {
 	Scene::Create();
 	std::cout << "Main menu" << std::endl;
 	this->CreateSceneButtons();
-	texture = new sf::Texture();
-	textureBullet = new sf::Texture();
-	this->CreatePlayer(texture);
 }
 
 void SceneMainMenu::Render(sf::RenderWindow* _window) {
 	Scene::Render(_window);
 }
 
-void SceneMainMenu::Update(sf::Time _delta) {
-	Scene::Update(_delta);
-}
+
 
 void SceneMainMenu::CreatePlayer(sf::Texture* imagePlayer) {
 	if (!imagePlayer->loadFromFile("../assets/Sprite/player/john_static.png")) {
@@ -40,12 +36,28 @@ void SceneMainMenu::CreateBullet(sf::Texture* imageBullet) {
 }
 
 void SceneMainMenu::CreateSceneButtons() {
-	float widthScreen = Scene::GetWindow()->getSize().x;
-	float heightScreen = Scene::GetWindow()->getSize().y;
+	float widthScreen = SceneManager::GetWindow()->getSize().x;
+	float heightScreen = SceneManager::GetWindow()->getSize().y;
 	playButton = CreateButtonGameObject("Play", widthScreen / 2, heightScreen / 3, 50);
 	quitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.5, 50);
 	optionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
 
 }
 
-SceneMainMenu::~SceneMainMenu() {}
+void SceneMainMenu::Update(sf::Time _delta) {
+	Scene::Update(_delta);
+	if (playButton->GetComponent<Button>()->IsClicked()) {
+		SceneManager::RunScene("SceneGame1");
+	}
+	if (optionsButton->GetComponent<Button>()->IsClicked()) {
+		std::cout << "Nothing here" << std::endl;
+	}
+	if (quitButton->GetComponent<Button>()->IsClicked()) {
+		SceneManager::GetWindow()->close();
+	}
+}
+
+SceneMainMenu::~SceneMainMenu() {
+	delete texture;
+	delete textureBullet;
+}

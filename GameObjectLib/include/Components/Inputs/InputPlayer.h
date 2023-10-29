@@ -2,7 +2,7 @@
 #include "SFML/Window/Event.hpp"
 
 #include "Command.h"
-#include "Component.h"
+#include "Components/Component.h"
 #include "Commands/CommandsPlayer.h"
 #include <functional>
 

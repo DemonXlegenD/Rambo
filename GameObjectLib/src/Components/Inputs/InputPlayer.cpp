@@ -1,4 +1,4 @@
-#include "Components/inputPlayer.h"
+#include "Components/Inputs/InputPlayer.h"
 #include "SceneManager.h"
 
 

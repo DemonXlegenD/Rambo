@@ -16,7 +16,7 @@ public:
 	void SetPosition(float _x, float _y);
 
 	void Render(sf::RenderWindow* _window) override;
-	bool IsClicked(const sf::Vector2f& mousePosition);
+	bool IsClicked();
 	void Update(sf::Time _delta) override;
 
 	~Button();

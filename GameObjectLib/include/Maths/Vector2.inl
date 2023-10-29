@@ -27,7 +27,7 @@ namespace Maths
 		}
 		else
 		{
-			Error::RaiseOutOfRangeError(std::string("Pas de valeur"));
+			return 0;
 		}
 	}
 

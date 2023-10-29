@@ -7,7 +7,7 @@
 #include "GameObject.h"
 
 
-#include "Components/InputPlayer.h"
+#include "Components/Inputs/InputPlayer.h"
 
 class Scene
 {
@@ -22,8 +22,6 @@ public:
 	virtual void Render(sf::RenderWindow* _window);
 
 	virtual void Awake();
-	static sf::RenderWindow* GetWindow() { return window; }
-	static void SetWindow(sf::RenderWindow* _window) { window = _window; }
 
 	GameObject* CreateGameObject(const std::string& _name);
 

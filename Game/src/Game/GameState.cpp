@@ -14,9 +14,9 @@ void GameState::Preload() {
 }
 
 void GameState::Create() {
-	SceneManager::AddScene("SceneMainMenu", SceneMainMenu(this->window));
+	SceneManager::AddScene("SceneMainMenu", new SceneMainMenu(this->window));
 	SceneManager::RunScene("SceneMainMenu");
-	SceneManager::AddScene("SceneGame1", SceneGame1(this->window));
+	SceneManager::AddScene("SceneGame1", new SceneGame1(this->window));
 }
 
 

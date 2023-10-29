@@ -38,7 +38,7 @@
     <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="include\Scenes\SceneGame1.h" />
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
-    <ClInclude Include="include\Components\InputPlayer.h" />
+    <ClInclude Include="include\Components\Inputs\InputPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Components\Gravity.cpp" />
@@ -49,8 +49,7 @@
     <ClCompile Include="src\Scenes\SceneGame1.cpp" />
     <ClCompile Include="src\Command.cpp" />
     <ClCompile Include="src\Commands\CommandsPlayer.cpp" />
-    <ClCompile Include="src\Components\InputPlayer.cpp" />
-    <ClCompile Include="src\Components\Input.cpp" />
+    <ClCompile Include="src\Components\Inputs\InputPlayer.cpp" />
     <ClCompile Include="src\Components\Button.cpp" />
     <ClCompile Include="src\Scenes\SceneMainMenu.cpp" />
     <ClCompile Include="src\Components\EnemyAbstract.cpp" />

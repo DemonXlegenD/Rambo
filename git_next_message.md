@@ -1,3 +1,6 @@
-ENH: Tag
+NEW: Amélioration
 
-- TAG 
+- Tir plus rapide
+- Changement de scene avec le bouton play
+- Quit marche
+- TODO

@@ -17,15 +17,13 @@ public:
 
 	Scene(sf::RenderWindow* _window);
 
+	virtual void Create();
 	virtual void Update(sf::Time _delta);
 	virtual void Render(sf::RenderWindow* _window);
 
 	virtual void Awake();
 	static sf::RenderWindow* GetWindow() { return window; }
 	static void SetWindow(sf::RenderWindow* _window) { window = _window; }
-
-	static Scene* getScene() { return scene; }
-	static void setScene(Scene* _scene) { scene = _scene; }
 
 	GameObject* CreateGameObject(const std::string& _name);
 
@@ -45,7 +43,6 @@ public:
 
 
 protected:
-	static Scene* scene;
 	std::vector<GameObject*> gameObjects;
 	static sf::RenderWindow* window;
 	std::vector<GameObject*> gameObjectsGrunt;

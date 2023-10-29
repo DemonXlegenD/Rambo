@@ -11,12 +11,12 @@ class InputPlayer : public Component
 public:
 	InputPlayer();
 
-	Command* handleInput();
-	Command* fireInput();
-	void moveRight();
-	void moveRightBullet();
-	void moveLeft();
-	void Gravity();
+	Command* HandleInput();
+	Command* FireInput();
+	void MoveRight();
+	void MoveRightBullet();
+	void MoveLeft();
+
 private:
 	Command* KeyD_;
 	Command* KeyQ_;

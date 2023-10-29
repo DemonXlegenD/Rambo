@@ -7,9 +7,9 @@ public:
 	Gravity();
 
 	void Update(sf::Time _delta) override;
-	void gravity();
-	void stop();
-	void start();
+	void Stop();
+	void Start();
+
 	bool isPlaying;
 };
 

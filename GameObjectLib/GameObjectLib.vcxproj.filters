@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\Vector.cpp" />
     <ClCompile Include="src\Components\SpriteRenderer.cpp" />
-    <ClCompile Include="src\EnemyAbstract.cpp" />
-    <ClCompile Include="src\Enemy\Grunt.cpp" />
+    <ClCompile Include="src\Components\EnemyAbstract.cpp" />
+    <ClCompile Include="src\Components\Enemy\Grunt.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\Components\SquareCollider.cpp" />
@@ -21,17 +20,17 @@
     <ClCompile Include="src\Components\Input.cpp" />
     <ClCompile Include="src\Components\FireBullet.cpp" />
     <ClCompile Include="src\Components\SpriteBullet.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClInclude Include="include\Components\SquareCollider.h" />
     <ClInclude Include="include\Components\Component.h" />
-    <ClInclude Include="include\EnemyAbstract.h" />
-    <ClInclude Include="include\Enemy\Grunt.h" />
+    <ClInclude Include="include\Components\EnemyAbstract.h" />
+    <ClInclude Include="include\Components\Enemy\Grunt.h" />
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
-    <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\Scenes\SceneGame1.h" />
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
     <ClInclude Include="include\Components\InputPlayer.h" />
@@ -43,9 +42,9 @@
     <ClInclude Include="include\Components\Input.h" />
     <ClInclude Include="include\Components\FireBullet.h" />
     <ClInclude Include="include\Components\SpriteBullet.h" />
+    <ClInclude Include="include\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />
-    <None Include="include\Vector.inl" />
   </ItemGroup>
 </Project>

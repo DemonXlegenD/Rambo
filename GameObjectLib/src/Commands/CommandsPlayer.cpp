@@ -3,22 +3,22 @@
 MoveToRightCommand::MoveToRightCommand(InputPlayer* _inputPlayer) {
 	this->inputPlayer = _inputPlayer;
 }
-void MoveToRightCommand::execute() {
-	inputPlayer->moveRight();
+void MoveToRightCommand::Execute() {
+	inputPlayer->MoveRight();
 }
 
 MoveToLeftCommand::MoveToLeftCommand(InputPlayer* _inputPlayer) {
 	this->inputPlayer = _inputPlayer;
 }
 
-void MoveToLeftCommand::execute() {
-	inputPlayer->moveLeft();
+void MoveToLeftCommand::Execute() {
+	inputPlayer->MoveLeft();
 }
 
 MoveToRightBulletCommand::MoveToRightBulletCommand(InputPlayer* _inputPlayer) {
 	this->inputPlayer = _inputPlayer;
 }
 
-void MoveToRightBulletCommand::execute() {
-	inputPlayer->moveRightBullet();
+void MoveToRightBulletCommand::Execute() {
+	inputPlayer->MoveRightBullet();
 }

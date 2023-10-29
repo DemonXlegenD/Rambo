@@ -2,23 +2,17 @@
 
 Game::Game() {
 	this->config = new GameConfig();
-	this->state = new GameState();
+	this->state = new GameState(this->config->GetWindow(), this->config->GetFps());
 	this->stats = new GameStats();
 	this->log = new GameLog();
 }
 
 void Game::run() {
-
-	sf::Texture ImageBongo;
-	config->Preload();
-	ImageBongo.loadFromFile("assets/Sprite/player/john_static.png");
-
-	sf::RenderWindow* window = config->getWindow();
+	sf::RenderWindow* window = config->GetWindow();
+	state->Preload();
 
 	while (window->isOpen())
 	{
-
-		config->Update();
-
+		state->Update();
 	}
 }

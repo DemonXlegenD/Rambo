@@ -6,10 +6,10 @@ class Platforme : public Component
 {
 public:
 	Platforme();
-	void setPlatforme();
-	void setOrigin();
-	void setSize(float _width, float _height);
-	void setPosition(float _x, float _y);
+	void SetPlatforme();
+	void SetOrigin();
+	void SetSize(float _width, float _height);
+	void SetPosition(float _x, float _y);
 	void Render(sf::RenderWindow* _window) override;
 
 private:

@@ -9,9 +9,13 @@ public:
 
 	void Awake() override;
 
-	void createPlayer(sf::Texture* texture);
-  void Update(sf::Time _delta) override;
-	void Render(sf::RenderWindow* _window) override; 
+	void CreatePlayer(sf::Texture* texture);
+
+	//TODO: ajouter la texture
+	void CreatePlatform();
+	void Create() override;
+	void Update(sf::Time _delta) override;
+	void Render(sf::RenderWindow* _window) override;
 
 private:
 	GameObject* platforme = nullptr;

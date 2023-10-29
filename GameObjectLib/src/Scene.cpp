@@ -11,16 +11,13 @@
 sf::RenderWindow* Scene::window = nullptr;
 
 Scene::Scene(sf::RenderWindow* _window) {
-	Scene::setScene(this);
 	window = _window;
+}
+
+void Scene::Create() {
 	balleTiree = false;
 	sf::Time interval = sf::seconds(0.5f);
 }
-
-Scene* Scene::scene = nullptr;
-
-//bool booll = false;
-
 
 void Scene::Awake() {
 	for (GameObject* const& gameObject : gameObjects)
@@ -33,41 +30,28 @@ void Scene::Update(sf::Time _delta)
 	sf::Event event;
 	while (window->pollEvent(event))
 	{
-		if (event.type == sf::Event::Closed)
-			window->close();
+		if (event.type == sf::Event::Closed) window->close();
 		if (event.type == sf::Event::KeyPressed)
 		{
 			if (event.key.code == sf::Keyboard::Escape) window->close();
+			if(event.key.code == sf::Keyboard::Escape) if(event.key.code == sf::Keyboard::F4) window->close();
 		}
 
 	}
-	Command* commandMoves = inputHandlerPlayer->handleInput();
+	Command* commandMoves = inputHandlerPlayer->HandleInput();
 	if (commandMoves) {
-		commandMoves->execute();
+		commandMoves->Execute();
 	}
-	Command* fireBullet = inputHandlerPlayer->fireInput();
+	Command* fireBullet = inputHandlerPlayer->FireInput();
 	if (fireBullet && !balleTiree) {
-		fireBullet->execute();
+		fireBullet->Execute();
 		balleTiree = true;
 		clock.restart();
 	}
 	if (clock.getElapsedTime() >= interval) {
-		balleTiree = false; // Réinitialiser l'état de tir
+		balleTiree = false;
 	}
-	//if (!booll)
-	//{
-	//	sf::Texture ImageBongo;
-	//	sf::Texture TextureGrunt;
 
-	//	ImageBongo.loadFromFile("Sprite/player/john_static.png");
-
-	//	TextureGrunt.loadFromFile("Sprite/player/john_static.png");
-
-	//	GameObject* player = CreateCharacterGameObject("Player", 200.f, 400.f, ImageBongo, 2.5f, 2.5f);
-	//	GameObject* grunt = CreateCharacterGameObject("Player", 200.f, 400.f, TextureGrunt, 2.5f, 2.5f);
-
-	//	booll = true;
-	//}
 	for (GameObject* const& gameObject : gameObjects)
 	{
 		gameObject->Update(_delta);
@@ -143,9 +127,9 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 	gameObject->SetPosition(Maths::Vector2f(x, y));
 
 	Button* button = gameObject->CreateComponent<Button>();
-	button->setPosition(x, y);
-	button->setButton(fontSize);
-	button->setOrigin();
+	button->SetPosition(x, y);
+	button->SetButton(fontSize);
+	button->SetOrigin();
 
 	return gameObject;
 }
@@ -161,9 +145,9 @@ GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float 
 	squareCollider->SetHeight(scaleY);
 
 	Platforme* platform = gameObject->CreateComponent<Platforme>();
-	platform->setPosition(x, y);
-	platform->setPlatforme();
-	platform->setSize(scaleX, scaleY);
+	platform->SetPosition(x, y);
+	platform->SetPlatforme();
+	platform->SetSize(scaleX, scaleY);
 
 	return gameObject;
 }

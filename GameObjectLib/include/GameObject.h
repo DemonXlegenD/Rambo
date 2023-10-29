@@ -29,7 +29,7 @@ public:
 		T* component = new T();
 		component->SetOwner(this);
 		components.push_back(component);
-		return component;
+		return component; 
 	}
 	
 	template<typename T>

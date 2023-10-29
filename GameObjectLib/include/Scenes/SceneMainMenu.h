@@ -5,10 +5,16 @@ class SceneMainMenu : public Scene
 {
 public:
 	SceneMainMenu(sf::RenderWindow* window);
-	void createSceneButtons();
-	void createPlayer(sf::Texture* texture);
-	void createBullet(sf::Texture* textureBullet);
+
+
+	void CreateSceneButtons();
+	void CreatePlayer(sf::Texture* texture);
+	void CreateBullet(sf::Texture* textureBullet);
+
+	void Create() override;
+	void Render(sf::RenderWindow* _window) override;
 	void Update(sf::Time _delta) override;
+
 	~SceneMainMenu();
 private:
 	GameObject* playButton = nullptr;

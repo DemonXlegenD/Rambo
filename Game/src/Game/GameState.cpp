@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "SceneMainMenu.h"
 #include "SceneGame1.h"
-GameState::GameState(sf::RenderWindow* _window, int* _FPS) {
+GameState::GameState(sf::RenderWindow* _window, int _FPS) {
 	this->window = _window;
 	this->FPS = _FPS;
 	this->Create();
@@ -25,7 +25,7 @@ void GameState::Update() {
 	sf::Time delta = clock.restart();
 
 	// limiter à un nombre fixe de FPS
-	sf::Time frameTime = sf::seconds(1.0f / *FPS);
+	sf::Time frameTime = sf::seconds(1.0f / FPS);
 	//Delta time for the update
 	if (delta < frameTime)
 	{

@@ -18,8 +18,9 @@
     <ClCompile Include="src\Commands\CommandsPlayer.cpp" />
     <ClCompile Include="src\Command.cpp" />
     <ClCompile Include="src\Components\FireBullet.cpp" />
-    <ClCompile Include="src\Components\SpriteBullet.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\AssetManager.cpp" />
+    <ClCompile Include="src\Components\Rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Components\SpriteRenderer.h" />
@@ -40,8 +41,9 @@
     <ClInclude Include="include\Command.h" />
     <ClInclude Include="include\Components\Input.h" />
     <ClInclude Include="include\Components\FireBullet.h" />
-    <ClInclude Include="include\Components\SpriteBullet.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\AssetManager.h" />
+    <ClInclude Include="include\Components\Rectangle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

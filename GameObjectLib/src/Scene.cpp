@@ -2,10 +2,10 @@
 #include "SceneManager.h"
 #include "Components/Button.h"
 #include "Components/SquareCollider.h"
-#include "Components/FireBullet.h"
 #include "Components/SpriteRenderer.h"
 #include "Components/Gravity.h"
 #include "Components/Platforme.h"
+#include "Components/FireBullet.h"
 #include "Components/Rectangle.h"
 
 sf::RenderWindow* Scene::window = nullptr;
@@ -88,6 +88,8 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
 	squareCollider->SetWidth(60.f);
 	squareCollider->SetHeight(60.f);
+
+	Player* playerController = gameObject->CreateComponent<Player>();
 
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
@@ -190,7 +192,6 @@ GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, 
 }
 
 GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, float y, const sf::Texture texture) {
-
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(x, y));
 

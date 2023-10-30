@@ -19,6 +19,7 @@
     <ClCompile Include="src\Command.cpp" />
     <ClCompile Include="src\Components\FireBullet.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\Components\Player.cpp" />
     <ClCompile Include="src\Components\GamePauseMenu.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Components\Rectangle.cpp" />
@@ -43,6 +44,7 @@
     <ClInclude Include="include\Components\Input.h" />
     <ClInclude Include="include\Components\FireBullet.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\Components\Player.h" />
     <ClInclude Include="include\Components\GamePauseMenu.h" />
     <ClInclude Include="include\AssetManager.h" />
     <ClInclude Include="include\Components\Rectangle.h" />

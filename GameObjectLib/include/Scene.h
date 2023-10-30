@@ -6,6 +6,7 @@
 
 #include "GameObject.h"
 
+#include "Components/Player.h"
 
 #include "Components/Inputs/InputPlayer.h"
 
@@ -22,6 +23,16 @@ public:
 	virtual void Render(sf::RenderWindow* _window);
 
 	virtual void Awake();
+
+	GameObject* getGameObject(std::string objectName) 
+	{
+		for (GameObject* gameObject : gameObjects) {
+			if (gameObject->GetName() == objectName) {
+				return gameObject;
+			}
+		}
+		return nullptr; // Renvoie nullptr si aucun Collider n'est trouvé
+	}
 
 	GameObject* CreateGameObject(const std::string& _name);
 

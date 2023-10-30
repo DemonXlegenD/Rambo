@@ -1,6 +1,7 @@
 #pragma once
-#include "Scene.h"
 #include <SFML/Graphics.hpp>
+
+#include "Scene.h"
 
 class SceneGame1 : public Scene
 {

@@ -26,6 +26,7 @@
     <ClInclude Include="include\Command.h" />
     <ClInclude Include="include\Commands\CommandsPlayer.h" />
     <ClInclude Include="include\Components\Button.h" />
+    <ClInclude Include="include\Components\Player.h" />
     <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClInclude Include="include\Components\SquareCollider.h" />
     <ClInclude Include="include\Components\Component.h" />
@@ -49,6 +50,7 @@
     <ClCompile Include="src\Components\Gravity.cpp" />
     <ClCompile Include="src\Components\Platforme.cpp" />
     <ClCompile Include="src\Components\FireBullet.cpp" />
+    <ClCompile Include="src\Components\Player.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
     <ClCompile Include="src\Scenes\SceneGame1.cpp" />
     <ClCompile Include="src\Command.cpp" />

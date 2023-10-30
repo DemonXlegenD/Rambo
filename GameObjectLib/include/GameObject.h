@@ -21,6 +21,9 @@ public:
 	void SetName(const std::string& _name) { name = _name; }
 	void SetPosition(const Maths::Vector2<float>& _position) { position = _position; }
 
+	void SetActive(bool _state) { isActive = _state; }
+	bool GetActive() { return isActive; }
+
 	void AddComponent(Component* _component);
 
 	template<typename T>
@@ -55,4 +58,5 @@ protected:
 	std::string name = "GameObject";
 	Maths::Vector2<float> position = Maths::Vector2f::Zero;
 	std::vector<Component*> components;
+	bool isActive = true;
 };

@@ -12,6 +12,9 @@ public:
 	void CreatePlayer(sf::Texture* texture);
 
 	bool PauseMenu(bool gamePause);
+	void CreateSceneGameButtons();
+
+	void ManageSceneGameButtons();
 
 	//TODO: ajouter la texture
 	void CreatePlatform();
@@ -22,8 +25,11 @@ public:
 private:
 	GameObject* platforme = nullptr;
 	GameObject* player = nullptr;
+	GameObject* pausePlayButton = nullptr;
+	GameObject* pauseOptionsButton = nullptr;
+	GameObject* pauseQuitButton = nullptr;
 	sf::Texture* texture;
 	bool gamePause;
-	bool is_press = true;
+	bool escapeIsPress = true;
 };
 

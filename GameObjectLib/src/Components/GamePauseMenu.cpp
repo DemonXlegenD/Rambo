@@ -2,5 +2,4 @@
 
 void GamePauseMenu::Update(sf::Time _delta)
 {
-	std::cout << "aze" << std::endl;
 }

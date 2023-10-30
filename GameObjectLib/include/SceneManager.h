@@ -23,15 +23,11 @@ public:
 			}
 			SceneManager::activeScene = scenes.at(_key);
 			std::cout << activeScene << std::endl;
-			SceneMainMenu* sceneMainMenu = dynamic_cast<SceneMainMenu*>(SceneManager::activeScene);
-			SceneGame1* sceneGame1 = dynamic_cast<SceneGame1*>(SceneManager::activeScene);
-			std::cout << "Main " << sceneMainMenu << std::endl;
-			std::cout << "Game " << sceneGame1 << std::endl;
-			if (sceneMainMenu) {
+			if (SceneMainMenu* sceneMainMenu = dynamic_cast<SceneMainMenu*>(SceneManager::activeScene)) {
 				std::cout << "main menu" << std:: endl;
 				sceneMainMenu->Create();
 			}
-			else if (sceneGame1) {
+			else if (SceneGame1* sceneGame1 = dynamic_cast<SceneGame1*>(SceneManager::activeScene)) {
 				std::cout << "game" << std::endl;
 				sceneGame1->Create();
 			}

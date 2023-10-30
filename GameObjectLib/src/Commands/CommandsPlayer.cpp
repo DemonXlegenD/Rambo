@@ -19,13 +19,17 @@ MoveToRightBulletCommand::MoveToRightBulletCommand(InputPlayer* _inputPlayer) {
 	this->inputPlayer = _inputPlayer;
 }
 
-void MoveToRightBulletCommand::Execute() {
+void MoveToRightBulletCommand::Execute(sf::Time _delta) {
+	Command::Execute(_delta);
+	std::cout << "Delta = " << _delta.asSeconds() << std::endl;
 	inputPlayer->MoveRightBullet();
 }
 
 GamePause::GamePause(InputPlayer* _inputPlayer) {
 	this->inputPlayer = _inputPlayer;
 }
+
+
 
 void GamePause::Execute() {
 	inputPlayer->GamePauseMenu();

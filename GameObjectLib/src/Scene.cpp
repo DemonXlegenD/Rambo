@@ -48,7 +48,7 @@ void Scene::Update(sf::Time _delta)
 	}
 	Command* fireBullet = inputHandlerPlayer->FireInput();
 	if (fireBullet && !balleTiree) {
-		fireBullet->Execute();
+		fireBullet->Execute(_delta);
 		balleTiree = true;
 		clock.restart();
 	}

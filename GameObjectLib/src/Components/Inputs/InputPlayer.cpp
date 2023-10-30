@@ -24,9 +24,20 @@ Command* InputPlayer::FireInput() {
 }
 
 Command* InputPlayer::PauseInput() {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) return KeyEscape_;
+	static bool isPressedEscape = false;
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !isPressedEscape) {
+		isPressedEscape = true;
+		return KeyEscape_;
+	}
+
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		isPressedEscape = false;
+	}
+
 	return nullptr;
 }
+
 
 void InputPlayer::MoveRight()
 {

@@ -24,7 +24,5 @@ private:
 	Command* KeyQ_;
 	Command* KeySpace_;
 	Command* KeyEscape_;
-	
-
 };
 

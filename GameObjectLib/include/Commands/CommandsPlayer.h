@@ -23,6 +23,15 @@ class MoveToRightBulletCommand : public Command
 {
 public:
 	MoveToRightBulletCommand(InputPlayer* _inputPlayer);
+	void Execute(sf::Time _delta) override;
+	void Execute() override {}
+	InputPlayer* inputPlayer;
+};
+
+class GamePause : public Command
+{
+public:
+	GamePause(InputPlayer* _inputPlayer);
 	void Execute() override;
 	InputPlayer* inputPlayer;
 };

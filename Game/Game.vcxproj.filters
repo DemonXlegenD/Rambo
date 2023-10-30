@@ -37,6 +37,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\AssetManager.cpp">
+    <ClCompile Include="src\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +61,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\AssetManager.h">
+    <ClInclude Include="include\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

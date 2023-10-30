@@ -36,19 +36,23 @@ public:
 
 	GameObject* CreateGameObject(const std::string& _name);
 
+	//PLAYER 
 	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
+	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
 
+	//ENEMY
 	GameObject* CreateGruntGameObject(const std::string& _name);
 
 	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
 
+	//GAME ELEMENT
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
-
-
 	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY);
-	
 
-	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
+	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color);
+	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Texture texture);
+
+
 
 
 protected:

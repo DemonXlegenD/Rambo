@@ -11,8 +11,10 @@ public:
 
 	Command* HandleInput();
 	Command* FireInput();
+	Command* PauseInput();
 	void MoveRight();
 	void MoveRightBullet();
+	void GamePauseMenu();
 	void MoveLeft();
 
 private:
@@ -20,6 +22,6 @@ private:
 	Command* KeyQ_;
 	Command* KeySpace_;
 	GameObject* player;
-
+	Command* KeyEscape_;
 };
 

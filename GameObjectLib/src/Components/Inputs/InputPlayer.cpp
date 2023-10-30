@@ -7,6 +7,7 @@ InputPlayer::InputPlayer() {
 	KeyD_ = new MoveToRightCommand(this);
 	KeyQ_ = new MoveToLeftCommand(this);
 	KeySpace_ = new MoveToRightBulletCommand(this);
+	KeyEscape_ = new GamePause(this);
 }
 
 
@@ -22,6 +23,22 @@ Command* InputPlayer::FireInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) return KeySpace_;
 	return nullptr;
 }
+
+Command* InputPlayer::PauseInput() {
+	static bool isPressedEscape = false;
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !isPressedEscape) {
+		isPressedEscape = true;
+		return KeyEscape_;
+	}
+
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		isPressedEscape = false;
+	}
+
+	return nullptr;
+}
+
 
 void InputPlayer::MoveRight()
 {
@@ -53,4 +70,8 @@ void InputPlayer::MoveRightBullet()
 	{
 		bullet->GetComponent<FireBullet>()->setDirection(FireBullet::Right);
 	}
+}
+
+void InputPlayer::GamePauseMenu()
+{
 }

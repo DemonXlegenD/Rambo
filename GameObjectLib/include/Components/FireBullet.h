@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Components/SpriteRender.h"
+#include "Components/SpriteRenderer.h"
 #include "Scene.h"
 
 class FireBullet : public Component

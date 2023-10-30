@@ -1,12 +1,12 @@
 #include "Scene.h"
-
+#include "SceneManager.h"
 #include "Components/Button.h"
 #include "Components/SquareCollider.h"
 #include "Components/FireBullet.h"
-#include "Components/SpriteBullet.h"
 #include "Components/SpriteRenderer.h"
 #include "Components/Gravity.h"
 #include "Components/Platforme.h"
+#include "Components/Rectangle.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
@@ -78,6 +78,8 @@ GameObject* Scene::CreateGameObject(const std::string& _name)
 	return gameObject;
 }
 
+//PLAYER 
+
 GameObject* Scene::CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
 {
 	GameObject* gameObject = CreateGameObject(name);
@@ -90,7 +92,7 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
-	
+
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
 
@@ -99,6 +101,23 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	return gameObject;
 }
 
+GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
+
+	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
+	spriteBullet->SetTexture(textureBullet);
+	spriteBullet->SetScale(scalex, scaley);
+
+	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
+
+
+	return gameObject;
+
+}
+
+//ENEMY
 GameObject* Scene::CreateGruntGameObject(const std::string& _name)
 {
 	auto gameObject = new GameObject();
@@ -124,6 +143,8 @@ GameObject* Scene::CreateGruntGameObject(const std::string& name, float position
 
 	return gameObject;
 }
+
+//GAME ELEMENT
 
 GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize)
 {
@@ -156,18 +177,28 @@ GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float 
 
 	return gameObject;
 }
-GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
-{
+
+GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color) {
+
 	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
+	gameObject->SetPosition(Maths::Vector2f(x, y));
 
-	SpriteBullet* spriteBullet = gameObject->CreateComponent<SpriteBullet>();
-	spriteBullet->SetTexture(textureBullet);
-	spriteBullet->SetScale(scalex, scaley);
+	Rectangle* background = gameObject->CreateComponent<Rectangle>();
+	background->Create(SceneManager::GetWindow()->getSize().x, SceneManager::GetWindow()->getSize().y, _color);
+	
+	return gameObject;
+}
 
-	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
+GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, float y, const sf::Texture texture) {
 
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(x, y));
+
+	Sprite* background = gameObject->CreateComponent<Sprite>();
+	background->SetTexture(texture);
+	float scalerX = (float)SceneManager::GetWindow()->getSize().x / texture.getSize().x;
+	float scalerY = (float)SceneManager::GetWindow()->getSize().y / texture.getSize().y;
+	background->SetScale(scalerX, scalerY);
 
 	return gameObject;
-
 }

@@ -4,7 +4,7 @@
 class GameState
 {
 public:
-	GameState(sf::RenderWindow* _window, int* _FPS);
+	GameState(sf::RenderWindow* _window, int _FPS);
 	sf::Clock GetClock() const { return clock; }
 
 
@@ -16,7 +16,7 @@ public:
 private:
 	sf::Clock clock;
 
-	int* FPS;
+	int FPS;
 	sf::RenderWindow* window;
 };
 

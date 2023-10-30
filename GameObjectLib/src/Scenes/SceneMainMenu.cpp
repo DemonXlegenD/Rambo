@@ -10,7 +10,21 @@ SceneMainMenu::SceneMainMenu(sf::RenderWindow* _window) : Scene(_window) {
 void SceneMainMenu::Create() {
 	Scene::Create();
 	std::cout << "Main menu" << std::endl;
-	this->CreateSceneButtons();
+	sf::Texture backgroundTexture1;
+	sf::Texture backgroundTexture2;
+	if (!backgroundTexture1.loadFromFile("../assets/Sprite/background/background_color.png"))
+	{
+		std::cout << "pas d'image" << std::endl;
+	}
+	if (!backgroundTexture2.loadFromFile("../assets/Sprite/background/jungle_bg_trees.png"))
+	{
+		std::cout << "pas d'image" << std::endl;
+	}
+	GameObject* background1 = CreateBackgroundGameObject("Background1", 0, 0, backgroundTexture1);
+	GameObject* background2 = CreateBackgroundGameObject("Background2", 0, 0, backgroundTexture2);
+	this->CreateSceneButtonsMenu();
+	
+	
 }
 
 void SceneMainMenu::Render(sf::RenderWindow* _window) {
@@ -35,12 +49,18 @@ void SceneMainMenu::CreateBullet(sf::Texture* imageBullet) {
 	bullet = CreateBulletGameObject("Player", *imageBullet, 2.5f, 2.5f, player);
 }
 
-void SceneMainMenu::CreateSceneButtons() {
+void SceneMainMenu::CreateSceneButtonsMenu () {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;
 	playButton = CreateButtonGameObject("Play", widthScreen / 2, heightScreen / 3, 50);
 	quitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.5, 50);
 	optionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
+
+}
+
+void SceneMainMenu::CreateMenuOption() {
+	sf::Color colorAlpha(0, 0, 0, 128);
+	GameObject* menuOption = CreateBackgroundGameObject("MenuOptionBackground", 0, 0, colorAlpha);
 
 }
 
@@ -50,11 +70,12 @@ void SceneMainMenu::Update(sf::Time _delta) {
 		SceneManager::RunScene("SceneGame1");
 	}
 	if (optionsButton->GetComponent<Button>()->IsClicked()) {
-		std::cout << "Nothing here" << std::endl;
+		this->CreateMenuOption();
 	}
 	if (quitButton->GetComponent<Button>()->IsClicked()) {
 		SceneManager::GetWindow()->close();
 	}
+
 }
 
 SceneMainMenu::~SceneMainMenu() {

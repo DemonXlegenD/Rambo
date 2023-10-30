@@ -1,6 +1,8 @@
 #pragma once
+
 #include <iostream>
 #include <map>
+
 #include "Scene.h"
 #include "Scenes/SceneGame1.h"
 #include "Scenes/SceneMainMenu.h"

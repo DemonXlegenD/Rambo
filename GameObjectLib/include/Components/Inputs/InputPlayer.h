@@ -1,10 +1,8 @@
 #pragma once
-#include "SFML/Window/Event.hpp"
 
 #include "Command.h"
 #include "Components/Component.h"
-#include "Commands/CommandsPlayer.h"
-#include <functional>
+
 
 class InputPlayer : public Component
 {
@@ -21,7 +19,7 @@ private:
 	Command* KeyD_;
 	Command* KeyQ_;
 	Command* KeySpace_;
-	
+	GameObject* player;
 
 };
 

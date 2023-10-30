@@ -7,6 +7,7 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/Gravity.h"
 #include "Components/Platforme.h"
+#include "Components/Enemy/Grunt.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
@@ -97,28 +98,22 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	return gameObject;
 }
 
-GameObject* Scene::CreateGruntGameObject(const std::string& _name)
+GameObject* Scene::CreateGruntGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
 {
-	auto gameObject = new GameObject();
-	gameObject->SetName(_name);
-	gameObjectsGrunt.push_back(gameObject);
-	return gameObject;
-}
-
-GameObject* Scene::CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley)
-{
-	GameObject* gameObject = CreateGruntGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(position, position));
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f( positionx, positiony));
 
 	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(20.f);
-	squareCollider->SetHeight(20.f);
+	squareCollider->SetWidth(60.f);
+	squareCollider->SetHeight(60.f);
 
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
 
-	//Grunt* grunt = gameObject->CreateComponent<Grunt>();
+	Gravity* gravity = gameObject->CreateComponent<Gravity>();
+
+	Grunt* grunt = gameObject->CreateComponent<Grunt>();
 
 	return gameObject;
 }

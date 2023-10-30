@@ -11,6 +11,11 @@ public:
 
 	void CreatePlayer(sf::Texture* texture);
 
+	void CreateGrunt(sf::Texture* texture);
+
+	void CollisionPlayer();
+
+	void CollisionGrunt();
 	//TODO: ajouter la texture
 	void CreatePlatform();
 	void Create() override;
@@ -18,7 +23,10 @@ public:
 	void Render(sf::RenderWindow* _window) override;
 
 private:
-	GameObject* platforme = nullptr;
+	GameObject* platforme1 = nullptr;
+	GameObject* platforme2 = nullptr;
+	GameObject* platforme3 = nullptr;
+	GameObject* grunt = nullptr;
 	GameObject* player = nullptr;
 	sf::Texture* texture;
 };

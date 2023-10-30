@@ -164,7 +164,6 @@
     <ClCompile Include="src\Game\GameLog.cpp" />
     <ClCompile Include="src\Game\GameConfig.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameObjectLib\GameObjectLib.vcxproj">
@@ -179,7 +178,6 @@
     <ClInclude Include="include\Game\GameState.h" />
     <ClInclude Include="include\Game\GameLog.h" />
     <ClInclude Include="include\Game\GameConfig.h" />
-    <ClInclude Include="include\Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,6 +27,7 @@ void Scene::Awake() {
 		gameObject->Start();
 	}
 }
+
 void Scene::Update(sf::Time _delta)
 {
 	sf::Event event;
@@ -35,11 +36,12 @@ void Scene::Update(sf::Time _delta)
 		if (event.type == sf::Event::Closed) window->close();
 		if (event.type == sf::Event::KeyPressed)
 		{
-			if (event.key.code == sf::Keyboard::Escape) window->close();
-			if (event.key.code == sf::Keyboard::Escape) if (event.key.code == sf::Keyboard::F4) window->close();
+			/*if (event.key.code == sf::Keyboard::Escape) window->close();*/
+			if (event.key.code == sf::Keyboard::LAlt) if (event.key.code == sf::Keyboard::F4) window->close();
 		}
 
 	}
+
 	Command* commandMoves = inputHandlerPlayer->HandleInput();
 	if (commandMoves) {
 		commandMoves->Execute();
@@ -149,6 +151,7 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(x, y));
 
+	gameObject->SetActive(true);
 	Button* button = gameObject->CreateComponent<Button>();
 	button->SetPosition(x, y);
 	button->SetButton(fontSize);

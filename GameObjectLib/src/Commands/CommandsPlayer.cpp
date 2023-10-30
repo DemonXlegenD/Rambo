@@ -22,3 +22,11 @@ MoveToRightBulletCommand::MoveToRightBulletCommand(InputPlayer* _inputPlayer) {
 void MoveToRightBulletCommand::Execute() {
 	inputPlayer->MoveRightBullet();
 }
+
+GamePause::GamePause(InputPlayer* _inputPlayer) {
+	this->inputPlayer = _inputPlayer;
+}
+
+void GamePause::Execute() {
+	inputPlayer->GamePauseMenu();
+}

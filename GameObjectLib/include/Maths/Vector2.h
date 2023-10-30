@@ -30,14 +30,14 @@ namespace Maths
 		//Negative Vector
 		Vector2 operator-() const;
 		//Multiplication
-		Vector2 operator*(const Vector2& rhs);
+		Vector2 operator*(const Vector2& rhs) const;
 		//Division
-		Vector2 operator/(const Vector2& rhs);
+		Vector2 operator/(const Vector2& rhs) const;
 
 		//Multiplication
-		Vector2 operator*(const T& rhs);
+		Vector2 operator*(const T& rhs) const;
 		//Division
-		Vector2 operator/(const T& rhs);
+		Vector2 operator/(const T& rhs) const;
 
 		//Addition
 		Vector2 operator+=(const Vector2& rhs);

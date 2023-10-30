@@ -50,25 +50,25 @@ namespace Maths
 	}
 
 	template<typename T>
-	Vector2<T> Vector2<T>::operator*(const Vector2& rhs)
+	Vector2<T> Vector2<T>::operator*(const Vector2& rhs) const
 	{
 		return Vector2(x * rhs.x, y * rhs.y);
 	}
 
 	template<typename T>
-	Vector2<T> Vector2<T>::operator/(const Vector2& rhs)
+	Vector2<T> Vector2<T>::operator/(const Vector2& rhs) const
 	{
 		return Vector2(x / rhs.x, y / rhs.y);
 	}
 
 	template<typename T>
-	Vector2<T> Vector2<T>::operator*(const T& rhs)
+	Vector2<T> Vector2<T>::operator*(const T& rhs) const
 	{
 		return Vector2(x * rhs, y * rhs);
 	}
 
 	template<typename T>
-	Vector2<T> Vector2<T>::operator/(const T& rhs)
+	Vector2<T> Vector2<T>::operator/(const T& rhs) const
 	{
 		return Vector2(x / rhs, y / rhs);
 	}

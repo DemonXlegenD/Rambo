@@ -13,14 +13,17 @@ public:
 
 	Command* HandleInput();
 	Command* FireInput();
+	Command* PauseInput();
 	void MoveRight();
 	void MoveRightBullet();
+	void GamePauseMenu();
 	void MoveLeft();
 
 private:
 	Command* KeyD_;
 	Command* KeyQ_;
 	Command* KeySpace_;
+	Command* KeyEscape_;
 	
 
 };

@@ -20,6 +20,7 @@
     <ClCompile Include="src\Components\FireBullet.cpp" />
     <ClCompile Include="src\Components\SpriteBullet.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\Components\GamePauseMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Components\SpriteRenderer.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="include\Components\FireBullet.h" />
     <ClInclude Include="include\Components\SpriteBullet.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\Components\GamePauseMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

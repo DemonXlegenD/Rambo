@@ -6,6 +6,7 @@ InputPlayer::InputPlayer() {
 	KeyD_ = new MoveToRightCommand(this);
 	KeyQ_ = new MoveToLeftCommand(this);
 	KeySpace_ = new MoveToRightBulletCommand(this);
+	KeyEscape_ = new GamePause(this);
 }
 
 
@@ -19,6 +20,11 @@ Command* InputPlayer::HandleInput() {
 
 Command* InputPlayer::FireInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) return KeySpace_;
+	return nullptr;
+}
+
+Command* InputPlayer::PauseInput() {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) return KeyEscape_;
 	return nullptr;
 }
 
@@ -40,4 +46,8 @@ void InputPlayer::MoveRightBullet()
 	}
 
 	SceneManager::GetActiveScene()->CreateBulletGameObject("Bullet", *texture, 2.5f, 2.5f, GetOwner());
+}
+
+void InputPlayer::GamePauseMenu()
+{
 }

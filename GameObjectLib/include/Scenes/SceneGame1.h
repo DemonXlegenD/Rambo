@@ -11,6 +11,8 @@ public:
 
 	void CreatePlayer(sf::Texture* texture);
 
+	bool PauseMenu(bool gamePause);
+
 	//TODO: ajouter la texture
 	void CreatePlatform();
 	void Create() override;
@@ -21,5 +23,7 @@ private:
 	GameObject* platforme = nullptr;
 	GameObject* player = nullptr;
 	sf::Texture* texture;
+	bool gamePause;
+	bool is_press = true;
 };
 

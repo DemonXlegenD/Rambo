@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Components\GamePauseMenu.h" />
     <ClInclude Include="include\Components\Gravity.h" />
     <ClInclude Include="include\Components\FireBullet.h" />
     <ClInclude Include="include\Command.h" />
@@ -41,6 +42,7 @@
     <ClInclude Include="include\Components\Inputs\InputPlayer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\GamePauseMenu.cpp" />
     <ClCompile Include="src\Components\Gravity.cpp" />
     <ClCompile Include="src\Components\Platforme.cpp" />
     <ClCompile Include="src\Components\FireBullet.cpp" />

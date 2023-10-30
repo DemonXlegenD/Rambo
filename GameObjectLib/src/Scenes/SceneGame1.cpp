@@ -6,6 +6,11 @@ SceneGame1::SceneGame1(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
 }
 
+bool SceneGame1::PauseMenu(bool gamePause)
+{
+	return gamePause;
+};
+
 void SceneGame1::Create() {
 	Scene::Create();
 	texture = new sf::Texture();
@@ -30,12 +35,26 @@ void SceneGame1::CreatePlatform() {
 }
 
 void SceneGame1::Update(sf::Time _delta) {
-	Scene::Update(_delta);
-	if (SquareCollider::IsColliding(*(player->GetComponent<SquareCollider>()), *(platforme->GetComponent<SquareCollider>()))) {
-		player->GetComponent<Gravity>()->Stop();
+	Command* pauseInput = inputHandlerPlayer->PauseInput();
+	if (pauseInput && is_press) {
+		pauseInput->Execute();
+		gamePause = true;
+		is_press = false;
+	} else if (pauseInput && !is_press) {
+		pauseInput->Execute();
+		gamePause = false;
+		is_press = true;
 	}
-	else {
-		player->GetComponent<Gravity>()->Start();
+
+	if (gamePause)
+	{
+		Scene::Update(_delta);
+		if (SquareCollider::IsColliding(*(player->GetComponent<SquareCollider>()), *(platforme->GetComponent<SquareCollider>()))) {
+			player->GetComponent<Gravity>()->Stop();
+		}
+		else {
+			player->GetComponent<Gravity>()->Start();
+		}
 	}
 }
 

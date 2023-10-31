@@ -11,11 +11,17 @@ public:
 	void Awake() override;
 
 	void CreatePlayer(sf::Texture* texture);
+	void CreateGrunt(sf::Texture* texture);
+
+	void CollisionPlayer();
+
+	void CollisionGrunt();
 
 	bool PauseMenu(bool gamePause);
 	void CreateSceneGameButtons();
 
 	void ManageSceneGameButtons();
+
 
 	//TODO: ajouter la texture
 	void CreatePlatform();
@@ -24,7 +30,10 @@ public:
 	void Render(sf::RenderWindow* _window) override;
 
 private:
-	GameObject* platforme = nullptr;
+	GameObject* platforme1 = nullptr;
+	GameObject* platforme2 = nullptr;
+	GameObject* platforme3 = nullptr;
+	GameObject* grunt = nullptr;
 	GameObject* player = nullptr;
 	GameObject* pausePlayButton = nullptr;
 	GameObject* pauseOptionsButton = nullptr;

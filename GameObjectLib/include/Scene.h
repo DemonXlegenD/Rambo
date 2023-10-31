@@ -31,7 +31,7 @@ public:
 				return gameObject;
 			}
 		}
-		return nullptr; // Renvoie nullptr si aucun Collider n'est trouvé
+		return nullptr; // Renvoie nullptr si aucun Collider n'est trouvÃ©
 	}
 
 	GameObject* CreateGameObject(const std::string& _name);
@@ -40,10 +40,7 @@ public:
 	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
 	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
 
-	//ENEMY
-	GameObject* CreateGruntGameObject(const std::string& _name);
-
-	GameObject* CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley);
+	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
 
 	//GAME ELEMENT
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
@@ -51,8 +48,6 @@ public:
 
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color);
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Texture texture);
-
-
 
 
 protected:

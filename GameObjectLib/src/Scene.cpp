@@ -5,6 +5,7 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/Gravity.h"
 #include "Components/Platforme.h"
+#include "Components/Enemy/Grunt.h"
 #include "Components/FireBullet.h"
 #include "Components/Rectangle.h"
 
@@ -103,7 +104,8 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 	return gameObject;
 }
 
-GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
+//ENEMY
+GameObject* Scene::CreateGruntGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
 {
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
@@ -117,33 +119,6 @@ GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Tex
 
 	return gameObject;
 
-}
-
-//ENEMY
-GameObject* Scene::CreateGruntGameObject(const std::string& _name)
-{
-	auto gameObject = new GameObject();
-	gameObject->SetName(_name);
-	gameObjectsGrunt.push_back(gameObject);
-	return gameObject;
-}
-
-GameObject* Scene::CreateGruntGameObject(const std::string& name, float position, const sf::Texture texture, float scalex, float scaley)
-{
-	GameObject* gameObject = CreateGruntGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(position, position));
-
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(20.f);
-	squareCollider->SetHeight(20.f);
-
-	Sprite* sprite = gameObject->CreateComponent<Sprite>();
-	sprite->SetTexture(texture);
-	sprite->SetScale(scalex, scaley);
-
-	//Grunt* grunt = gameObject->CreateComponent<Grunt>();
-
-	return gameObject;
 }
 
 //GAME ELEMENT

@@ -7,7 +7,8 @@ public:
 	SceneMainMenu(sf::RenderWindow* window);
 
 
-	void CreateSceneButtons();
+	void CreateSceneButtonsMenu();
+	void CreateMenuOption();
 	void CreatePlayer(sf::Texture* texture);
 	void CreateBullet(sf::Texture* textureBullet);
 

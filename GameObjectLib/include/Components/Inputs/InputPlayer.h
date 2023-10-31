@@ -1,10 +1,8 @@
 #pragma once
-#include "SFML/Window/Event.hpp"
 
 #include "Command.h"
 #include "Components/Component.h"
-#include "Commands/CommandsPlayer.h"
-#include <functional>
+
 
 class InputPlayer : public Component
 {
@@ -13,15 +11,17 @@ public:
 
 	Command* HandleInput();
 	Command* FireInput();
+	Command* PauseInput();
 	void MoveRight();
 	void MoveRightBullet();
+	void GamePauseMenu();
 	void MoveLeft();
 
 private:
 	Command* KeyD_;
 	Command* KeyQ_;
 	Command* KeySpace_;
-	
-
+	GameObject* player;
+	Command* KeyEscape_;
 };
 

@@ -6,6 +6,7 @@
 
 #include "GameObject.h"
 
+#include "Components/Player.h"
 
 #include "Components/Inputs/InputPlayer.h"
 
@@ -23,17 +24,30 @@ public:
 
 	virtual void Awake();
 
+	GameObject* getGameObject(std::string objectName) 
+	{
+		for (GameObject* gameObject : gameObjects) {
+			if (gameObject->GetName() == objectName) {
+				return gameObject;
+			}
+		}
+		return nullptr; // Renvoie nullptr si aucun Collider n'est trouvé
+	}
+
 	GameObject* CreateGameObject(const std::string& _name);
 
+	//PLAYER 
 	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
+	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
 
 	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
 
+	//GAME ELEMENT
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
-
 	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY);
-	
-	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
+
+	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color);
+	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Texture texture);
 
 
 protected:

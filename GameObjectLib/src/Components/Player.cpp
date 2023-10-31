@@ -1,9 +1,16 @@
-#include "Player.h"
+
+#include "Components/Player.h"
 
 
 Player::Player()
 {
-	int health = 200;
-	int damage = 10;
-	int boostDamage = 1;
+
+	this->health = 200;
+	this->damage = 10;
+	this->boostDamage = 1;
+}
+
+void Player::setDirection(Direction newDirection) {
+	direction = newDirection;
+
 }

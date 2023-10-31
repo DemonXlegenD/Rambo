@@ -1,6 +1,7 @@
 #pragma once
-#include "Scene.h"
 #include <SFML/Graphics.hpp>
+
+#include "Scene.h"
 
 class SceneGame1 : public Scene
 {
@@ -10,12 +11,18 @@ public:
 	void Awake() override;
 
 	void CreatePlayer(sf::Texture* texture);
-
 	void CreateGrunt(sf::Texture* texture);
 
 	void CollisionPlayer();
 
 	void CollisionGrunt();
+
+	bool PauseMenu(bool gamePause);
+	void CreateSceneGameButtons();
+
+	void ManageSceneGameButtons();
+
+
 	//TODO: ajouter la texture
 	void CreatePlatform();
 	void Create() override;
@@ -28,6 +35,11 @@ private:
 	GameObject* platforme3 = nullptr;
 	GameObject* grunt = nullptr;
 	GameObject* player = nullptr;
+	GameObject* pausePlayButton = nullptr;
+	GameObject* pauseOptionsButton = nullptr;
+	GameObject* pauseQuitButton = nullptr;
 	sf::Texture* texture;
+	bool gamePause;
+	bool escapeIsPress = true;
 };
 

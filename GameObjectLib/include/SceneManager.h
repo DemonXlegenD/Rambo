@@ -1,6 +1,8 @@
 #pragma once
+
 #include <iostream>
 #include <map>
+
 #include "Scene.h"
 #include "Scenes/SceneGame1.h"
 #include "Scenes/SceneMainMenu.h"
@@ -16,26 +18,7 @@ public:
 	}
 
 	//Run a scene
-	static void RunScene(std::string _key) {
-		if (SceneManager::scenes.find(_key) != SceneManager::scenes.end()) {
-			if (SceneManager::activeScene) {
-				SceneManager::StopScene();
-			}
-			SceneManager::activeScene = scenes.at(_key);
-			std::cout << activeScene << std::endl;
-			if (SceneMainMenu* sceneMainMenu = dynamic_cast<SceneMainMenu*>(SceneManager::activeScene)) {
-				std::cout << "main menu" << std:: endl;
-				sceneMainMenu->Create();
-			}
-			else if (SceneGame1* sceneGame1 = dynamic_cast<SceneGame1*>(SceneManager::activeScene)) {
-				std::cout << "game" << std::endl;
-				sceneGame1->Create();
-			}
-			else {
-				std::cout << "rien" << std::endl;
-			}
-		}
-	}
+	static void RunScene(std::string _key);
 
 	//Stop a scene (don't forget to run a scene after calling this function)	
 	static void StopScene();

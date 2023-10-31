@@ -1,15 +1,19 @@
 #pragma once
 #include <iostream>
 #include "SFML/Graphics.hpp"
-#include "../GameObjectLib/include/Scene.h"
+#include "Component.h"
 
 class Player : public Component
 {
 public:
-    Player();
+	enum Direction { Left, Right };
+	Player();
+	void setDirection(Direction direction);
+	Direction getDirection() { return direction; }
 
 private:
-    int health;
-    int damage;
-    int boostDamage;
+	int health;
+	int damage;
+	int boostDamage;
+	Direction direction;
 };

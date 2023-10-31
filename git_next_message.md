@@ -1,6 +1,3 @@
-NEW: Amélioration
+FIX: Master
 
-- Tir plus rapide
-- Changement de scene avec le bouton play
-- Quit marche
-- TODO
+- réparation de la master

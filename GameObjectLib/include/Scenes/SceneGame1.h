@@ -10,12 +10,10 @@ public:
 
 	void Awake() override;
 
-	void CreatePlayer(sf::Texture* texture);
-	void CreateGrunt(sf::Texture* texture);
+	void CreatePlayer(sf::Texture texture);
+	void CreateGrunt(sf::Texture texture);
 
-	void CollisionPlayer();
-
-	void CollisionGrunt();
+	void Collision(GameObject* _entity);
 
 	bool PauseMenu(bool gamePause);
 	void CreateSceneGameButtons();

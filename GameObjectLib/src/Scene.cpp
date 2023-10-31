@@ -98,14 +98,36 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
-
 	InputPlayer* inputPlayer = gameObject->CreateComponent<InputPlayer>();
 	inputHandlerPlayer = inputPlayer;
+
 	return gameObject;
 }
 
 //ENEMY
-GameObject* Scene::CreateGruntGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
+GameObject* Scene::CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture, GameObject* _player)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetWidth(60.f);
+	squareCollider->SetHeight(60.f);
+
+	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
+	spriteBullet->SetTexture(_texture);
+	spriteBullet->SetScale(scalex, scaley);
+
+	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
+
+	Gravity* gravity = gameObject->CreateComponent<Gravity>();
+
+
+	return gameObject;
+
+}
+
+GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
 {
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));

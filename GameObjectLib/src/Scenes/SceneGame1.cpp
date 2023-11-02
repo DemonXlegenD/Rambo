@@ -2,6 +2,12 @@
 #include "SceneManager.h"
 #include "Components/SquareCollider.h"
 #include "Components/Gravity.h"
+#include "AssetManager.h"
+#include "Components/SpriteRenderer.h"
+#include "Components/Button.h"
+#include "Scenes/SceneMainMenu.h"
+
+std::map<std::string, sf::Texture> AssetManager::assets;
 
 SceneGame1::SceneGame1(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
@@ -17,9 +23,11 @@ bool SceneGame1::PauseMenu(bool gamePause)
 void SceneGame1::CreateSceneGameButtons() {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;
-	this->pausePlayButton = CreateButtonGameObject("Continue", widthScreen / 2, heightScreen / 3, 50);
-	this->pauseOptionsButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.5, 50);
-	this->pauseQuitButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
+	pausePlayButton = CreateButtonGameObject("Continue", widthScreen / 2, heightScreen / 3.5, 50);
+	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", widthScreen / 2, heightScreen / 2, 50);
+	pauseOptionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 1.5, 50);
+	pauseQuitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.2, 50);
+	
 
 }
 
@@ -34,10 +42,9 @@ void SceneGame1::Awake() {
 	Scene::Awake();
 }
 
-void SceneGame1::CreatePlayer(sf::Texture imagePlayer) {
-	if (!imagePlayer.loadFromFile("../assets/Sprite/player/john_static.png")) {
-		std::cout << "pas d'image" << std::endl;
-	}
+void SceneGame1::CreatePlayer(sf::Texture* imagePlayer) {
+	player = CreateCharacterGameObject("Player", 400.f, 400.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);
+}
 
 	this->player = CreateCharacterGameObject("Player", 400.f, 400.f, imagePlayer, 2.5f, 2.5f);
 }
@@ -86,7 +93,7 @@ void SceneGame1::ManageSceneGameButtons()
 		gamePause = false;
 		escapeIsPress = true;
 		this->player->SetActive(true);
-		this->player->SetActive(true);
+		this->pauseMenuPrincipalButton->SetActive(false);
 		this->pausePlayButton->SetActive(false);
 		this->pauseOptionsButton->SetActive(false);
 		this->pauseQuitButton->SetActive(false);
@@ -105,6 +112,28 @@ void SceneGame1::Update(sf::Time _delta) {
 		Scene::Update(_delta);
 		this->Collision(this->player);
 		this->Collision(this->grunt);
+	}
+	else
+	{
+		if (pausePlayButton->GetComponent<Button>()->IsClicked()) {
+			gamePause = false;
+			escapeIsPress = true;
+			this->player->SetActive(true);
+			this->pausePlayButton->SetActive(false);
+			this->pauseMenuPrincipalButton->SetActive(false);
+			this->pauseOptionsButton->SetActive(false);
+			this->pauseQuitButton->SetActive(false);
+			this->platforme->SetActive(true);
+		}
+		if (pauseMenuPrincipalButton->GetComponent<Button>()->IsClicked()) {
+			SceneManager::RunScene("SceneMainMenu");
+		}
+		if (pauseOptionsButton->GetComponent<Button>()->IsClicked()) {
+			std::cout << "Options" << std::endl;
+		}
+		if (pauseQuitButton->GetComponent<Button>()->IsClicked()) {
+			SceneManager::GetWindow()->close();
+		}
 	}
 }
 

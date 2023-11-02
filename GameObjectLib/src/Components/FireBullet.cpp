@@ -10,7 +10,6 @@ void FireBullet::Update(sf::Time _delta)
 	else
 	{
 		GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right + Maths::Vector2f(10, 0));
-
 	}
 
 }

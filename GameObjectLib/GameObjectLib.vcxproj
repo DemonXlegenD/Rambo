@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Components\Armes.h" />
     <ClInclude Include="include\Components\GamePauseMenu.h" />
     <ClInclude Include="include\AssetManager.h" />
     <ClInclude Include="include\Components\Gravity.h" />
@@ -44,6 +45,7 @@
     <ClInclude Include="include\Components\Rectangle.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\Armes.cpp" />
     <ClCompile Include="src\Components\GamePauseMenu.cpp" />
     <ClCompile Include="src\Components\Rectangle.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />

@@ -35,6 +35,7 @@ private:
 	GameObject* player = nullptr;
 	GameObject* pausePlayButton = nullptr;
 	GameObject* pauseOptionsButton = nullptr;
+	GameObject* pauseMenuPrincipalButton = nullptr;
 	GameObject* pauseQuitButton = nullptr;
 	sf::Texture* texture;
 	bool gamePause;

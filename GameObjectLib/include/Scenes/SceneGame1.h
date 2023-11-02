@@ -13,7 +13,7 @@ public:
 
 	void Awake() override;
 
-	void CreatePlayer(sf::Texture texture);
+	void CreatePlayer();
 	void CreateGrunt(sf::Texture texture);
 	void SpawnGrunt();
 

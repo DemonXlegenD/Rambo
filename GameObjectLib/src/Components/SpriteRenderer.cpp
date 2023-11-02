@@ -41,7 +41,6 @@ void Sprite::PlayerPlayAnimation()
 
 void Sprite::Update(sf::Time _delta)
 {    
-    PlayerPlayAnimation();
 }
 
 void Sprite::Render(sf::RenderWindow* _window)
@@ -50,8 +49,6 @@ void Sprite::Render(sf::RenderWindow* _window)
 
     const auto position = GetOwner()->GetPosition();
 
-
-	const auto position = GetOwner()->GetPosition();
 	sf::Sprite sprite(texture);
 	sprite.setPosition(position.x, position.y);
 	if (this->rectTexture) {
@@ -61,7 +58,6 @@ void Sprite::Render(sf::RenderWindow* _window)
 		sprite.setTexture(texture);
 	}
 
-	
 	sprite.setScale(scalex, scaley);
 
 	_window->draw(sprite);

@@ -31,24 +31,6 @@ void SceneMainMenu::Render(sf::RenderWindow* _window) {
 	Scene::Render(_window);
 }
 
-
-
-void SceneMainMenu::CreatePlayer(sf::Texture* imagePlayer) {
-	if (!imagePlayer->loadFromFile("../assets/Sprite/player/john_static.png")) {
-		std::cout << "pas d'image" << std::endl;
-	}
-
-	player = CreateCharacterGameObject("Player", 400.f, 400.f, *imagePlayer, 2.5f, 2.5f);
-}
-
-void SceneMainMenu::CreateBullet(sf::Texture* imageBullet) {
-	if (!imageBullet->loadFromFile("../assets/Sprite/player/weaponBullet/weapon_bullet_0.png")) {
-		std::cout << "pas d'image" << std::endl;
-	}
-
-	bullet = CreateBulletGameObject("Player", *imageBullet, 2.5f, 2.5f, player);
-}
-
 void SceneMainMenu::CreateSceneButtonsMenu () {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;

@@ -35,7 +35,7 @@ void SceneGame1::CreateSceneGameButtons() {
 void SceneGame1::Create() {
 	Scene::Create();
 	CreateBackground();
-	this->CreatePlayer(sf::Texture());
+	this->CreatePlayer();
 	this->CreateGrunt(sf::Texture());
 	CreatePlatform(sf::Texture());
 }
@@ -44,11 +44,8 @@ void SceneGame1::Awake() {
 	Scene::Awake();
 }
 
-void SceneGame1::CreatePlayer(sf::Texture* imagePlayer) {
+void SceneGame1::CreatePlayer() {
 	player = CreateCharacterGameObject("Player", 400.f, 400.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);
-}
-
-	this->player = CreateCharacterGameObject("Player", 400.f, 400.f, imagePlayer, 2.5f, 2.5f);
 }
 
 void SceneGame1::CreateGrunt(sf::Texture imageGrunt) 
@@ -157,6 +154,7 @@ void SceneGame1::Update(sf::Time _delta) {
 		this->Collision(this->grunt4);
 		this->Collision(this->grunt5);
 		this->Collision(this->grunt6);
+		this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
 	}
 	else
 	{
@@ -168,7 +166,9 @@ void SceneGame1::Update(sf::Time _delta) {
 			this->pauseMenuPrincipalButton->SetActive(false);
 			this->pauseOptionsButton->SetActive(false);
 			this->pauseQuitButton->SetActive(false);
-			this->platforme->SetActive(true);
+			this->platforme1->SetActive(true);
+			this->platforme2->SetActive(true);
+			this->platforme3->SetActive(true);
 		}
 		if (pauseMenuPrincipalButton->GetComponent<Button>()->IsClicked()) {
 			SceneManager::RunScene("SceneMainMenu");

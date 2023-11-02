@@ -58,6 +58,7 @@ void Button::Render(sf::RenderWindow* _window) {
 
 	const auto position = GetOwner()->GetPosition();
 	SetPosition(position.x, position.y);
+
 	_window->draw(rectangle);
 	_window->draw(text);
 }

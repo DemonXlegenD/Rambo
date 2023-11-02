@@ -16,7 +16,6 @@ public:
 
 	std::string GetName() const { return name; }
 	Maths::Vector2<float> GetPosition() const { return position; }
-	//Scene* GetScene() const { return scene; }
 
 	void SetName(const std::string& _name) { name = _name; }
 	void SetPosition(const Maths::Vector2<float>& _position) { position = _position; }

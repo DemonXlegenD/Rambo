@@ -2,6 +2,7 @@
 #include <iostream>
 
 int AudioManager::volume = 100;
+int AudioManager::maxVolume = 100;
 sf::Music* AudioManager::music = nullptr;
 sf::Music* AudioManager::sound = nullptr;
 std::map<std::string, sf::Music*> AudioManager::musics;

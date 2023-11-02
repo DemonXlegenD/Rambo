@@ -10,6 +10,7 @@
 
 #include "Components/Inputs/InputPlayer.h"
 
+
 class Scene
 {
 public:
@@ -49,7 +50,8 @@ public:
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color);
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Texture texture);
 
-	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data);
+	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _maxData);
+	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _minData, float _maxData);
 
 protected:
 	std::vector<GameObject*> gameObjects;

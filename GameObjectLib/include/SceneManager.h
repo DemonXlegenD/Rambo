@@ -18,7 +18,11 @@ public:
 	}
 
 	static int GetFps() { return fps; }
-	static void SetFps(int& _fps) { fps = _fps; }
+	static int GetMaxFps() { return maxFps; }
+	static int GetMinFps() { return minFps; }
+	static void SetFps(int _fps) { fps = _fps; }
+	static void SetMinFps(int& _minFps) { minFps = _minFps; }
+	static void SetMaxFps(int& _maxFps) { maxFps = _maxFps; }
 	//Run a scene
 	static void RunScene(std::string _key);
 
@@ -38,5 +42,7 @@ private:
 	static Scene* activeScene;
 	static sf::RenderWindow* window;
 	static int fps;
+	static int minFps;
+	static int maxFps;
 };
 

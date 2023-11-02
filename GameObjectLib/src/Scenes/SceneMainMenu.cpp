@@ -26,7 +26,7 @@ void SceneMainMenu::Create() {
 	this->CreateSceneButtonsMenu();
 	this->activeOption(false);
 	this->activeMenu(true);
-	
+
 }
 
 void SceneMainMenu::Render(sf::RenderWindow* _window) {
@@ -51,15 +51,15 @@ void SceneMainMenu::CreateBullet(sf::Texture* imageBullet) {
 	bullet = CreateBulletGameObject("Player", *imageBullet, 2.5f, 2.5f, player);
 }
 
-void SceneMainMenu::CreateSceneButtonsMenu () {
+void SceneMainMenu::CreateSceneButtonsMenu() {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;
 	playButton = CreateButtonGameObject("Play", widthScreen / 2, heightScreen / 3, 50);
 	optionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
 	quitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.5, 50);
 	backButton = CreateButtonGameObject("Back", widthScreen / 10, heightScreen / 10, 20);
-	sliderFPS = CreateSliderGameObject("SliderFPS", widthScreen / 2, heightScreen / 2, 1200, 40, 50, 50, 20, SceneManager::GetFps());
-	sliderVolume = CreateSliderGameObject("SliderVolume", widthScreen / 2, heightScreen / 1.5, 1200, 40, 50, 50, 20, AudioManager::GetVolume());
+	sliderFPS = CreateSliderGameObject("SliderFPS", widthScreen / 2, heightScreen / 2, 1200, 40, 50, 50, 20, SceneManager::GetFps(), SceneManager::GetMinFps(), SceneManager::GetMaxFps());
+	sliderVolume = CreateSliderGameObject("SliderVolume", widthScreen / 2, heightScreen / 1.5, 1200, 40, 50, 50, 20, AudioManager::GetVolume(), AudioManager::GetMaxVolume());
 }
 
 void SceneMainMenu::Update(sf::Time _delta) {
@@ -78,6 +78,8 @@ void SceneMainMenu::Update(sf::Time _delta) {
 		this->activeOption(false);
 		this->activeMenu(true);
 	}
+	SceneManager::SetFps(sliderFPS->GetComponent<Slider>()->GetDataInt());
+	AudioManager::SetVolume(sliderVolume->GetComponent<Slider>()->GetDataInt());
 }
 
 void SceneMainMenu::activeMenu(bool _state) {

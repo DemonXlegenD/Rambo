@@ -1,9 +1,13 @@
 #include "Components/Slider.h"
 #include "SceneManager.h"
+#include "AudioManager.h"
 
 Slider::Slider() {
+	minData = 0.f;
+	incertitude = 20.f;
 	bar.setFillColor(sf::Color::Green);
-	text.setFillColor(sf::Color::White);
+	cursorText.setFillColor(sf::Color::White);
+	titleText.setFillColor(sf::Color::White);
 	cursor.setFillColor(sf::Color(0, 100, 0));
 	cursor.setOutlineThickness(3);
 	cursor.setOutlineColor(sf::Color::White);
@@ -22,31 +26,37 @@ void Slider::SetSizeCursor(float _width, float _height)
 	cursor.setOrigin(sf::Vector2f(_width / 2, _height / 2));
 }
 
-void Slider::SetText(unsigned int _fontSize) {
+void Slider::SetCursorText(unsigned int _fontSize) {
 	fontSize = _fontSize;
 	if (!font.loadFromFile("../Fonts/Roboto-Medium.ttf")) {
 		std::cout << "no font found" << std::endl;
 	}
-	text = sf::Text(std::to_string(data), font, fontSize);
-	text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2);
+	cursorText = sf::Text(std::to_string(this->GetDataInt()), font, fontSize);
+	cursorText.setOrigin(cursorText.getLocalBounds().width / 2, cursorText.getLocalBounds().height / 2);
 }
 
-void Slider::SetText(unsigned int _fontSize, float _data) {
+void Slider::SetCursorText(unsigned int _fontSize, float _data) {
 	data = _data;
 	fontSize = _fontSize;
 	if (!font.loadFromFile("../Fonts/Roboto-Medium.ttf")) {
 		std::cout << "no font found" << std::endl;
 	}
-	text = sf::Text(std::to_string(data), font, fontSize);
-	text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2);
+	cursorText = sf::Text(std::to_string(this->GetDataInt()), font, fontSize);
+	cursorText.setOrigin(cursorText.getLocalBounds().width / 2, cursorText.getLocalBounds().height / 2);
+}
+
+void Slider::SetTitleText() {
+	titleText = sf::Text(GetOwner()->GetName(), font, fontSize + 20);
+	cursorText.setOrigin(cursorText.getLocalBounds().width / 2, cursorText.getLocalBounds().height / 2);
 }
 
 void Slider::SetPosition(float _x, float _y)
 {
 	bar.setPosition(sf::Vector2f(_x, _y));
 	cursor.setPosition(sf::Vector2f(_x + bar.getSize().x / 2, _y));
-	text.setPosition(sf::Vector2f(_x + bar.getSize().x / 2, _y));
-	
+	cursorText.setPosition(sf::Vector2f(_x + bar.getSize().x / 2, _y));
+	titleText.setPosition(sf::Vector2f(_x - bar.getSize().x / 2, _y + bar.getSize().y / 2));
+
 }
 
 void Slider::Render(sf::RenderWindow* _window) {
@@ -54,11 +64,12 @@ void Slider::Render(sf::RenderWindow* _window) {
 
 	_window->draw(bar);
 	_window->draw(cursor);
-	_window->draw(text);
+	_window->draw(cursorText);
+	_window->draw(titleText);
 }
 float Slider::GetPercent(float _x, float _y, float width) {
 	if (width == 0.0) {
-		return 0.0; 
+		return 0.0;
 	}
 
 	float pourcentage = ((_y - (_x - width / 2)) / width) * 100.0;
@@ -72,20 +83,29 @@ float Slider::GetPercent(float _x, float _y, float width) {
 
 void Slider::Update(sf::Time _delta) {
 	Component::Update(_delta);
+
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*SceneManager::GetWindow());
+
 	if (this->isClicked(mousePos)) {
-		float cursorX = static_cast<float>(mousePos.x) - cursor.getSize().x / 2;
-		if (cursorX < (bar.getPosition().x - bar.getSize().x / 2))
-			cursorX = (bar.getPosition().x - bar.getSize().x / 2);
-		else if (cursorX > bar.getPosition().x + bar.getSize().x / 2 - cursor.getSize().x / 2) {
-			cursorX = bar.getPosition().x + bar.getSize().x / 2 - cursor.getSize().x / 2;
+		float cursorX = static_cast<float>(mousePos.x);
+		if (cursorX <= (bar.getPosition().x - bar.getSize().x / 2) - incertitude) {
+			cursorX = (bar.getPosition().x - bar.getSize().x / 2) ;
+			this->SetData(minData);
+		}
+		else if (cursorX >= bar.getPosition().x + bar.getSize().x / 2 + incertitude) {
+			cursorX = bar.getPosition().x + bar.getSize().x / 2;
+			this->SetData(maxData);
+		}
+		else if (cursorX != cursor.getPosition().x)
+		{
+			percent = this->GetPercent(bar.getPosition().x, cursor.getPosition().x, bar.getSize().x);
+			this->SetData(((maxData - minData) * percent / 100) + minData);
+			this->SetCursorText(fontSize);
+
 		}
 
-		cursor.setPosition(cursorX + cursor.getSize().x / 2, cursor.getPosition().y);
-		percent = this->GetPercent(bar.getPosition().x, cursor.getPosition().x, bar.getSize().x);
-		this->SetData(data * percent / 100);
-		this->SetText(fontSize);
-		text.setPosition(cursorX + cursor.getSize().x / 2, text.getPosition().y);
+		cursor.setPosition(cursorX , cursor.getPosition().y);
+		cursorText.setPosition(cursorX , cursor.getPosition().y);
 	}
 }
 

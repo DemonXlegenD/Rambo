@@ -35,6 +35,7 @@ void SceneMainMenu::Render(sf::RenderWindow* _window) {
 
 
 
+
 void SceneMainMenu::CreatePlayer(sf::Texture* imagePlayer) {
 	if (!imagePlayer->loadFromFile("../assets/Sprite/player/john_static.png")) {
 		std::cout << "pas d'image" << std::endl;
@@ -51,7 +52,8 @@ void SceneMainMenu::CreateBullet(sf::Texture* imageBullet) {
 	bullet = CreateBulletGameObject("Player", *imageBullet, 2.5f, 2.5f, player);
 }
 
-void SceneMainMenu::CreateSceneButtonsMenu() {
+
+void SceneMainMenu::CreateSceneButtonsMenu () {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;
 	playButton = CreateButtonGameObject("Play", widthScreen / 2, heightScreen / 3, 50);

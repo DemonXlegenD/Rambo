@@ -26,7 +26,7 @@ public:
 
 
 	//TODO: ajouter la texture
-	void CreatePlatform();
+	void CreatePlatform(sf::Texture texture);
 	void CreateBackground();
 	void Create() override;
 	void Update(sf::Time _delta) override;
@@ -36,6 +36,7 @@ private:
 	GameObject* platforme1 = nullptr;
 	GameObject* platforme2 = nullptr;
 	GameObject* platforme3 = nullptr;
+	GameObject* platforme4 = nullptr;
 	GameObject* grunt1 = nullptr;
 	GameObject* grunt2 = nullptr;
 	GameObject* grunt3 = nullptr;
@@ -46,7 +47,7 @@ private:
 	GameObject* pausePlayButton = nullptr;
 	GameObject* pauseOptionsButton = nullptr;
 	GameObject* pauseQuitButton = nullptr;
-	sf::Texture* texture;
+	sf::Texture* texture ;
 	bool gamePause;
 	bool escapeIsPress = true;
 };

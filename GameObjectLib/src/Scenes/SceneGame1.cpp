@@ -1,5 +1,6 @@
 #include "Scenes/SceneGame1.h"
 #include "SceneManager.h"
+#include "Components/SpriteRenderer.h"
 #include "Components/SquareCollider.h"
 #include "Components/Gravity.h"
 
@@ -28,7 +29,7 @@ void SceneGame1::Create() {
 	CreateBackground();
 	this->CreatePlayer(sf::Texture());
 	this->CreateGrunt(sf::Texture());
-	CreatePlatform();
+	CreatePlatform(sf::Texture());
 }
 
 void SceneGame1::Awake() {
@@ -152,10 +153,19 @@ void SceneGame1::Update(sf::Time _delta) {
 	}
 }
 
-void SceneGame1::CreatePlatform() {
-	this->platforme1 = CreatePlatformObject("platforme1", 100.f, 500.f, 400.f, 50.f);
-	this->platforme2 = CreatePlatformObject("platforme2", 600.f, 600.f, 700.f, 50.f);
-	this->platforme3 = CreatePlatformObject("platforme3", 1400.f, 500.f, 400.f, 50.f);
+void SceneGame1::CreatePlatform(sf::Texture textureplatforme) {
+	
+
+	if (!textureplatforme.loadFromFile("../assets/Sprite/tiles_spritesheet.png"))
+	{
+		std::cout << "pas d'image ennemy" << std::endl;
+	}
+
+	sf::IntRect rectSource(200, 0, 95, 40);
+	this->platforme1 = CreatePlatformObject("platforme1", 100.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme2 = CreatePlatformObject("platforme2", 600.f, 600.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme3 = CreatePlatformObject("platforme3", 900.f, 600.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme4 = CreatePlatformObject("platforme3", 1400.f, 500.f, 4.f, 2.f, textureplatforme, new sf::IntRect(rectSource));
 }
 
 void SceneGame1::CreateBackground()

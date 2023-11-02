@@ -44,11 +44,12 @@ public:
 
 	//GAME ELEMENT
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
-	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY);
+	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture, sf::IntRect* _rectSource);
 
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color);
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Texture texture);
 
+	GameObject* CreateDecorGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
 protected:
 	std::vector<GameObject*> gameObjects;

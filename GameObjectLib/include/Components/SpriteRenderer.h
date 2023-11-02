@@ -19,9 +19,11 @@ public:
 	
 
 	void Render(sf::RenderWindow* _window) override;
-	
+	void SetRect(sf::IntRect* _rectSource) { rectTexture = _rectSource; }
+
 private:
 	sf::Texture texture;
+	sf::IntRect* rectTexture;
 	float scalex, scaley;
 	std::vector<sf::Texture> anim;
 	sf::Sprite sprite;

@@ -5,12 +5,17 @@
 
 Sprite::Sprite()
 {
-    scalex = 1.0f;
-    scaley = 1.0f;
+
+	texture.create(100, 100);
+	scalex = 1.0f;
+	scaley = 1.0f;
+	rectTexture = nullptr;
+
     currentFrame = 0;
     frameDuration = 0.2f;
     animationClock.restart();
     LoadPlayAnimation();
+
 }
 
 void Sprite::LoadPlayAnimation()
@@ -45,9 +50,19 @@ void Sprite::Render(sf::RenderWindow* _window)
 
     const auto position = GetOwner()->GetPosition();
 
-    sprite.setPosition(position.x, position.y);
-    sprite.setTexture(texture);
-    sprite.setScale(scalex, scaley);
 
-    _window->draw(sprite);
+	const auto position = GetOwner()->GetPosition();
+	sf::Sprite sprite(texture);
+	sprite.setPosition(position.x, position.y);
+	if (this->rectTexture) {
+		sprite.setTextureRect(*rectTexture);
+	}
+	else {
+		sprite.setTexture(texture);
+	}
+
+	
+	sprite.setScale(scalex, scaley);
+
+	_window->draw(sprite);
 }

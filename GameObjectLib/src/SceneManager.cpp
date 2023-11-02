@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 
+int SceneManager::fps = 0;
 Scene* SceneManager::activeScene = nullptr;
 sf::RenderWindow* SceneManager::window = nullptr;
 std::map<std::string, Scene*> SceneManager::scenes;

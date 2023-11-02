@@ -1,3 +1,5 @@
-FIX: Master
+NEW: Audio
 
-- réparation de la master
+- Ajout de l'audio dans le projet
+- Ajout d'un AudioManager
+    

@@ -24,6 +24,8 @@ private:
 	GameObject* backButton = nullptr;
 	GameObject* player = nullptr;
 	GameObject* bullet = nullptr;
+	GameObject* sliderVolume = nullptr;
+	GameObject* sliderFPS = nullptr;
 	sf::Texture* texture;
 	sf::Texture* textureBullet;
 };

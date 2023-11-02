@@ -49,6 +49,7 @@ public:
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color);
 	GameObject* CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Texture texture);
 
+	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data);
 
 protected:
 	std::vector<GameObject*> gameObjects;

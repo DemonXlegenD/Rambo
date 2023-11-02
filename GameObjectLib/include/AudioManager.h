@@ -6,7 +6,12 @@ class AudioManager
 {
 public:
 
-	static void SetVolume(float _volume) { music->setVolume(_volume); }
+	static int GetVolume() { return volume; }
+	static void SetVolume(float& _volume) { 
+		volume = _volume;
+		music->setVolume(_volume); 
+		sound->setVolume(_volume); 
+	}
 	static void Loop(bool _state) { music->setLoop(_state); }
 
 	static void Play(std::string _key);
@@ -20,6 +25,7 @@ public:
 	static void AddSound(std::string _key, std::string _fileName);
 
 private:
+	static int volume;
 	static sf::Music* music;
 	static sf::Music* sound;
 	static std::map<std::string, sf::Music*> musics;

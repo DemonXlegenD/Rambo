@@ -8,6 +8,7 @@
 #include "Components/Enemy/Grunt.h"
 #include "Components/FireBullet.h"
 #include "Components/Rectangle.h"
+#include "Components/Slider.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
@@ -197,6 +198,20 @@ GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, 
 	float scalerX = (float)SceneManager::GetWindow()->getSize().x / texture.getSize().x;
 	float scalerY = (float)SceneManager::GetWindow()->getSize().y / texture.getSize().y;
 	background->SetScale(scalerX, scalerY);
+
+	return gameObject;
+}
+
+GameObject* Scene::CreateSliderGameObject(const std::string& name, float _x, float _y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data) {
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(_x, _y));
+
+	Slider* slider = gameObject->CreateComponent<Slider>();
+	slider->SetData(_data);
+	slider->SetSizeBar(_widthBar, _heightBar);
+	slider->SetSizeCursor(_widthCursor, _heightCursor);
+	slider->SetText(_fontSize);
+	slider->SetPosition(_x, _y);
 
 	return gameObject;
 }

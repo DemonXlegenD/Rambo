@@ -1,6 +1,7 @@
 #include "AudioManager.h"
 #include <iostream>
 
+int AudioManager::volume = 100;
 sf::Music* AudioManager::music = nullptr;
 sf::Music* AudioManager::sound = nullptr;
 std::map<std::string, sf::Music*> AudioManager::musics;
@@ -10,6 +11,7 @@ void AudioManager::Play(std::string _key) {
 	if (AudioManager::musics.find(_key) != AudioManager::musics.end())
 	{
 		AudioManager::music = AudioManager::musics.at(_key);
+		AudioManager::Stop();
 		AudioManager::music->play();
 	}
 	else
@@ -35,6 +37,7 @@ void AudioManager::AddMusic(std::string _key, std::string _fileName) {
 	_music->openFromFile(_fileName);
 	AudioManager::musics.insert(std::make_pair(_key, _music));
 }
+
 void AudioManager::AddSound(std::string _key, std::string _fileName) {
 	sf::Music* _sound = new sf::Music();
 	_sound->openFromFile(_fileName);

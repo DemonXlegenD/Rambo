@@ -19,11 +19,13 @@ void GameObject::Start() {
 
 void GameObject::Update(sf::Time _delta) const
 {
-	for (Component* const& component : components)
-	{
-		if(component->isActive)
+	if (this->isActive) {
+		for (Component* const& component : components)
+		{
 			component->Update(_delta);
+		}
 	}
+
 }
 
 void GameObject::Render(sf::RenderWindow* _window) const
@@ -34,6 +36,6 @@ void GameObject::Render(sf::RenderWindow* _window) const
 			component->Render(_window);
 		}
 	}
-	
+
 }
 

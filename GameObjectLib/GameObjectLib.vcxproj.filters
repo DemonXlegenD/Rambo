@@ -23,6 +23,7 @@
     <ClCompile Include="src\Components\GamePauseMenu.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Components\Rectangle.cpp" />
+    <ClCompile Include="src\AudioManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Components\SpriteRenderer.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="include\Components\GamePauseMenu.h" />
     <ClInclude Include="include\AssetManager.h" />
     <ClInclude Include="include\Components\Rectangle.h" />
+    <ClInclude Include="include\AudioManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

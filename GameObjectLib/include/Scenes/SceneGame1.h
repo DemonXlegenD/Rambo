@@ -15,7 +15,7 @@ public:
 
 	void CreatePlayer(sf::Texture texture);
 	void CreateGrunt(sf::Texture texture);
-	/*void SpawnGrunt();*/
+	void SpawnGrunt();
 
 	void Collision(GameObject* _entity);
 

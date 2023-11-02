@@ -49,7 +49,7 @@ void SceneMainMenu::CreateMenuOption() {
 void SceneMainMenu::Update(sf::Time _delta) {
 	Scene::Update(_delta);
 	if (playButton->GetComponent<Button>()->IsClicked()) {
-		SceneManager::RunScene("SceneGame1");
+		SceneManager::RunScene("SceneGame2");
 	}
 	if (optionsButton->GetComponent<Button>()->IsClicked()) {
 		this->CreateMenuOption();

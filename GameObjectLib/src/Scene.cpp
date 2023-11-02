@@ -6,6 +6,7 @@
 #include "Components/Gravity.h"
 #include "Components/Platforme.h"
 #include "Components/Enemy/Grunt.h"
+#include "Components/Enemy/Turret.h"
 #include "Components/FireBullet.h"
 #include "Components/Rectangle.h"
 
@@ -120,6 +121,25 @@ GameObject* Scene::CreateGruntGameObject(const std::string& name, float position
 
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
+
+	return gameObject;
+
+}
+
+GameObject* Scene::CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetWidth(60.f);
+	squareCollider->SetHeight(60.f);
+
+	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
+	spriteBullet->SetTexture(_texture);
+	spriteBullet->SetScale(scalex, scaley);
+
+	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
 	return gameObject;
 

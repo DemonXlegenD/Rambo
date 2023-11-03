@@ -13,10 +13,11 @@ public:
 	void Create();
 
 	~GameState();
+
 private:
+	int FPS;
 	sf::Clock clock;
 
-	int FPS;
 	sf::RenderWindow* window;
 };
 

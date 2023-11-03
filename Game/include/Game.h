@@ -1,9 +1,5 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-
-#include "GameObject.h"
-#include "Scene.h"
 #include "Game/GameConfig.h"
 #include "Game/GameStats.h"
 #include "Game/GameState.h"
@@ -20,6 +16,8 @@ public:
 	GameLog* getLog() const { return log; }
 	GameState* getState() const { return state; }
 	GameStats* getStats() const { return stats; }
+
+	~Game();
 
 private:
 	GameConfig* config = nullptr;

@@ -9,10 +9,19 @@ Game::Game() {
 
 void Game::run() {
 	sf::RenderWindow* window = config->GetWindow();
+	state->Create();
 	state->Preload();
+	
 
 	while (window->isOpen())
 	{
 		state->Update();
 	}
+}
+
+Game::~Game() {
+	delete this->config;
+	delete this->state;
+	delete this->stats;
+	delete this->log;
 }

@@ -21,7 +21,6 @@ MoveToRightBulletCommand::MoveToRightBulletCommand(InputPlayer* _inputPlayer) {
 
 void MoveToRightBulletCommand::Execute(sf::Time _delta) {
 	Command::Execute(_delta);
-	std::cout << "Delta = " << _delta.asSeconds() << std::endl;
 	inputPlayer->MoveRightBullet();
 }
 

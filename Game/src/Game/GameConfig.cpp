@@ -13,5 +13,5 @@ GameConfig::GameConfig() {
 }
 
 GameConfig::~GameConfig() {
-	delete window;
+	delete this->window;
 }

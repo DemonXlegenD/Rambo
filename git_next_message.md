@@ -1,3 +1,3 @@
-ENH: Amélioration vector
+NEW: Nettoyage code
 
-- Amélioration vector
+- Nettoyage de tout le code du Games

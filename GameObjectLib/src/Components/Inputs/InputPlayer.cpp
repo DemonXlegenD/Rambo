@@ -42,13 +42,13 @@ Command* InputPlayer::PauseInput() {
 
 void InputPlayer::MoveRight()
 {
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right + Maths::Vector2f(10, 0) /* La faut mettre le delta time et c'est bon*/);
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right /* La faut mettre le delta time et c'est bon*/);
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Right);
 }
 
 void InputPlayer::MoveLeft()
 {
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Left + Maths::Vector2f(-10, 0));
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Left);
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Left);
 }
 

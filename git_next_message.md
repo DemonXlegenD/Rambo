@@ -1,3 +1,3 @@
-ENH: Amélioration Origin
+ENH: Amélioration vector
 
-- Set Origin centré, colliders modifiés
+- Amélioration vector

@@ -3,6 +3,7 @@
 #include "SceneMainMenu.h"
 #include "SceneGame1.h"
 #include "SceneGame2.h"
+
 GameState::GameState(sf::RenderWindow* _window, int _FPS) {
 	this->window = _window;
 	this->FPS = _FPS;
@@ -48,5 +49,6 @@ void GameState::Update() {
 
 GameState::~GameState() {
 	delete window;
+	
 }
 

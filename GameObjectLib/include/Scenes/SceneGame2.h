@@ -16,15 +16,14 @@ public:
 	void CreatePlayer();
 	void CreateGrunt();
 	void CreateTurret(sf::Texture texture);
-	void SpawnGrunt();
 
 	void Collision(GameObject* _entity);
 
 	bool PauseMenu(bool gamePause);
-	void CreateSceneGameButtons();
 
 	void ManageSceneGameButtons();
 
+	void CreateSceneGameButtons();
 
 	//TODO: ajouter la texture
 	void CreatePlatform(sf::Texture texture);
@@ -34,20 +33,8 @@ public:
 	void Render(sf::RenderWindow* _window) override;
 
 private:
-	GameObject* platforme1 = nullptr;
-	GameObject* platforme2 = nullptr;
-	GameObject* platforme3 = nullptr;
-	GameObject* platforme4 = nullptr;
-	GameObject* platforme5 = nullptr;
-	GameObject* platforme6 = nullptr;
-	GameObject* grunt1 = nullptr;
-	GameObject* grunt2 = nullptr;
-	GameObject* grunt3 = nullptr;
-	GameObject* grunt4 = nullptr;
-	GameObject* grunt5 = nullptr;
-	GameObject* grunt6 = nullptr;
-	GameObject* grunt7 = nullptr;
-	GameObject* grunt8 = nullptr;
+	std::vector<GameObject*> platforms;
+	std::vector<GameObject*> grunts;
 	GameObject* turret1 = nullptr;
 	GameObject* turret2 = nullptr;
 	GameObject* player = nullptr;

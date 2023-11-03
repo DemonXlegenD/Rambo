@@ -15,15 +15,13 @@ public:
 
 	void CreatePlayer();
 	void CreateGrunt();
-	void SpawnGrunt();
 
 	void Collision(GameObject* _entity);
 
 	bool PauseMenu(bool gamePause);
-	void CreateSceneGameButtons();
 
 	void ManageSceneGameButtons();
-
+	void CreateSceneGameButtons();
 
 	//TODO: ajouter la texture
 	void CreatePlatform(sf::Texture texture);
@@ -33,16 +31,9 @@ public:
 	void Render(sf::RenderWindow* _window) override;
 
 private:
-	GameObject* platforme1 = nullptr;
-	GameObject* platforme2 = nullptr;
-	GameObject* platforme3 = nullptr;
-	GameObject* platforme4 = nullptr;
-	GameObject* grunt1 = nullptr;
-	GameObject* grunt2 = nullptr;
-	GameObject* grunt3 = nullptr;
-	GameObject* grunt4 = nullptr;
-	GameObject* grunt5 = nullptr;
-	GameObject* grunt6 = nullptr;
+	//TODO : tout passer en vector
+	std::vector<GameObject*> platforms;
+	std::vector<GameObject*> grunts;
 	GameObject* player = nullptr;
 	GameObject* pausePlayButton = nullptr;
 	GameObject* pauseOptionsButton = nullptr;

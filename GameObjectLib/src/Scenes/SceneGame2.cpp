@@ -13,7 +13,6 @@ std::map<std::string, sf::Texture> AssetManager::assets;
 SceneGame2::SceneGame2(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
 	Scene::Create();
-	std::cout << "Main menu" << std::endl;
 }
 
 bool SceneGame2::PauseMenu(bool gamePause)
@@ -21,22 +20,26 @@ bool SceneGame2::PauseMenu(bool gamePause)
 	return gamePause;
 };
 
-void SceneGame2::CreateSceneGameButtons() {
-	pausePlayButton = CreateButtonGameObject("Continue", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 3.5, 50);
-	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 2, 50);
-	pauseOptionsButton = CreateButtonGameObject("Options", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 1.5, 50);
-	pauseQuitButton = CreateButtonGameObject("Quit", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 1.2, 50);
-
-
-}
-
 void SceneGame2::Create() {
 	Scene::Create();
 	CreateBackground();
+	this->CreateSceneGameButtons();
 	this->CreatePlayer();
 	this->CreateGrunt();
 	this->CreateTurret(sf::Texture());
 	CreatePlatform(sf::Texture());
+}
+void SceneGame2::CreateSceneGameButtons() {
+	float widthScreen = SceneManager::GetWindow()->getSize().x;
+	float heightScreen = SceneManager::GetWindow()->getSize().y;
+	pausePlayButton = CreateButtonGameObject("Continue", widthScreen / 2, heightScreen / 3.5, 50);
+	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", widthScreen / 2, heightScreen / 2, 50);
+	pauseOptionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 1.5, 50);
+	pauseQuitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.2, 50);
+	this->pauseMenuPrincipalButton->SetActive(false);
+	this->pausePlayButton->SetActive(false);
+	this->pauseOptionsButton->SetActive(false);
+	this->pauseQuitButton->SetActive(false);
 }
 
 void SceneGame2::Awake() {
@@ -60,14 +63,14 @@ void SceneGame2::CreateGrunt()
 	int rand_Grunt7 = rand() % 1800 + 1400;
 	int rand_Grunt8 = rand() % 1800 + 1400;
 
-	this->grunt1 = CreateGruntGameObject("Grunt1", rand_Grunt1, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt2 = CreateGruntGameObject("Grunt2", rand_Grunt2, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt3 = CreateGruntGameObject("Grunt3", rand_Grunt3, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt4 = CreateGruntGameObject("Grunt4", rand_Grunt4, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt5 = CreateGruntGameObject("Grunt5", rand_Grunt5, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt6 = CreateGruntGameObject("Grunt6", rand_Grunt6, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt7 = CreateGruntGameObject("Grunt7", rand_Grunt7, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt8 = CreateGruntGameObject("Grunt8", rand_Grunt8, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	grunts.push_back(CreateGruntGameObject("Grunt1", rand_Grunt1, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
+	grunts.push_back(CreateGruntGameObject("Grunt2", rand_Grunt2, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
+	grunts.push_back(CreateGruntGameObject("Grunt3", rand_Grunt3, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
+	grunts.push_back(CreateGruntGameObject("Grunt4", rand_Grunt4, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
+	grunts.push_back(CreateGruntGameObject("Grunt5", rand_Grunt5, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
+	grunts.push_back(CreateGruntGameObject("Grunt6", rand_Grunt6, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
+	grunts.push_back(CreateGruntGameObject("Grunt7", rand_Grunt7, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
+	grunts.push_back(CreateGruntGameObject("Grunt8", rand_Grunt8, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
 }
 
 void SceneGame2::CreateTurret(sf::Texture imageTurret)
@@ -89,13 +92,15 @@ void SceneGame2::CreateTurret(sf::Texture imageTurret)
 
 void SceneGame2::Collision(GameObject* _entity)
 {
-	if (SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme1->GetComponent<SquareCollider>())) ||
-		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme2->GetComponent<SquareCollider>())) ||
-		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme3->GetComponent<SquareCollider>())) ||
-		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme4->GetComponent<SquareCollider>())) ||
-		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme5->GetComponent<SquareCollider>())) ||
-		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme6->GetComponent<SquareCollider>()))
-		)
+	bool colliding = false;
+	for (GameObject* platform : platforms) {
+		if (SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platform->GetComponent<SquareCollider>()))) {
+			colliding = true;
+			break;
+		}
+	}
+
+	if (colliding)
 	{
 		_entity->GetComponent<Gravity>()->Stop();
 	}
@@ -112,17 +117,17 @@ void SceneGame2::ManageSceneGameButtons()
 		pauseInput->Execute();
 		gamePause = true;
 		escapeIsPress = false;
-		this->CreateSceneGameButtons();
 		this->player->SetActive(false);
-		this->grunt1->SetActive(false);
-		this->grunt2->SetActive(false);
-		this->grunt3->SetActive(false);
-		this->grunt4->SetActive(false);
-		this->grunt5->SetActive(false);
-		this->grunt6->SetActive(false);
-		this->platforme1->SetActive(false);
-		this->platforme2->SetActive(false);
-		this->platforme3->SetActive(false);
+		this->pauseMenuPrincipalButton->SetActive(true);
+		this->pausePlayButton->SetActive(true);
+		this->pauseOptionsButton->SetActive(true);
+		this->pauseQuitButton->SetActive(true);
+		for (GameObject* grunt : grunts) {
+			grunt->SetActive(false);
+		}
+		for (GameObject* platform : platforms) {
+			platform->SetActive(false);
+		}
 	}
 	else if (pauseInput && !escapeIsPress) {
 		pauseInput->Execute();
@@ -133,9 +138,12 @@ void SceneGame2::ManageSceneGameButtons()
 		this->pausePlayButton->SetActive(false);
 		this->pauseOptionsButton->SetActive(false);
 		this->pauseQuitButton->SetActive(false);
-		this->platforme1->SetActive(true);
-		this->platforme2->SetActive(true);
-		this->platforme3->SetActive(true);
+		for (GameObject* grunt : grunts) {
+			grunt->SetActive(true);
+		}
+		for (GameObject* platform : platforms) {
+			platform->SetActive(true);
+		}
 	}
 }
 
@@ -147,23 +155,20 @@ void SceneGame2::Update(sf::Time _delta) {
 	{
 		Scene::Update(_delta);
 		this->Collision(this->player);
-		this->Collision(this->grunt1);
-		this->Collision(this->grunt2);
-		this->Collision(this->grunt3);
-		this->Collision(this->grunt4);
-		this->Collision(this->grunt5);
-		this->Collision(this->grunt6);
-		this->Collision(this->grunt7);
-		this->Collision(this->grunt8);
 		this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
-		this->grunt1->GetComponent<Sprite>()->GruntPlayAnimation();
-		this->grunt2->GetComponent<Sprite>()->GruntPlayAnimation();
-		this->grunt3->GetComponent<Sprite>()->GruntPlayAnimation();
-		this->grunt4->GetComponent<Sprite>()->GruntPlayAnimation();
-		this->grunt5->GetComponent<Sprite>()->GruntPlayAnimation();
-		this->grunt6->GetComponent<Sprite>()->GruntPlayAnimation();
-		this->grunt7->GetComponent<Sprite>()->GruntPlayAnimation();
-		this->grunt8->GetComponent<Sprite>()->GruntPlayAnimation();
+		for (GameObject* grunt : grunts) {
+			this->Collision(grunt);
+			grunt->GetComponent<Sprite>()->GruntPlayAnimation();
+		}
+
+		if (!this->player->GetComponent<Player>()->directionPlayer)
+		{
+			this->player->GetComponent<Sprite>()->SetScale(2.5f, 2.5f);
+		}
+		else
+		{
+			this->player->GetComponent<Sprite>()->SetScale(-2.5f, 2.5f);
+		}
 	}
 	else
 	{
@@ -171,13 +176,16 @@ void SceneGame2::Update(sf::Time _delta) {
 			gamePause = false;
 			escapeIsPress = true;
 			this->player->SetActive(true);
-			this->pausePlayButton->SetActive(false);
 			this->pauseMenuPrincipalButton->SetActive(false);
+			this->pausePlayButton->SetActive(false);
 			this->pauseOptionsButton->SetActive(false);
 			this->pauseQuitButton->SetActive(false);
-			this->platforme1->SetActive(true);
-			this->platforme2->SetActive(true);
-			this->platforme3->SetActive(true);
+			for (GameObject* grunt : grunts) {
+				grunt->SetActive(true);
+			}
+			for (GameObject* platform : platforms) {
+				platform->SetActive(true);
+			}
 		}
 		if (pauseMenuPrincipalButton->GetComponent<Button>()->IsClicked()) {
 			SceneManager::RunScene("SceneMainMenu");
@@ -200,12 +208,12 @@ void SceneGame2::CreatePlatform(sf::Texture textureplatforme) {
 	}
 
 	sf::IntRect rectSource(200, 0, 95, 40);
-	this->platforme1 = CreatePlatformObject("platforme1", 300.f, 650.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme2 = CreatePlatformObject("platforme2", 800.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme3 = CreatePlatformObject("platforme3", 1100.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme4 = CreatePlatformObject("platforme4", 1600.f, 650.f, 4.f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme5 = CreatePlatformObject("platforme5", 800.f, 800.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme6 = CreatePlatformObject("platforme6", 1100.f, 800.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	platforms.push_back(CreatePlatformObject("platforme1", 300.f, 650.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource)));
+	platforms.push_back(CreatePlatformObject("platforme2", 800.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource)));
+	platforms.push_back(CreatePlatformObject("platforme3", 1100.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource)));
+	platforms.push_back(CreatePlatformObject("platforme4", 1600.f, 650.f, 4.f, 2.f, textureplatforme, new sf::IntRect(rectSource)));
+	platforms.push_back(CreatePlatformObject("platforme5", 800.f, 800.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource)));
+	platforms.push_back(CreatePlatformObject("platforme6", 1100.f, 800.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource)));
 }
 
 void SceneGame2::CreateBackground()

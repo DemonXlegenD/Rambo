@@ -11,7 +11,7 @@ class Component;
 class GameObject
 {
 public:
-	GameObject() = default;
+	GameObject();
 	virtual ~GameObject() = default;
 
 	std::string GetName() const { return name; }

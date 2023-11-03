@@ -25,7 +25,14 @@ public:
 
 	virtual void Awake();
 
-	GameObject* getGameObject(std::string objectName) 
+	void RemoveGameObject(GameObject* objectToRemove) {
+		gameObjects.erase(std::remove_if(gameObjects.begin(), gameObjects.end(),
+			[objectToRemove](GameObject* obj) {
+				return obj == objectToRemove;
+			}), gameObjects.end());
+	}
+
+	GameObject* GetGameObject(std::string objectName) 
 	{
 		for (GameObject* gameObject : gameObjects) {
 			if (gameObject->GetName() == objectName) {
@@ -56,7 +63,7 @@ public:
 	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _maxData);
 	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _minData, float _maxData);
 
-	GameObject* CreateDecorGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
+	//GameObject* CreateDecorGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
 
 protected:

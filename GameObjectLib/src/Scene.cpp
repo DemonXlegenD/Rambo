@@ -46,22 +46,9 @@ void Scene::Update(sf::Time _delta)
 
 	}
 
-	Command* commandMoves = inputHandlerPlayer->HandleInput();
-	if (commandMoves) {
-		commandMoves->Execute();
-	}
-	Command* fireBullet = inputHandlerPlayer->FireInput();
-	if (fireBullet && !balleTiree) {
-		fireBullet->Execute(_delta);
-		balleTiree = true;
-		clock.restart();
-	}
-	if (clock.getElapsedTime() >= interval) {
-		balleTiree = false;
-	}
-
 	for (GameObject* const& gameObject : gameObjects)
 	{
+		std::cout << gameObject->GetName() << std::endl;
 		gameObject->Update(_delta);
 	}
 }
@@ -78,6 +65,7 @@ GameObject* Scene::CreateGameObject(const std::string& _name)
 {
 	auto gameObject = new GameObject();
 	gameObject->SetName(_name);
+	gameObject->SetActive(true);
 	gameObjects.push_back(gameObject);
 	return gameObject;
 }
@@ -161,6 +149,7 @@ GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Tex
 	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
 	fireBullet->setDirection(_player);
 
+	std::cout << gameObject << std::endl;
 	return gameObject;
 
 }

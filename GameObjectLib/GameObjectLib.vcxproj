@@ -41,13 +41,16 @@
     <ClInclude Include="include\Components\Platforme.h" />
     <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="include\Scenes\SceneGame1.h" />
+    <ClInclude Include="include\Scenes\SceneGame2.h" />
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
     <ClInclude Include="include\Components\Inputs\InputPlayer.h" />
     <ClInclude Include="include\Components\Rectangle.h" />
-    <ClInclude Include="include\Components\Enemy\Turret.h" /> 
+    <ClInclude Include="include\Components\Enemy\Turret.h" />
     <ClInclude Include="include\Components\Slider.h" />
+    <ClInclude Include="include\Scenes\SceneGameAbstract.h" />
   </ItemGroup>
-  <ItemGroup> 
+  <ItemGroup>
+    <ClCompile Include="src\Scenes\SceneGameAbstract.cpp" />
     <ClCompile Include="src\Scenes\SceneGame2.cpp" />
     <ClCompile Include="src\Components\Armes.cpp" />
     <ClCompile Include="src\Components\Slider.cpp" />

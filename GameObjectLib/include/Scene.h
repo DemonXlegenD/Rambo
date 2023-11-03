@@ -5,9 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
-
 #include "Components/Player.h"
-
 #include "Components/Inputs/InputPlayer.h"
 
 
@@ -43,14 +41,6 @@ public:
 	}
 
 	GameObject* CreateGameObject(const std::string& _name);
-
-	//PLAYER 
-	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
-	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
-
-	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
-
-	GameObject* CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
 	//GAME ELEMENT
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);

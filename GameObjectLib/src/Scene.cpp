@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "SceneManager.h"
+
 #include "Components/Button.h"
 #include "Components/SquareCollider.h"
 #include "Components/SpriteRenderer.h"
@@ -76,89 +77,6 @@ GameObject* Scene::CreateGameObject(const std::string& _name)
 	return gameObject;
 }
 
-//PLAYER 
-
-GameObject* Scene::CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
-{
-	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
-
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
-
-	Player* playerController = gameObject->CreateComponent<Player>();
-
-	Armes* arme = gameObject->CreateComponent<Armes>();
-
-	Sprite* sprite = gameObject->CreateComponent<Sprite>();
-	sprite->SetTexture(texture);
-	sprite->SetScale(scalex, scaley);
-
-	Gravity* gravity = gameObject->CreateComponent<Gravity>();
-
-	InputPlayer* inputPlayer = gameObject->CreateComponent<InputPlayer>();
-	inputHandlerPlayer = inputPlayer;
-
-	return gameObject;
-}
-
-//ENEMY
-GameObject* Scene::CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture)
-{
-	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
-
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
-
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(_texture);
-	spriteBullet->SetScale(scalex, scaley);
-
-	Gravity* gravity = gameObject->CreateComponent<Gravity>();
-
-
-	return gameObject;
-
-}
-
-GameObject* Scene::CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture)
-{
-	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
-
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
-
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(_texture);
-	spriteBullet->SetScale(scalex, scaley);
-
-	Gravity* gravity = gameObject->CreateComponent<Gravity>();
-
-	return gameObject;
-
-}
-
-GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player)
-{
-	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
-
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(textureBullet);
-	spriteBullet->SetScale(scalex, scaley);
-
-	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
-	fireBullet->setDirection(_player);
-
-	std::cout << gameObject << std::endl;
-	return gameObject;
-
-}
 
 //GAME ELEMENT
 
@@ -166,8 +84,8 @@ GameObject* Scene::CreateButtonGameObject(const std::string& name, float x, floa
 {
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(x, y));
-
 	gameObject->SetActive(true);
+
 	Button* button = gameObject->CreateComponent<Button>();
 	button->SetPosition(x, y);
 	button->SetButton(fontSize);

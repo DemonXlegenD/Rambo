@@ -13,6 +13,8 @@ public:
 	void Update(sf::Time _delta);
 	void SetTexture(const sf::Texture& _texture) { texture = _texture; }
 	void SetScale(float _scalex, float _scaley) { scalex = _scalex; scaley = _scaley; }
+
+	sf::Vector2f GetBounds() { return sf::Vector2f(sprite.getLocalBounds().width, sprite.getLocalBounds().height); }
 	
 	void LoadPlayAnimation();
 	void PlayerPlayAnimation();

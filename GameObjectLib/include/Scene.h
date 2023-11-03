@@ -32,7 +32,7 @@ public:
 				return gameObject;
 			}
 		}
-		return nullptr; // Renvoie nullptr si aucun Collider n'est trouvé
+		return nullptr;
 	}
 
 	GameObject* CreateGameObject(const std::string& _name);

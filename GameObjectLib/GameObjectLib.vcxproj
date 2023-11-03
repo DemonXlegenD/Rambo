@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Components\Armes.h" />
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\Components\GamePauseMenu.h" />
     <ClInclude Include="include\AssetManager.h" />
@@ -46,6 +47,7 @@
     <ClInclude Include="include\Components\Slider.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\Armes.cpp" />
     <ClCompile Include="src\Components\Slider.cpp" />
     <ClCompile Include="src\AudioManager.cpp" />
     <ClCompile Include="src\Components\GamePauseMenu.cpp" />

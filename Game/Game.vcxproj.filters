@@ -17,4 +17,7 @@
     <ClInclude Include="include\Game\GameLog.h" />
     <ClInclude Include="include\Game\GameConfig.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="SaveFile.txt" />
+  </ItemGroup>
 </Project>

@@ -46,11 +46,17 @@ void Scene::Update(sf::Time _delta)
 
 	}
 
-	for (GameObject* const& gameObject : gameObjects)
+	for (size_t i = 0; i < gameObjects.size(); i++)
 	{
-		std::cout << gameObject->GetName() << std::endl;
-		gameObject->Update(_delta);
+		gameObjects[i]->Update(_delta);
 	}
+
+	//TODO: Ne pas faire de foreach lorsqu'on modifie le nombre d'élément dans le vector
+	//for (GameObject* const& gameObject : gameObjects)
+	//{
+	//	std::cout << gameObject->GetName() << std::endl;
+	//	gameObject->Update(_delta);
+	//}
 }
 
 void Scene::Render(sf::RenderWindow* _window)

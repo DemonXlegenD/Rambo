@@ -123,6 +123,7 @@ void SceneGame1::Update(sf::Time _delta) {
 
 	if (!gamePause)
 	{
+		Player player;
 		Scene::Update(_delta);
 		this->Collision(this->player);
 		this->Collision(this->grunt1);
@@ -138,6 +139,15 @@ void SceneGame1::Update(sf::Time _delta) {
 		this->grunt4->GetComponent<Sprite>()->GruntPlayAnimation();
 		this->grunt5->GetComponent<Sprite>()->GruntPlayAnimation();
 		this->grunt6->GetComponent<Sprite>()->GruntPlayAnimation();
+
+		if (!this->player->GetComponent<Player>()->directionPlayer)
+		{
+			this->player->GetComponent<Sprite>()->SetScale(2.5f, 2.5f);
+		}
+		else
+		{
+			this->player->GetComponent<Sprite>()->SetScale(-2.5f, 2.5f);
+		}
 	}
 	else
 	{

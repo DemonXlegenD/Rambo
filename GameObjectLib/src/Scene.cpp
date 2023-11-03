@@ -9,6 +9,8 @@
 #include "Components/Enemy/Turret.h"
 #include "Components/FireBullet.h"
 #include "Components/Rectangle.h"
+#include "Components/Armes.h"
+#include "Components/Slider.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
@@ -93,6 +95,8 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 
 	Player* playerController = gameObject->CreateComponent<Player>();
 
+	Armes* arme = gameObject->CreateComponent<Armes>();
+
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
@@ -155,7 +159,7 @@ GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Tex
 	spriteBullet->SetScale(scalex, scaley);
 
 	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
-
+	fireBullet->setDirection(_player);
 
 	return gameObject;
 
@@ -219,6 +223,40 @@ GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, 
 	return gameObject;
 }
 
+
+GameObject* Scene::CreateSliderGameObject(const std::string& name, float _x, float _y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _maxData) {
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(_x, _y));
+
+	Slider* slider = gameObject->CreateComponent<Slider>();
+	slider->SetMaxData(_maxData);
+	slider->SetData(_data);
+	slider->SetSizeBar(_widthBar, _heightBar);
+	slider->SetSizeCursor(_widthCursor, _heightCursor);
+	slider->SetCursorText(_fontSize);
+	slider->SetTitleText();
+	slider->SetPosition(_x, _y);
+
+	return gameObject;
+}
+
+GameObject* Scene::CreateSliderGameObject(const std::string& name, float _x, float _y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _minData, float _maxData) {
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(_x, _y));
+
+	Slider* slider = gameObject->CreateComponent<Slider>();
+	slider->SetMaxData(_maxData);
+	slider->SetMinData(_minData);
+	slider->SetData(_data);
+	slider->SetSizeBar(_widthBar, _heightBar);
+	slider->SetSizeCursor(_widthCursor, _heightCursor);
+	slider->SetCursorText(_fontSize);
+	slider->SetTitleText();
+	slider->SetPosition(_x, _y);
+
+	return gameObject;
+}
+
 //GameObject* Scene::CreateDecorObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture)
 //{
 //	GameObject* gameObject = CreateGameObject(name);
@@ -238,3 +276,4 @@ GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, 
 //	return gameObject;
 //
 //}
+

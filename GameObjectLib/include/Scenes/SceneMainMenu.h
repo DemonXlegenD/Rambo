@@ -8,21 +8,24 @@ public:
 
 
 	void CreateSceneButtonsMenu();
-	void CreateMenuOption();
 	void CreatePlayer(sf::Texture* texture);
 	void CreateBullet(sf::Texture* textureBullet);
 
 	void Create() override;
 	void Render(sf::RenderWindow* _window) override;
 	void Update(sf::Time _delta) override;
-
+	void activeOption(bool _state);
+	void activeMenu(bool _state);
 	~SceneMainMenu();
 private:
 	GameObject* playButton = nullptr;
 	GameObject* optionsButton = nullptr;
 	GameObject* quitButton = nullptr;
+	GameObject* backButton = nullptr;
 	GameObject* player = nullptr;
 	GameObject* bullet = nullptr;
+	GameObject* sliderVolume = nullptr;
+	GameObject* sliderFPS = nullptr;
 	sf::Texture* texture;
 	sf::Texture* textureBullet;
 };

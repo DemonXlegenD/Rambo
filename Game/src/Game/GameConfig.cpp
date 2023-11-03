@@ -1,10 +1,15 @@
 #include "Game/GameConfig.h"
 #include "SceneManager.h"
+#include "AudioManager.h"
+
 
 GameConfig::GameConfig() {
-	this->FPS = 60;
+	this->FPS = 240;
 	this->window = new sf::RenderWindow(sf::VideoMode(600, 600), "RAMBO", sf::Style::Fullscreen);
 	SceneManager::SetWindow(this->window);
+	SceneManager::SetFps(this->FPS);
+	AudioManager::AddMusic(std::string("valkyrieApocalypse"), std::string("../Sounds/valkyrie.mp3"));
+	AudioManager::Play(std::string("valkyrieApocalypse"));
 }
 
 GameConfig::~GameConfig() {

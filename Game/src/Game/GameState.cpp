@@ -7,11 +7,13 @@ GameState::GameState(sf::RenderWindow* _window, int _FPS) {
 	this->window = _window;
 	this->FPS = _FPS;
 	this->Create();
+	SceneManager::SetFps(this->FPS);
 }
 
 
 void GameState::Preload() {
 	SceneManager::GetActiveScene()->Awake();
+	
 }
 
 void GameState::Create() {

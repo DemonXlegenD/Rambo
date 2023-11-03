@@ -8,12 +8,14 @@ class Player : public Component
 public:
 	enum Direction { Left, Right };
 	Player();
+	void Update(sf::Time _delta);
 	void setDirection(Direction direction);
 	Direction getDirection() { return direction; }
 
-private:
+public:
 	int health;
 	int damage;
 	int boostDamage;
 	Direction direction;
+	bool directionPlayer;
 };

@@ -1,3 +1,3 @@
-FIX: Master
+NEW: Audio
 
-- réparation de la master
+- Options audio slider

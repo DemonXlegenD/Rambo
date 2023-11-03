@@ -8,9 +8,8 @@
 #include "Components/Button.h"
 #include "Scenes/SceneMainMenu.h"
 
-std::map<std::string, sf::Texture> AssetManager::assets;
-
 SceneGame2::SceneGame2(sf::RenderWindow* _window) : Scene(_window) {
+	srand(time(nullptr));
 	this->Awake();
 	Scene::Create();
 }
@@ -52,8 +51,6 @@ void SceneGame2::CreatePlayer() {
 
 void SceneGame2::CreateGrunt()
 {
-
-	srand(time(nullptr));
 	int rand_Grunt1 = rand() % 500 + 100;
 	int rand_Grunt2 = rand() % 500 + 100;
 	int rand_Grunt3 = rand() % 1300 + 600;

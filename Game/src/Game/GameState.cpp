@@ -20,7 +20,7 @@ void GameState::Preload() {
 void GameState::Create() {
 	SceneManager::AddScene("SceneMainMenu", new SceneMainMenu(this->window));
 	SceneManager::AddScene("SceneGame1", new SceneGame1(this->window));
-	//SceneManager::AddScene("SceneGame2", new SceneGame2(this->window));
+	SceneManager::AddScene("SceneGame2", new SceneGame2(this->window));
 	SceneManager::RunScene("SceneMainMenu");
 	
 }

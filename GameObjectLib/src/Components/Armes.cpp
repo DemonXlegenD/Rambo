@@ -40,6 +40,7 @@ void Armes::Shoot() {
 		std::cout << mag << std::endl;
 		GameObject* bullet = SceneManager::GetActiveScene()->CreateBulletGameObject("Bullet", *texture, 2.5f, 2.5f, GetOwner());
 		bullet->SetPosition(GetOwner()->GetPosition());
+		bullet->SetActive(true);
 		if (mag == 0) {
 			std::cout << "JE RENTRE";
 			activeReload = reload;

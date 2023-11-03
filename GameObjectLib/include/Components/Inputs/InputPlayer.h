@@ -9,6 +9,7 @@ class InputPlayer : public Component
 public:
 	InputPlayer();
 
+
 	Command* HandleInput();
 	Command* FireInput();
 	Command* PauseInput();

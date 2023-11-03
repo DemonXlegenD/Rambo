@@ -8,12 +8,12 @@
 #include "Components/Button.h"
 #include "Scenes/SceneMainMenu.h"
 
-std::map<std::string, sf::Texture> AssetManager::assets;
-
 SceneGame1::SceneGame1(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
 	Scene::Create();
+	srand(time(nullptr));
 }
+
 
 bool SceneGame1::PauseMenu(bool gamePause)
 {
@@ -53,8 +53,6 @@ void SceneGame1::CreatePlayer() {
 
 void SceneGame1::CreateGrunt()
 {
-
-	srand(time(nullptr));
 	int rand_Grunt1 = rand() % 700 + 100;
 	int rand_Grunt2 = rand() % 700 + 100;
 	int rand_Grunt3 = rand() % 1500 + 600;

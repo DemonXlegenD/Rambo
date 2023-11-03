@@ -68,8 +68,8 @@ void SceneGame2::CreateGrunt()
 	this->grunt4 = CreateGruntGameObject("Grunt4", rand_Grunt4, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
 	this->grunt5 = CreateGruntGameObject("Grunt5", rand_Grunt5, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
 	this->grunt6 = CreateGruntGameObject("Grunt6", rand_Grunt6, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt7 = CreateGruntGameObject("Grunt6", rand_Grunt7, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
-	this->grunt8 = CreateGruntGameObject("Grunt6", rand_Grunt8, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	this->grunt7 = CreateGruntGameObject("Grunt7", rand_Grunt7, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	this->grunt8 = CreateGruntGameObject("Grunt8", rand_Grunt8, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
 }
 
 void SceneGame2::CreateTurret(sf::Texture imageTurret)
@@ -157,7 +157,7 @@ void SceneGame2::Update(sf::Time _delta) {
 		this->Collision(this->grunt6);
 		this->Collision(this->grunt7);
 		this->Collision(this->grunt8);
-		//this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
+		this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
 		this->grunt1->GetComponent<Sprite>()->GruntPlayAnimation();
 		this->grunt2->GetComponent<Sprite>()->GruntPlayAnimation();
 		this->grunt3->GetComponent<Sprite>()->GruntPlayAnimation();

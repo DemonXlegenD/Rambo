@@ -14,9 +14,9 @@ public:
 	void SetTexture(const sf::Texture& _texture) { texture = _texture; }
 	void SetScale(float _scalex, float _scaley) { scalex = _scalex; scaley = _scaley; }
 	
-	/*void LoadPlayAnimation();
+	void LoadPlayAnimation();
 	void PlayerPlayAnimation();
-	void PlayerPlayAnimationRun();*/
+	void PlayerPlayAnimationRun();
 	void LoadPlayAnimationGrunt();
 	void GruntPlayAnimation();
 	void GruntPlayAnimationRun();

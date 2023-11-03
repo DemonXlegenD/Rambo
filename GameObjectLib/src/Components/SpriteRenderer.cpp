@@ -14,7 +14,7 @@ Sprite::Sprite()
     currentFrame = 0;
     frameDuration = 0.2f;
     animationClock.restart();
-    //LoadPlayAnimation();
+    LoadPlayAnimation();
     LoadPlayAnimationGrunt();
 
 }
@@ -79,7 +79,7 @@ void Sprite::GruntPlayAnimation()
 {
     if (animationClock.getElapsedTime().asSeconds() > frameDuration)
     {
-        currentFrame = (currentFrame + 1) % animPlayer.size();
+        currentFrame = (currentFrame + 1) % animGrunt.size();
         texture = animGrunt[currentFrame];
         animationClock.restart();
     }
@@ -89,7 +89,7 @@ void Sprite::GruntPlayAnimationRun()
 {
     if (animationClock.getElapsedTime().asSeconds() > frameDuration)
     {
-        currentFrame = (currentFrame + 1) % animPlayerRun.size();
+        currentFrame = (currentFrame + 1) % animGruntRun.size();
         texture = animGruntRun[currentFrame];
         animationClock.restart();
     }

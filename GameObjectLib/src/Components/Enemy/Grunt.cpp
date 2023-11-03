@@ -12,8 +12,8 @@ void Grunt::setDirection(Direction newDirection) {
 void Grunt::MouvementGrunt() {
     srand(time(nullptr));
     //int rand_attack = rand() % 3 + 1;
-    int rand_mouve = rand() % 2 + 1;
-
+    //int rand_mouve = rand() % 2 + 1;
+    int rand_mouve = 2;
     if (rand_mouve == 1) {
         GetOwner()->GetComponent<Sprite>()->GruntPlayAnimation();
 

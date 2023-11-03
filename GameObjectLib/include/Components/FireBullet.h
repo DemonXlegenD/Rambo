@@ -9,7 +9,7 @@ public:
 	enum DirectionBullet { Left, Right };
 	DirectionBullet dirBullet = DirectionBullet::Right;
 	FireBullet() = default;
-	void setDirection(DirectionBullet newDir);
+	void setDirection(GameObject* _player);
 	void Update(sf::Time _delta) override;
 
 };

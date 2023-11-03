@@ -8,6 +8,7 @@
 #include "Components/Enemy/Grunt.h"
 #include "Components/FireBullet.h"
 #include "Components/Rectangle.h"
+#include "Components/Armes.h"
 
 sf::RenderWindow* Scene::window = nullptr;
 
@@ -92,6 +93,8 @@ GameObject* Scene::CreateCharacterGameObject(const std::string& name, float posi
 
 	Player* playerController = gameObject->CreateComponent<Player>();
 
+	Armes* arme = gameObject->CreateComponent<Armes>();
+
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
@@ -135,7 +138,7 @@ GameObject* Scene::CreateBulletGameObject(const std::string& name, const sf::Tex
 	spriteBullet->SetScale(scalex, scaley);
 
 	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
-
+	fireBullet->setDirection(_player);
 
 	return gameObject;
 

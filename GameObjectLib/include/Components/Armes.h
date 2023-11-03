@@ -4,13 +4,15 @@
 class Armes : public Component
 {
 public :
-	Armes(float fireRate = 1.f, int magazine = 10);
+	Armes();
 	~Armes();
+
+
 	void Update(sf::Time _delta) override;
 	void Shoot();
 private :
 	float fireRate = 1.f;
-	float fireCooldown = 0;
+	float fireCooldown = 0.f;
 	int mag = 10;
 	int maxAmo = 10;
 	float reload = 1.f;

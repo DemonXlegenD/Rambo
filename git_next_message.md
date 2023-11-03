@@ -1,3 +1,3 @@
-NEW: Nettoyage code
+FIX: foreach -> for 
 
-- Nettoyage de tout le code du Games
+- Transformation d'une boucle foreach en for

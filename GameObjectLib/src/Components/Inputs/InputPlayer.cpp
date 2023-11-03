@@ -5,12 +5,27 @@
 #include "SceneManager.h"
 
 InputPlayer::InputPlayer() {
-	KeyD_ = new MoveToRightCommand(this);
-	KeyQ_ = new MoveToLeftCommand(this);
-	KeySpace_ = new MoveToRightBulletCommand(this);
-	KeyEscape_ = new GamePause(this);
+	this->player = nullptr;
+	this->KeyD_ = new MoveToRightCommand(this);
+	this->KeyQ_ = new MoveToLeftCommand(this);
+	this->KeySpace_ = new MoveToRightBulletCommand(this);
+	this->KeyEscape_ = new GamePause(this);
+	this->KeyZ_ = new JumpCommand(this);
 }
 
+void InputPlayer::Update(sf::Time _delta) {
+	Component::Update(_delta);
+
+	Command* commandMoves = this->HandleInput();
+	if (commandMoves) {
+		commandMoves->Execute(_delta);
+	}
+	Command* fireBullet = this->FireInput();
+	if (fireBullet) {
+		fireBullet->Execute(_delta);
+	}
+
+}
 
 Command* InputPlayer::HandleInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) return KeyQ_;
@@ -18,6 +33,11 @@ Command* InputPlayer::HandleInput() {
 
 	return nullptr;
 
+}
+
+Command* InputPlayer::JumpInput() {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) return KeyZ_;
+	return nullptr;
 }
 
 Command* InputPlayer::FireInput() {
@@ -40,28 +60,44 @@ Command* InputPlayer::PauseInput() {
 	return nullptr;
 }
 
-
-void InputPlayer::MoveRight()
+void InputPlayer::MoveRight(sf::Time _delta)
 {
-
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right + Maths::Vector2f(3, 0) /* La faut mettre le delta time et c'est bon*/);
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right + Maths::Vector2f(25, 0) * _delta.asSeconds() * speed);
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Right);
 	GetOwner()->GetComponent<Sprite>()->PlayerPlayAnimationRun();
 }
 
-void InputPlayer::MoveLeft()
+void InputPlayer::MoveLeft(sf::Time _delta)
 {
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Left + Maths::Vector2f(-3, 0));
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Left + Maths::Vector2f(-25, 0) * _delta.asSeconds() * speed);
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Left);
 	GetOwner()->GetComponent<Sprite>()->PlayerPlayAnimationRun();
 }
 
+void InputPlayer::Jump(sf::Time _delta)
+{
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Down + Maths::Vector2f(0, -80) * _delta.asSeconds() * speed);
+
+	//if (Player::GetIsOnGround())
+	//{
+	//	std::cout << "jump" << std::endl;
+
+	//}
+}
+
 void InputPlayer::MoveRightBullet()
 {
-	player = SceneManager::GetActiveScene()->getGameObject("Player");
+	player = SceneManager::GetActiveScene()->GetGameObject("Player");
 	player->GetComponent<Armes>()->Shoot();
 }
 
 void InputPlayer::GamePauseMenu()
 {
+}
+
+InputPlayer::~InputPlayer() {
+	delete 	this->KeyD_;
+	delete 	this->KeyQ_;
+	delete 	this->KeySpace_;
+	delete 	this->KeyEscape_;
 }

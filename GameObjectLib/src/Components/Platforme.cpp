@@ -5,7 +5,9 @@ Platforme::Platforme() {
 	this->width = 0;
 	this->scaleX = 0;
 	this->scaleY = 0;
+	this->rectangle.setFillColor(sf::Color::Transparent);
 };
+
 void Platforme::SetPlatforme() {
 
 	rectangle = sf::RectangleShape(sf::Vector2f(width, height));

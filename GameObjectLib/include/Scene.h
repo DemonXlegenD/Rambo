@@ -5,9 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
-
 #include "Components/Player.h"
-
 #include "Components/Inputs/InputPlayer.h"
 
 
@@ -25,7 +23,14 @@ public:
 
 	virtual void Awake();
 
-	GameObject* getGameObject(std::string objectName) 
+	void RemoveGameObject(GameObject* objectToRemove) {
+		gameObjects.erase(std::remove_if(gameObjects.begin(), gameObjects.end(),
+			[objectToRemove](GameObject* obj) {
+				return obj == objectToRemove;
+			}), gameObjects.end());
+	}
+
+	GameObject* GetGameObject(std::string objectName) 
 	{
 		for (GameObject* gameObject : gameObjects) {
 			if (gameObject->GetName() == objectName) {
@@ -36,14 +41,6 @@ public:
 	}
 
 	GameObject* CreateGameObject(const std::string& _name);
-
-	//PLAYER 
-	GameObject* CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley);
-	GameObject* CreateBulletGameObject(const std::string& name, const sf::Texture textureBullet, float scalex, float scaley, GameObject* _player);
-
-	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
-
-	GameObject* CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
 	//GAME ELEMENT
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
@@ -56,7 +53,7 @@ public:
 	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _maxData);
 	GameObject* CreateSliderGameObject(const std::string& name, float x, float y, float _widthBar, float _heightBar, float _widthCursor, float _heightCursor, unsigned int _fontSize, float _data, float _minData, float _maxData);
 
-	GameObject* CreateDecorGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
+	//GameObject* CreateDecorGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
 
 protected:

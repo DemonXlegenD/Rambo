@@ -8,8 +8,9 @@ class FireBullet : public Component
 public:
 	enum DirectionBullet { Left, Right };
 	DirectionBullet dirBullet = DirectionBullet::Right;
-	FireBullet() = default;
+	FireBullet();
 	void setDirection(GameObject* _player);
 	void Update(sf::Time _delta) override;
-
+private:
+	GameObject* player;
 };

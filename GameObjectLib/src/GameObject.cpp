@@ -1,7 +1,11 @@
 #include "GameObject.h"
+#include <iostream>
 
+GameObject::GameObject() {
+	this->isActive = true;
+}
 void GameObject::AddComponent(Component* _component)
-{
+{	
 	_component->SetOwner(this);
 	components.push_back(_component);
 }
@@ -30,7 +34,7 @@ void GameObject::Update(sf::Time _delta) const
 
 void GameObject::Render(sf::RenderWindow* _window) const
 {
-	if (isActive) {
+	if (this->isActive) {
 		for (Component* const& component : components)
 		{
 			component->Render(_window);

@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 #include "Scenes/SceneGame1.h"
+#include "Scenes/SceneGame2.h"
 #include "Scenes/SceneMainMenu.h"
 
 class SceneManager

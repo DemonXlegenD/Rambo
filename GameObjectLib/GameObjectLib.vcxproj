@@ -44,9 +44,11 @@
     <ClInclude Include="include\Scenes\SceneMainMenu.h" />
     <ClInclude Include="include\Components\Inputs\InputPlayer.h" />
     <ClInclude Include="include\Components\Rectangle.h" />
+    <ClInclude Include="include\Components\Enemy\Turret.h" /> 
     <ClInclude Include="include\Components\Slider.h" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup> 
+    <ClCompile Include="src\Scenes\SceneGame2.cpp" />
     <ClCompile Include="src\Components\Armes.cpp" />
     <ClCompile Include="src\Components\Slider.cpp" />
     <ClCompile Include="src\AudioManager.cpp" />
@@ -72,6 +74,7 @@
     <ClCompile Include="src\Components\SpriteRenderer.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Maths\Vector2.cpp" />
+    <ClCompile Include="src\Components\Enemy\Turret.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

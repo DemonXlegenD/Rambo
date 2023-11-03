@@ -27,6 +27,11 @@ void SceneManager::RunScene(std::string _key) {
 			std::cout << "game" << std::endl;
 			sceneGame1->Create();
 		}
+
+		else if (SceneGame2* sceneGame2 = dynamic_cast<SceneGame2*>(SceneManager::activeScene)) {
+			std::cout << "game2" << std::endl;
+			sceneGame2->Create();
+		}
 		else {
 			std::cout << "rien" << std::endl;
 		}

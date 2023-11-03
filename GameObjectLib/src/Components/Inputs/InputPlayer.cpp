@@ -42,14 +42,17 @@ Command* InputPlayer::PauseInput() {
 
 void InputPlayer::MoveRight()
 {
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right /* La faut mettre le delta time et c'est bon*/);
+
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right + Maths::Vector2f(3, 0) /* La faut mettre le delta time et c'est bon*/);
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Right);
+	GetOwner()->GetComponent<Sprite>()->PlayerPlayAnimationRun();
 }
 
 void InputPlayer::MoveLeft()
 {
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Left);
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Left + Maths::Vector2f(-3, 0));
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Left);
+	GetOwner()->GetComponent<Sprite>()->PlayerPlayAnimationRun();
 }
 
 void InputPlayer::MoveRightBullet()

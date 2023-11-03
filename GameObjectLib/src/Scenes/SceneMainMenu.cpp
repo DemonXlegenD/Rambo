@@ -66,8 +66,8 @@ void SceneMainMenu::CreateSceneButtonsMenu () {
 
 void SceneMainMenu::Update(sf::Time _delta) {
 	Scene::Update(_delta);
-	if (playButton->GetComponent<Button>()->IsClicked() && playButton->GetActive()) {
-		SceneManager::RunScene("SceneGame1");
+	if (playButton->GetComponent<Button>()->IsClicked()) {
+		SceneManager::RunScene("SceneGame2");
 	}
 	if (optionsButton->GetComponent<Button>()->IsClicked() && optionsButton->GetActive()) {
 		this->activeMenu(false);

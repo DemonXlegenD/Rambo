@@ -16,6 +16,10 @@ public:
 	
 	void LoadPlayAnimation();
 	void PlayerPlayAnimation();
+	void PlayerPlayAnimationRun();
+	void LoadPlayAnimationGrunt();
+	void GruntPlayAnimation();
+	void GruntPlayAnimationRun();
 	
 
 	void Render(sf::RenderWindow* _window) override;
@@ -25,7 +29,10 @@ private:
 	sf::Texture texture;
 	sf::IntRect* rectTexture;
 	float scalex, scaley;
-	std::vector<sf::Texture> anim;
+	std::vector<sf::Texture> animPlayer;
+	std::vector<sf::Texture> animPlayerRun;
+	std::vector<sf::Texture> animGrunt;
+	std::vector<sf::Texture> animGruntRun;
 	sf::Sprite sprite;
 	int currentFrame;
 	float frameDuration;

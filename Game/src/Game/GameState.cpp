@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "SceneMainMenu.h"
 #include "SceneGame1.h"
+#include "SceneGame2.h"
 GameState::GameState(sf::RenderWindow* _window, int _FPS) {
 	this->window = _window;
 	this->FPS = _FPS;
@@ -17,8 +18,10 @@ void GameState::Preload() {
 
 void GameState::Create() {
 	SceneManager::AddScene("SceneMainMenu", new SceneMainMenu(this->window));
+	//SceneManager::AddScene("SceneGame1", new SceneGame1(this->window));
+	SceneManager::AddScene("SceneGame2", new SceneGame2(this->window));
 	SceneManager::RunScene("SceneMainMenu");
-	SceneManager::AddScene("SceneGame1", new SceneGame1(this->window));
+	
 }
 
 

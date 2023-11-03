@@ -43,6 +43,8 @@ public:
 
 	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
+	GameObject* CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
+
 	//GAME ELEMENT
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
 	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture, sf::IntRect* _rectSource);

@@ -1,6 +1,7 @@
 #include "Components/Inputs/InputPlayer.h"
 #include "Commands/CommandsPlayer.h"
 #include "Components/Armes.h"
+#include "Components/SpriteRenderer.h"
 #include "SceneManager.h"
 
 InputPlayer::InputPlayer() {

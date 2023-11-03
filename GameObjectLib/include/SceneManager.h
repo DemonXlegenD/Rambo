@@ -35,7 +35,8 @@ public:
 
 	static sf::RenderWindow* GetWindow() { return window; }
 	static void SetWindow(sf::RenderWindow* _window) { window = _window; }
-
+	static int GetWindowWidth() { return window->getSize().x; }
+	static int GetWindowHeight() { return window->getSize().y; }
 	~SceneManager();
 
 private:

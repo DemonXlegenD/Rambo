@@ -5,5 +5,5 @@ bool SquareCollider::IsColliding(const SquareCollider& _colliderA, const SquareC
 {
 	const Maths::Vector2f positionA = _colliderA.GetOwner()->GetPosition();
 	const Maths::Vector2f positionB = _colliderB.GetOwner()->GetPosition();
-	return (positionA.x < positionB.x + _colliderB.GetWidth() && positionA.x + _colliderA.GetWidth() > positionB.x && positionA.y < positionB.y + _colliderB.GetHeight() && positionA.y + _colliderA.GetHeight() > positionB.y);
+	return (positionA.x - _colliderA.GetWidth() / 2  < positionB.x + _colliderB.GetWidth() / 2 && positionA.x + _colliderA.GetWidth() / 2 > positionB.x - _colliderB.GetWidth() / 2 && positionA.y < positionB.y + _colliderB.GetHeight() && positionA.y + _colliderA.GetHeight() > positionB.y);
 }

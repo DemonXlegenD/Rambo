@@ -1,3 +1,3 @@
-NEW: Audio
+ENH: Amélioration Origin
 
-- Options audio slider
+- Set Origin centré, colliders modifiés

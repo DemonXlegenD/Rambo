@@ -22,12 +22,10 @@ bool SceneGame2::PauseMenu(bool gamePause)
 };
 
 void SceneGame2::CreateSceneGameButtons() {
-	float widthScreen = SceneManager::GetWindow()->getSize().x;
-	float heightScreen = SceneManager::GetWindow()->getSize().y;
-	pausePlayButton = CreateButtonGameObject("Continue", widthScreen / 2, heightScreen / 3.5, 50);
-	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", widthScreen / 2, heightScreen / 2, 50);
-	pauseOptionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 1.5, 50);
-	pauseQuitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.2, 50);
+	pausePlayButton = CreateButtonGameObject("Continue", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 3.5, 50);
+	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 2, 50);
+	pauseOptionsButton = CreateButtonGameObject("Options", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 1.5, 50);
+	pauseQuitButton = CreateButtonGameObject("Quit", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 1.2, 50);
 
 
 }
@@ -80,8 +78,8 @@ void SceneGame2::CreateTurret(sf::Texture imageTurret)
 	}
 
 
-	this->turret1 = CreateGruntGameObject("Turret1", 10, 100.f, 2.5f, 2.5f, imageTurret);
-	this->turret2 = CreateGruntGameObject("Turret2", 1800, 100.f, 2.5f, 2.5f, imageTurret);
+	this->turret1 = CreateGruntGameObject("Turret1", 100.f, 100.f, 2.5f, 2.5f, imageTurret);
+	this->turret2 = CreateGruntGameObject("Turret2", 1800.f, 100.f, 2.5f, 2.5f, imageTurret);
 
 	this->turret1->GetComponent<Gravity>()->Stop();
 	this->turret2->GetComponent<Gravity>()->Stop();
@@ -202,12 +200,12 @@ void SceneGame2::CreatePlatform(sf::Texture textureplatforme) {
 	}
 
 	sf::IntRect rectSource(200, 0, 95, 40);
-	this->platforme1 = CreatePlatformObject("platforme1", 100.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme2 = CreatePlatformObject("platforme2", 600.f, 400.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme3 = CreatePlatformObject("platforme3", 900.f, 400.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme4 = CreatePlatformObject("platforme4", 1400.f, 500.f, 4.f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme5 = CreatePlatformObject("platforme5", 600.f, 600.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
-	this->platforme6 = CreatePlatformObject("platforme6", 900.f, 600.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme1 = CreatePlatformObject("platforme1", 300.f, 650.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme2 = CreatePlatformObject("platforme2", 800.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme3 = CreatePlatformObject("platforme3", 1100.f, 500.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme4 = CreatePlatformObject("platforme4", 1600.f, 650.f, 4.f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme5 = CreatePlatformObject("platforme5", 800.f, 800.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
+	this->platforme6 = CreatePlatformObject("platforme6", 1100.f, 800.f, 3.75f, 2.f, textureplatforme, new sf::IntRect(rectSource));
 }
 
 void SceneGame2::CreateBackground()
@@ -218,7 +216,7 @@ void SceneGame2::CreateBackground()
 	{
 		std::cout << "pas d'image" << std::endl;
 	}
-	GameObject* background1 = CreateBackgroundGameObject("Background1", 0, 0, backgroundTexture1);
+	GameObject* background1 = CreateBackgroundGameObject("Background1", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 2, backgroundTexture1);
 };
 
 void SceneGame2::Render(sf::RenderWindow* _window) {

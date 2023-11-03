@@ -105,7 +105,7 @@ void Sprite::Render(sf::RenderWindow* _window)
     const auto position = GetOwner()->GetPosition();
 
 	sf::Sprite sprite(texture);
-	sprite.setPosition(position.x, position.y);
+	
 	if (this->rectTexture) {
 		sprite.setTextureRect(*rectTexture);
 	}
@@ -114,6 +114,7 @@ void Sprite::Render(sf::RenderWindow* _window)
 	}
 
 	sprite.setScale(scalex, scaley);
-
+	sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+    sprite.setPosition(position.x, position.y);
 	_window->draw(sprite);
 }

@@ -21,8 +21,9 @@ void SceneMainMenu::Create() {
 	{
 		std::cout << "pas d'image" << std::endl;
 	}
-	GameObject* background1 = CreateBackgroundGameObject("Background1", 0, 0, backgroundTexture1);
-	GameObject* background2 = CreateBackgroundGameObject("Background2", 0, 0, backgroundTexture2);
+
+	GameObject* background1 = CreateBackgroundGameObject("Background1", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 2, backgroundTexture1);
+	GameObject* background2 = CreateBackgroundGameObject("Background2", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 2, backgroundTexture2);
 	this->CreateSceneButtonsMenu();
 	this->activeOption(false);
 	this->activeMenu(true);
@@ -67,7 +68,7 @@ void SceneMainMenu::CreateSceneButtonsMenu () {
 void SceneMainMenu::Update(sf::Time _delta) {
 	Scene::Update(_delta);
 	if (playButton->GetComponent<Button>()->IsClicked()) {
-		SceneManager::RunScene("SceneGame2");
+		SceneManager::RunScene("SceneGame1");
 	}
 	if (optionsButton->GetComponent<Button>()->IsClicked() && optionsButton->GetActive()) {
 		this->activeMenu(false);

@@ -9,9 +9,6 @@ public:
 	SquareCollider() = default;
 	~SquareCollider() override = default;
 
-	float width = 1.0f;
-	float height = 1.0f;
-
 	float GetWidth() const { return width; }
 	float GetHeight() const { return height; }
 
@@ -19,4 +16,9 @@ public:
 	void SetHeight(const float _height) { height = _height; }
 
 	static bool IsColliding(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
+	static bool IsCollidingGround(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
+
+private:
+	float width = 1.0f;
+	float height = 1.0f;
 };

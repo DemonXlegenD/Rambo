@@ -14,7 +14,7 @@ public:
 	void Awake() override;
 
 	void CreatePlayer();
-	void CreateGrunt(sf::Texture texture);
+	void CreateGrunt();
 	void SpawnGrunt();
 
 	void Collision(GameObject* _entity);

@@ -14,7 +14,7 @@ public:
 	void Awake() override;
 
 	void CreatePlayer();
-	void CreateGrunt(sf::Texture texture);
+	void CreateGrunt();
 	void CreateTurret(sf::Texture texture);
 	void SpawnGrunt();
 

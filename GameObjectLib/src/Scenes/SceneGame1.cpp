@@ -36,7 +36,7 @@ void SceneGame1::Create() {
 	Scene::Create();
 	CreateBackground();
 	this->CreatePlayer();
-	this->CreateGrunt(sf::Texture());
+	this->CreateGrunt();
 	CreatePlatform(sf::Texture());
 }
 
@@ -48,13 +48,8 @@ void SceneGame1::CreatePlayer() {
 	player = CreateCharacterGameObject("Player", 400.f, 400.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);
 }
 
-void SceneGame1::CreateGrunt(sf::Texture imageGrunt) 
+void SceneGame1::CreateGrunt() 
 {
-	std::cout << "pas d'image" << std::endl;
-	if (!imageGrunt.loadFromFile("../assets/Sprite/enemy/grunt.png")) 
-	{
-		std::cout << "pas d'image ennemy" << std::endl;
-	}
 
 	srand(time(nullptr));
 	int rand_Grunt1 = rand() % 500 + 100;
@@ -64,32 +59,13 @@ void SceneGame1::CreateGrunt(sf::Texture imageGrunt)
 	int rand_Grunt5 = rand() % 1800 + 1400;
 	int rand_Grunt6 = rand() % 1800 + 1400;
 	
-	this->grunt1 = CreateGruntGameObject("Grunt1", rand_Grunt1, 100.f,  2.5f, 2.5f, imageGrunt);
-	this->grunt2 = CreateGruntGameObject("Grunt2", rand_Grunt2, 100.f,  2.5f, 2.5f, imageGrunt);
-	this->grunt3 = CreateGruntGameObject("Grunt3", rand_Grunt3, 100.f,  2.5f, 2.5f, imageGrunt);
-	this->grunt4 = CreateGruntGameObject("Grunt4", rand_Grunt4, 100.f,  2.5f, 2.5f, imageGrunt);
-	this->grunt5 = CreateGruntGameObject("Grunt5", rand_Grunt5, 100.f,  2.5f, 2.5f, imageGrunt);
-	this->grunt6 = CreateGruntGameObject("Grunt6", rand_Grunt6, 100.f,  2.5f, 2.5f, imageGrunt);
+	this->grunt1 = CreateGruntGameObject("Grunt1", rand_Grunt1, 100.f,  2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	this->grunt2 = CreateGruntGameObject("Grunt2", rand_Grunt2, 100.f,  2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	this->grunt3 = CreateGruntGameObject("Grunt3", rand_Grunt3, 100.f,  2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	this->grunt4 = CreateGruntGameObject("Grunt4", rand_Grunt4, 100.f,  2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	this->grunt5 = CreateGruntGameObject("Grunt5", rand_Grunt5, 100.f,  2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
+	this->grunt6 = CreateGruntGameObject("Grunt6", rand_Grunt6, 100.f,  2.5f, 2.5f, AssetManager::GetAsset("Grunt0"));
 }
-
-//void SceneGame1::SpawnGrunt()
-//{
-//	srand(time(nullptr));
-//	int rand_Grunt1 = rand() % 500 + 100;
-//	int rand_Grunt2 = rand() % 500 + 100;
-//	int rand_Grunt3 = rand() % 1300 + 600;
-//	int rand_Grunt4 = rand() % 1300 + 600;
-//	int rand_Grunt5 = rand() % 1800 + 1400;
-//	int rand_Grunt6 = rand() % 1800 + 1400;
-//
-//
-//	this->CreateGrunt(sf::Texture(), rand_Grunt1, 500.f);
-//	this->CreateGrunt(sf::Texture(), rand_Grunt2, 500.f);
-//	this->CreateGrunt(sf::Texture(), rand_Grunt3, 600.f);
-//	this->CreateGrunt(sf::Texture(), rand_Grunt4, 600.f);
-//	this->CreateGrunt(sf::Texture(), rand_Grunt5, 500.f);
-//	this->CreateGrunt(sf::Texture(), rand_Grunt6, 500.f);
-//}
 
 void SceneGame1::Collision(GameObject* _entity)
 {	//TODO: faire un vector
@@ -155,7 +131,13 @@ void SceneGame1::Update(sf::Time _delta) {
 		this->Collision(this->grunt4);
 		this->Collision(this->grunt5);
 		this->Collision(this->grunt6);
-		this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
+		//this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
+		this->grunt1->GetComponent<Sprite>()->GruntPlayAnimation();
+		this->grunt2->GetComponent<Sprite>()->GruntPlayAnimation();
+		this->grunt3->GetComponent<Sprite>()->GruntPlayAnimation();
+		this->grunt4->GetComponent<Sprite>()->GruntPlayAnimation();
+		this->grunt5->GetComponent<Sprite>()->GruntPlayAnimation();
+		this->grunt6->GetComponent<Sprite>()->GruntPlayAnimation();
 	}
 	else
 	{

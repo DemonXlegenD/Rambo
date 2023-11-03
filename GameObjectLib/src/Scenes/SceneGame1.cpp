@@ -48,7 +48,7 @@ void SceneGame1::CreatePlayer() {
 	player = CreateCharacterGameObject("Player", 400.f, 400.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);
 }
 
-void SceneGame1::CreateGrunt(sf::Texture imageGrunt) 
+void SceneGame1::CreateGrunt(sf::Texture imageGrunt)
 {
 	std::cout << "pas d'image" << std::endl;
 	if (!imageGrunt.loadFromFile("../assets/Sprite/enemy/grunt.png")) 
@@ -95,7 +95,8 @@ void SceneGame1::Collision(GameObject* _entity)
 {
 	if (SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme1->GetComponent<SquareCollider>())) ||
 		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme2->GetComponent<SquareCollider>())) ||
-		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme3->GetComponent<SquareCollider>()))
+		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme3->GetComponent<SquareCollider>())) ||
+		SquareCollider::IsColliding(*(_entity->GetComponent<SquareCollider>()), *(platforme4->GetComponent<SquareCollider>()))
 		) 
 	{
 		_entity->GetComponent<Gravity>()->Stop();
@@ -146,6 +147,7 @@ void SceneGame1::Update(sf::Time _delta) {
 
 	if (!gamePause)
 	{
+		Player player;
 		Scene::Update(_delta);
 		this->Collision(this->player);
 		this->Collision(this->grunt1);
@@ -155,6 +157,15 @@ void SceneGame1::Update(sf::Time _delta) {
 		this->Collision(this->grunt5);
 		this->Collision(this->grunt6);
 		this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
+
+		if (!this->player->GetComponent<Player>()->directionPlayer)
+		{
+			this->player->GetComponent<Sprite>()->SetScale(2.5f, 2.5f);
+		}
+		else
+		{
+			this->player->GetComponent<Sprite>()->SetScale(-2.5f, 2.5f);
+		}
 	}
 	else
 	{

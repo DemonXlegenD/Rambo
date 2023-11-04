@@ -1,14 +1,14 @@
-#include "Scenes/SceneSuccessMenu.h"
+#include "Scenes/SceneRankMenu.h"
 #include "SceneManager.h"
 #include "Components/Button.h"
 #include "AssetManager.h"
 
-SceneSuccessMenu::SceneSuccessMenu(sf::RenderWindow* _window) : Scene(_window) {
+SceneRankMenu::SceneRankMenu(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
 	Scene::Create();
 }
 
-void SceneSuccessMenu::Create() {
+void SceneRankMenu::Create() {
 	Scene::Create();
 	sf::Texture backgroundTexture2;
 
@@ -20,43 +20,42 @@ void SceneSuccessMenu::Create() {
 	this->CreateSceneButtonsMenu();
 }
 
-void SceneSuccessMenu::Render(sf::RenderWindow* _window) {
+void SceneRankMenu::Render(sf::RenderWindow* _window) {
 	Scene::Render(_window);
 }
 
-void SceneSuccessMenu::CreateSceneButtonsMenu() {
+void SceneRankMenu::CreateSceneButtonsMenu() {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;
-	successButton = CreateButtonGameObject("Success", widthScreen / 2, heightScreen / 10, 50);
+	rankButton = CreateButtonGameObject("Rank", widthScreen / 2, heightScreen / 13, 50);
 	backButton = CreateButtonGameObject("Retour", widthScreen / 15, heightScreen / 13, 20);
-	firstSuccessButton = CreateButtonGameObject("\tNombre de partie gagne", widthScreen / 2, heightScreen / 3.5, 70);
 
-	float posX = firstSuccessButton->GetPosition().x;
-	float posY = firstSuccessButton->GetPosition().y;
+	sf::Texture TextureTrophee;
 
-	sf::Texture textureMedaille;
-
-	if (!textureMedaille.loadFromFile("../assets/Sprite/rank.png"))
+	if (!TextureTrophee.loadFromFile("../assets/Sprite/trophee.png"))
 	{
 		std::cout << "pas d'image" << std::endl;
 	}
 
-	GameObject* textureMedialle1 = CreateDecorObject("TextureMedialle1", posX * 0.55, posY * 1.04, 0.2, 0.2, textureMedaille);
+	for (int i = 1; i <= 10; i++)
+	{
+		listRank = CreateButtonGameObject("Rank " + std::to_string(i), widthScreen / 2, heightScreen / 11 + i * 95, 27);
+		float posX = listRank->GetPosition().x;
+		float posY = listRank->GetPosition().y;
+		GameObject* imagesRank = CreateDecorObject("TextureTrophee1", posX * 0.94, posY * 1.01, 0.1, 0.1, TextureTrophee);
+	}
 
 }
 
-void SceneSuccessMenu::SetOrigin() {
+void SceneRankMenu::SetOrigin() {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;
 
 	text.setOrigin(sf::Vector2f(widthScreen / 2, heightScreen / 2));
 }
 
-void SceneSuccessMenu::Update(sf::Time _delta) {
+void SceneRankMenu::Update(sf::Time _delta) {
 	Scene::Update(_delta);
-	if (firstSuccessButton->GetComponent<Button>()->IsClicked()) {
-		std::cout << "texte" << std::endl;
-	}
 	if (backButton->GetComponent<Button>()->IsClicked()) {
 		SceneManager::RunScene("SceneMainMenu");
 	}

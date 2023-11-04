@@ -1,10 +1,10 @@
 #pragma once
 #include "Scene.h"
 
-class SceneSuccessMenu : public Scene
+class SceneRankMenu : public Scene
 {
 public:
-	SceneSuccessMenu(sf::RenderWindow* window);
+	SceneRankMenu(sf::RenderWindow* window);
 
 	void CreateSceneButtonsMenu();
 
@@ -14,10 +14,10 @@ public:
 	void Render(sf::RenderWindow* _window) override;
 	void Update(sf::Time _delta) override;
 private:
-	GameObject* successButton = nullptr;
+	GameObject* rankButton = nullptr;
 	GameObject* backButton = nullptr;
-	GameObject* firstSuccessButton = nullptr;
-	GameObject* firstSuccessBonusButton = nullptr;
+	GameObject* listRank = nullptr;
 	sf::Text text;
 };
+
 

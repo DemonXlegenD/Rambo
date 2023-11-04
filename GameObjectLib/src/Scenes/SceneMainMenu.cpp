@@ -41,6 +41,7 @@ void SceneMainMenu::CreateSceneButtonsMenu () {
 	optionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 2, 20);
 	quitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.5, 50);
 	successButton = CreateButtonGameObject("Success", widthScreen / 1.1, heightScreen / 10, 25);
+	rankButton = CreateButtonGameObject("Rank", widthScreen / 1.2, heightScreen / 10, 25);
 	backButton = CreateButtonGameObject("Back", widthScreen / 10, heightScreen / 10, 20);
 	sliderFPS = CreateSliderGameObject("SliderFPS", widthScreen / 2, heightScreen / 2, 1200, 40, 50, 50, 20, SceneManager::GetFps(), SceneManager::GetMinFps(), SceneManager::GetMaxFps());
 	sliderVolume = CreateSliderGameObject("SliderVolume", widthScreen / 2, heightScreen / 1.5, 1200, 40, 50, 50, 20, AudioManager::GetVolume(), AudioManager::GetMaxVolume());
@@ -64,6 +65,9 @@ void SceneMainMenu::Update(sf::Time _delta) {
 	}
 	if (successButton->GetComponent<Button>()->IsClicked() && successButton->GetActive()) {
 		SceneManager::RunScene("SceneSuccessMenu");
+	}
+	if (rankButton->GetComponent<Button>()->IsClicked() && rankButton->GetActive()) {
+		SceneManager::RunScene("SceneRankMenu");
 	}
 	SceneManager::SetFps(sliderFPS->GetComponent<Slider>()->GetDataInt());
 	AudioManager::SetVolume(sliderVolume->GetComponent<Slider>()->GetDataInt());

@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "SceneMainMenu.h"
 #include "SceneSuccessMenu.h"
+#include "SceneRankMenu.h"
 #include "SceneGame1.h"
 #include "SceneGame2.h"
 
@@ -22,6 +23,7 @@ void GameState::Create() {
 	SceneManager::AddScene("SceneGame1", new SceneGame1(this->window));
 	SceneManager::AddScene("SceneGame2", new SceneGame2(this->window));
 	SceneManager::AddScene("SceneSuccessMenu", new SceneSuccessMenu(this->window));
+	SceneManager::AddScene("SceneRankMenu", new SceneRankMenu(this->window));
 	SceneManager::RunScene("SceneMainMenu");
 	
 }

@@ -33,22 +33,7 @@ void SceneGameAbstract::CreatePauseMenuButtons() {
 	pausePlayButton = CreateButtonGameObject("Continue", widthScreen / 2, heightScreen / 4.0, 50);
 	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", widthScreen / 2, heightScreen / 2.5, 50);
 	pauseOptionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 1.8, 50);
-	pauseBongoButton = CreateButtonGameObject("Bongo", widthScreen / 2, heightScreen / 1.8, 20);
 	pauseQuitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.4, 50);
-
-	float posX = pauseOptionsButton->GetPosition().x;
-	float posY = pauseOptionsButton->GetPosition().y;
-
-	sf::Texture texture;
-
-	if (!texture.loadFromFile("../assets/Sprite/props/red_barrel.png"))
-	{
-		std::cout << "pas d'image" << std::endl;
-	}
-
-	GameObject* texture1 = CreateDecorObject("Texture1", posX * 1.2, posY * 1.2, 1.5, 1.5, texture);
-
-	pauseBongoButton->SetPosition(pauseOptionsButton->GetPosition() * 1.7);
 	this->ManageMenuPause(false);
 }
 

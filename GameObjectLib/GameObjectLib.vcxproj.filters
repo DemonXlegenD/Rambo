@@ -30,6 +30,7 @@
     <ClCompile Include="src\Components\Slider.cpp" />
     <ClCompile Include="src\Scenes\SceneGameAbstract.cpp" />
     <ClCompile Include="src\Scenes\SceneSuccessMenu.cpp" />
+    <ClCompile Include="src\Scenes\SceneRankMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Components\SpriteRenderer.h" />
@@ -62,6 +63,7 @@
     <ClInclude Include="include\Scenes\SceneGameAbstract.h" />
     <ClInclude Include="include\Scenes\SceneGame2.h" />
     <ClInclude Include="include\Scenes\SceneSuccessMenu.h" />
+    <ClInclude Include="include\Scenes\SceneRankMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Maths\Vector2.inl" />

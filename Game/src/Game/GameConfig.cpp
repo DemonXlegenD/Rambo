@@ -1,6 +1,6 @@
 #include "Game/GameConfig.h"
 #include "SceneManager.h"
-//#include "AudioManager.h"
+#include "AudioManager.h"
 
 
 GameConfig::GameConfig() {
@@ -8,8 +8,8 @@ GameConfig::GameConfig() {
 	this->window = new sf::RenderWindow(sf::VideoMode(1900, 1080), "RAMBO");
 	SceneManager::SetWindow(this->window);
 	SceneManager::SetFps(this->FPS);
-	//AudioManager::AddMusic(std::string("valkyrieApocalypse"), std::string("../Sounds/valkyrie.mp3"));
-	//AudioManager::Play(std::string("valkyrieApocalypse"));
+	AudioManager::AddMusic(std::string("valkyrieApocalypse"), std::string("../Sounds/valkyrie.mp3"));
+	AudioManager::Play(std::string("valkyrieApocalypse"));
 }
 
 GameConfig::~GameConfig() {

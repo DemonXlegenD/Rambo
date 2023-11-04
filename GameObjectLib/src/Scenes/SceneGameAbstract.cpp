@@ -87,7 +87,6 @@ void SceneGameAbstract::ManageMenuPause(bool _state) {
 	this->pausePlayButton->SetActive(_state);
 	this->pauseOptionsButton->SetActive(_state);
 	this->pauseQuitButton->SetActive(_state);
-	this->pauseBongoButton->SetActive(_state);
 }
 
 void SceneGameAbstract::ManageSceneGameButtonsPause()

@@ -17,7 +17,8 @@ public:
 
 	bool PauseMenu() { return gamePause; }
 
-	void ManageSceneGameButtons();
+	void ManageSceneGameButtonsPause();
+	void ManageMenuPause(bool _states);
 	void CreatePauseMenuButtons();
 
 	//PLAYER 
@@ -46,6 +47,6 @@ protected:
 	GameObject* pauseQuitButton = nullptr;
 	sf::Texture* texture;
 	bool gamePause;
-	bool escapeIsPress = true;
+	bool escapeIsPress;
 };
 

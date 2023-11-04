@@ -23,19 +23,18 @@ void SceneGameAbstract::Create() {
 	Scene::Create();
 	CreateBackground();
 	this->CreatePauseMenuButtons();
+	gamePause = false;
+	escapeIsPress = false;
 }
 
 void SceneGameAbstract::CreatePauseMenuButtons() {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
 	float heightScreen = SceneManager::GetWindow()->getSize().y;
-	pausePlayButton = CreateButtonGameObject("Continue", widthScreen / 2, heightScreen / 3.5, 50);
-	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", widthScreen / 2, heightScreen / 2, 50);
-	pauseOptionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 1.5, 50);
-	pauseQuitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.2, 50);
-	this->pauseMenuPrincipalButton->SetActive(false);
-	this->pausePlayButton->SetActive(false);
-	this->pauseOptionsButton->SetActive(false);
-	this->pauseQuitButton->SetActive(false);
+	pausePlayButton = CreateButtonGameObject("Continue", widthScreen / 2, heightScreen / 4.0, 50);
+	pauseMenuPrincipalButton = CreateButtonGameObject("Menu Principal", widthScreen / 2, heightScreen / 2.5, 50);
+	pauseOptionsButton = CreateButtonGameObject("Options", widthScreen / 2, heightScreen / 1.8, 50);
+	pauseQuitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.4, 50);
+	this->ManageMenuPause(false);
 }
 
 void SceneGameAbstract::Awake() {
@@ -81,18 +80,22 @@ void SceneGameAbstract::Collision(GameObject* _entity)
 	}
 }
 
-void SceneGameAbstract::ManageSceneGameButtons()
+void SceneGameAbstract::ManageMenuPause(bool _state) {
+	escapeIsPress = _state;
+	gamePause = _state;
+	this->pauseMenuPrincipalButton->SetActive(_state);
+	this->pausePlayButton->SetActive(_state);
+	this->pauseOptionsButton->SetActive(_state);
+	this->pauseQuitButton->SetActive(_state);
+}
+
+void SceneGameAbstract::ManageSceneGameButtonsPause()
 {
 	Command* pauseInput = inputHandlerPlayer->PauseInput();
-	if (pauseInput && escapeIsPress) {
+	if (pauseInput && !escapeIsPress) {
 		pauseInput->Execute();
-		gamePause = true;
-		escapeIsPress = false;
 		this->player->SetActive(false);
-		this->pauseMenuPrincipalButton->SetActive(true);
-		this->pausePlayButton->SetActive(true);
-		this->pauseOptionsButton->SetActive(true);
-		this->pauseQuitButton->SetActive(true);
+		this->ManageMenuPause(true);
 		for (GameObject* enemy : this->enemies) {
 			enemy->SetActive(false);
 		}
@@ -100,15 +103,10 @@ void SceneGameAbstract::ManageSceneGameButtons()
 			platform->SetActive(false);
 		}
 	}
-	else if (pauseInput && !escapeIsPress) {
+	else if (pauseInput && escapeIsPress) {
 		pauseInput->Execute();
-		gamePause = false;
-		escapeIsPress = true;
 		this->player->SetActive(true);
-		this->pauseMenuPrincipalButton->SetActive(false);
-		this->pausePlayButton->SetActive(false);
-		this->pauseOptionsButton->SetActive(false);
-		this->pauseQuitButton->SetActive(false);
+		this->ManageMenuPause(false);
 		for (GameObject* enemy : this->enemies) {
 			enemy->SetActive(true);
 		}
@@ -120,7 +118,7 @@ void SceneGameAbstract::ManageSceneGameButtons()
 
 void SceneGameAbstract::Update(sf::Time _delta) {
 
-	SceneGameAbstract::ManageSceneGameButtons();
+	SceneGameAbstract::ManageSceneGameButtonsPause();
 
 	if (!gamePause)
 	{
@@ -144,13 +142,8 @@ void SceneGameAbstract::Update(sf::Time _delta) {
 	else
 	{
 		if (pausePlayButton->GetComponent<Button>()->IsClicked()) {
-			gamePause = false;
-			escapeIsPress = true;
 			this->player->SetActive(true);
-			this->pauseMenuPrincipalButton->SetActive(false);
-			this->pausePlayButton->SetActive(false);
-			this->pauseOptionsButton->SetActive(false);
-			this->pauseQuitButton->SetActive(false);
+			this->ManageMenuPause(false);
 			for (GameObject* enemy : this->enemies) {
 				enemy->SetActive(true);
 			}

@@ -36,6 +36,7 @@ void Armes::Shoot() {
 		mag -= 1;
 		fireCooldown = fireRate;
 		bullets.push_back(static_cast<SceneGameAbstract*>(SceneManager::GetActiveScene())->CreateBulletGameObject("Bullet", *texture, 2.5f, 2.5f, GetOwner()));
+		std::cout << bullets[0];
 		if (mag == 0) {
 			activeReload = reload;
 			fireCooldown = 0.f;

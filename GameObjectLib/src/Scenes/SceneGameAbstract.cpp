@@ -256,6 +256,10 @@ GameObject* SceneGameAbstract::CreateBulletGameObject(const std::string& name, c
 	spriteBullet->SetTexture(textureBullet);
 	spriteBullet->SetScale(scalex, scaley);
 
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetWidth(spriteBullet->GetBounds().x * scalex);
+	squareCollider->SetHeight(spriteBullet->GetBounds().y * scaley);
+
 	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
 	fireBullet->setDirection(_player);
 

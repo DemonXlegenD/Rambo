@@ -18,6 +18,8 @@ public :
 			}), bullets.end());
 	}
 
+	std::vector<GameObject*> GetBullets() { return bullets; }
+	GameObject* GetBullet(int _index) { return bullets[_index];}
 private :
 	float fireRate = 1.f;
 	float fireCooldown = 0.f;

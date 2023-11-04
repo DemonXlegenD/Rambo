@@ -2,6 +2,7 @@
 
 #include "Components/SpriteRenderer.h"
 #include "Scene.h"
+#include "Components/Armes.h"
 
 class FireBullet : public Component
 {
@@ -11,6 +12,7 @@ public:
 	FireBullet();
 	void setDirection(GameObject* _player);
 	void Update(sf::Time _delta) override;
+	void isColliding();
 private:
 	GameObject* player;
 };

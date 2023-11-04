@@ -5,7 +5,7 @@
 
 GameConfig::GameConfig() {
 	this->FPS = 240;
-	this->window = new sf::RenderWindow(sf::VideoMode(1900, 1080), "RAMBO");
+	this->window = new sf::RenderWindow(sf::VideoMode(600, 600), "RAMBO", sf::Style::Fullscreen);
 	SceneManager::SetWindow(this->window);
 	SceneManager::SetFps(this->FPS);
 	AudioManager::AddMusic(std::string("valkyrieApocalypse"), std::string("../Sounds/valkyrie.mp3"));

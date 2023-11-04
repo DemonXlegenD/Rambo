@@ -1,3 +1,3 @@
-FIX: foreach -> for 
+NEW: Méthodes colliders
 
-- Transformation d'une boucle foreach en for
+- Création de nouvelle méthode pour les colliders

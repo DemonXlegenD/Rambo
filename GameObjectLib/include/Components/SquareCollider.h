@@ -16,7 +16,14 @@ public:
 	void SetHeight(const float _height) { height = _height; }
 
 	static bool IsColliding(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
-	static bool IsCollidingGround(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
+
+	bool IsAbove(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
+	bool IsLeft(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
+	bool IsRight(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
+	bool IsBelow(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
+
+
+
 
 private:
 	float width = 1.0f;

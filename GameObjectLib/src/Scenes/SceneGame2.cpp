@@ -55,9 +55,13 @@ void SceneGame2::CreateTurret(sf::Texture imageTurret)
 
 
 
-void SceneGame2::Update(sf::Time _delta) {
-
-	SceneGameAbstract::Update(_delta);
+void SceneGame2::Update(sf::Time _delta) 
+{
+	if (!gamePause)
+	{
+		SceneGameAbstract::Update(_delta);
+	}
+	
 }
 
 void SceneGame2::CreatePlatform(sf::Texture textureplatforme) {

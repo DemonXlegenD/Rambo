@@ -34,7 +34,7 @@ private:
 	GameObject* turret2 = nullptr;
 	GameObject* player = nullptr;
 	sf::Texture* texture;
-	bool gamePause;
+	bool gamePause = false;
 	bool escapeIsPress = true;
 };
 

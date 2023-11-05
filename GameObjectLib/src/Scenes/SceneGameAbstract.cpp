@@ -275,7 +275,7 @@ GameObject* SceneGameAbstract::CreateBulletGameObject(const std::string& name, c
 
 }
 
-GameObject* SceneGameAbstract::CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony, float scalex, float scaley)
+GameObject* SceneGameAbstract::CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony)
 {
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));

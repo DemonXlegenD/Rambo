@@ -28,7 +28,7 @@ public:
 
 	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
-	GameObject* CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony, float scalex, float scaley);
+	GameObject* CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony);
 
 	GameObject* CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 

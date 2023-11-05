@@ -20,5 +20,4 @@ void Atout::RandAtout()
 	std::srand(std::time(nullptr)); 
 	random_atout = std::rand()%3;
 	SceneManager::GetActiveScene()->GetGameObject("Atout")->SetBonus(atouts[random_atout]);
-	std::cout << random_atout;
 }

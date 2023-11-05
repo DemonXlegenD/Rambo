@@ -30,6 +30,7 @@ public:
 	static void AddMusic(std::string _key, std::string _fileName);
 	static void AddSound(std::string _key, std::string _fileName);
 
+	~AudioManager();
 private:
 	static int volume;
 	static int maxVolume;

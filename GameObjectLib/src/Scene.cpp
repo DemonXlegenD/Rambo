@@ -6,8 +6,8 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/Gravity.h"
 #include "Components/Platforme.h"
-#include "Components/Enemy/Grunt.h"
-#include "Components/Enemy/Turret.h"
+#include "Components/Entities/Enemies/Grunt.h"
+#include "Components/Entities/Enemies/Turret.h"
 #include "Components/FireBullet.h"
 #include "Components/Rectangle.h"
 #include "Components/Armes.h"
@@ -24,6 +24,13 @@ Scene::Scene(sf::RenderWindow* _window) {
 void Scene::Create() {
 	balleTiree = false;
 	interval = sf::seconds(0.1f);
+}
+
+void Scene::Delete() {
+	for (GameObject* gameObject : this->gameObjects) {
+		delete gameObject;
+	}
+	gameObjects.clear();
 }
 
 void Scene::Awake() {
@@ -100,13 +107,28 @@ GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float 
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(x, y));
 
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(_rectSource->getSize().x * scaleX);
-	squareCollider->SetHeight(_rectSource->getSize().y * scaleY);
-
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetRect(_rectSource);
+	sprite->SetScale(scaleX, scaleY);
+	sprite->SetSprite();
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scaleX, scaleY);
+
+	
+
+	return gameObject;
+}
+
+GameObject* Scene::CreateDecorObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture) {
+
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(x, y));
+
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(texture);
 	sprite->SetScale(scaleX, scaleY);
 
 	return gameObject;
@@ -127,11 +149,13 @@ GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, 
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(x, y));
 
-	Sprite* background = gameObject->CreateComponent<Sprite>();
-	background->SetTexture(texture);
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(texture);
+	
 	float scalerX = (float)SceneManager::GetWindow()->getSize().x / texture.getSize().x;
 	float scalerY = (float)SceneManager::GetWindow()->getSize().y / texture.getSize().y;
-	background->SetScale(scalerX, scalerY);
+	sprite->SetScale(scalerX, scalerY);
+	sprite->SetSprite();
 
 	return gameObject;
 }

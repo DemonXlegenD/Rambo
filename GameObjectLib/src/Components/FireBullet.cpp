@@ -1,6 +1,7 @@
 #include "Components/FireBullet.h"
 #include "Components/Armes.h"
 #include "SceneManager.h"
+#include "Components/SquareCollider.h"
 
 FireBullet::FireBullet() {
 	this->player = nullptr;
@@ -18,16 +19,7 @@ void FireBullet::Update(sf::Time _delta)
 	{
 		GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right * 500.0f * _delta.asSeconds());
 	}
-
-	if (GetOwner()->GetPosition().GetX() > SceneManager::GetWindowWidth()
-		|| GetOwner()->GetPosition().GetY() > SceneManager::GetWindowHeight()
-		|| GetOwner()->GetPosition().GetY() < 0
-		|| GetOwner()->GetPosition().GetX() < 0
-		)
-	{
-		this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
-		SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
-	}
+	Collided();
 }
 
 void FireBullet::setDirection(GameObject* _player) {
@@ -39,4 +31,28 @@ void FireBullet::setDirection(GameObject* _player) {
 		this->dirBullet = FireBullet::DirectionBullet::Left;
 	}
 	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right * 6.0f);
+}
+
+void FireBullet::Collided()
+{
+	if (GetOwner()->GetPosition().GetX() > SceneManager::GetWindowWidth()
+		|| GetOwner()->GetPosition().GetY() > SceneManager::GetWindowHeight()
+		|| GetOwner()->GetPosition().GetY() < 0
+		|| GetOwner()->GetPosition().GetX() < 0
+		)
+	{
+		this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
+		SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
+	}
+
+	Armes* arme = this->player->GetComponent<Armes>();
+	for (size_t i = 0; i < SceneManager::GetActiveGameScene()->GetEnemies().size(); i++) {
+		GameObject* enemy = SceneManager::GetActiveGameScene()->GetEnemie(i);
+		if (SquareCollider::IsColliding(*(enemy->GetComponent<SquareCollider>()), *(GetOwner()->GetComponent<SquareCollider>()))) {
+			enemy->GetComponent<Entity>()->TakeDamage((arme->GetDamage()));
+			this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
+			SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
+		}
+	}
+
 }

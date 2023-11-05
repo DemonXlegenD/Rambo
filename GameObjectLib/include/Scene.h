@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
-#include "Components/Player.h"
+#include "Components/Entities/Player.h"
 #include "Components/Inputs/InputPlayer.h"
 
 
@@ -18,6 +18,7 @@ public:
 	Scene(sf::RenderWindow* _window);
 
 	virtual void Create();
+	virtual void Delete();
 	virtual void Update(sf::Time _delta);
 	virtual void Render(sf::RenderWindow* _window);
 
@@ -43,6 +44,8 @@ public:
 	GameObject* CreateGameObject(const std::string& _name);
 
 	//GAME ELEMENT
+	GameObject* CreateDecorObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture);
+
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
 	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture, sf::IntRect* _rectSource);
 

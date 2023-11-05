@@ -1,21 +1,19 @@
 #pragma once
 #include <iostream>
 #include "SFML/Graphics.hpp"
-#include "Component.h"
+#include "Components/Entity.h"
 
-class Player : public Component
+class Player : public Entity
 {
 public:
 	enum Direction { Left, Right };
 	Player();
+	Player(int _hp, int _damage, float _speed);
 	void Update(sf::Time _delta);
 	void setDirection(Direction direction);
 	Direction getDirection() { return direction; }
 
 public:
-	int health;
-	int damage;
-	int boostDamage;
 	Direction direction;
 	bool directionPlayer;
 };

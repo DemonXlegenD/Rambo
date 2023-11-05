@@ -8,16 +8,21 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/Gravity.h"
 #include "Components/Platforme.h"
-#include "Components/Enemy/Grunt.h"
-#include "Components/Enemy/Turret.h"
+#include "Components/Entities/Enemies/Grunt.h"
+#include "Components/Entities/Enemies/Turret.h"
 #include "Components/FireBullet.h"
 #include "Components/Armes.h"
 #include "Components/Atout.h"
+#include "Components/HealthPointBar.h"
 
 SceneGameAbstract::SceneGameAbstract(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
-	Scene::Create();
 	srand(time(nullptr));
+}
+
+
+SceneGameAbstract::~SceneGameAbstract() {
+	this->Delete();
 }
 
 void SceneGameAbstract::Create() {
@@ -30,6 +35,14 @@ void SceneGameAbstract::Create() {
 	damage = false;
 	health = false;
 }
+
+void SceneGameAbstract::Delete() {
+	this->enemies.clear();
+	this->platforms.clear();
+	delete texture;
+	Scene::Delete();
+}
+
 
 void SceneGameAbstract::CreatePauseMenuButtons() {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
@@ -46,23 +59,25 @@ void SceneGameAbstract::Awake() {
 }
 
 void SceneGameAbstract::CreatePlayer() {
-	player = this->CreateCharacterGameObject("Player", 400.f, 400.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);
-	CreateAtout();
+	player = this->CreateCharacterGameObject("Player", SceneManager::GetWindowWidth() / 2, 50.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);	
+  CreateAtout();
 }
 
 void SceneGameAbstract::CreateGrunt()
 {
 	if (!platforms.empty()) {
 		int random = rand() % platforms.size();
-		if (random != 0) {
-			GameObject* rand_platform = platforms[random];
-			int rand_grunt = rand() % 700 + 100;
-			enemies.push_back(CreateGruntGameObject("Grunt1", rand_grunt, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
-		}
-
+		GameObject* rand_platform = platforms[random];
+		int rand_grunt = rand() % (int)(rand_platform->GetComponent<Sprite>()->GetSize().x) - rand_platform->GetComponent<Sprite>()->GetSize().x /2;
+		enemies.push_back(CreateGruntGameObject("Grunt", rand_platform->GetPosition().GetX() - rand_grunt, rand_platform->GetPosition().GetY() - rand_platform->GetComponent<Sprite>()->GetBottom(), 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
 	}
+}
 
-
+void SceneGameAbstract::RemoveEnemy(GameObject* _enemyToRemove) {
+	enemies.erase(std::remove_if(enemies.begin(), enemies.end(),
+		[_enemyToRemove](GameObject* obj) {
+			return obj == _enemyToRemove;
+		}), enemies.end());
 }
 
 void SceneGameAbstract::CreateAtout()
@@ -137,8 +152,11 @@ void SceneGameAbstract::Update(sf::Time _delta) {
 		this->Collision(this->player);
 		this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
 		for (GameObject* enemy : this->enemies) {
-			this->Collision(enemy);
-			enemy->GetComponent<Sprite>()->GruntPlayAnimation();
+			if (enemy->GetName() != "Turret")
+			{
+				this->Collision(enemy);
+				enemy->GetComponent<Sprite>()->GruntPlayAnimation();
+			}
 		}
 
 		if (!this->player->GetComponent<Player>()->directionPlayer)
@@ -193,44 +211,67 @@ void SceneGameAbstract::Render(sf::RenderWindow* _window) {
 }
 
 
-GameObject* SceneGameAbstract::CreateCharacterGameObject(const std::string& name, float positionx, float positiony, const sf::Texture texture, float scalex, float scaley)
+GameObject* SceneGameAbstract::CreateCharacterGameObject(const std::string& name, float _x, float _y, const sf::Texture texture, float scalex, float scaley)
 {
 	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
+	gameObject->SetPosition(Maths::Vector2f(_x, _y));
 
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
 
-	Player* playerController = gameObject->CreateComponent<Player>();
+	Player* player = gameObject->CreateComponent<Player>();
 
 	Armes* arme = gameObject->CreateComponent<Armes>();
+	arme->SetDamage(player->GetDamage());
 
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scalex, scaley);
 
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
 	InputPlayer* inputPlayer = gameObject->CreateComponent<InputPlayer>();
 	inputHandlerPlayer = inputPlayer;
 
+	HealthPointBar* healthPointBar = gameObject->CreateComponent<HealthPointBar>();
+	healthPointBar->SetHealthPoint(player->GetHealthPoint());
+	healthPointBar->SetMaxHealthPoint(player->GetMaxHealthPoint());
+	healthPointBar->SetAboveSprite(sprite->GetBounds().y / 2 + 50.f);
+	healthPointBar->SetSize(sprite->GetBounds().x, 5);
+	healthPointBar->SetScale(scalex, scaley);
+	healthPointBar->SetHealthPointBar();
+
 	return gameObject;
 }
 
 //ENEMY
-GameObject* SceneGameAbstract::CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture)
+GameObject* SceneGameAbstract::CreateGruntGameObject(const std::string& name, float _x, float _y, float scalex, float scaley, sf::Texture _texture)
 {
 	GameObject* gameObject = CreateGameObject(name);
-	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
+	gameObject->SetPosition(Maths::Vector2f(_x, _y));
+
+	Grunt* enemy = gameObject->CreateComponent<Grunt>();
+
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(_texture);
+	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
 
 	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scalex, scaley);
 
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(_texture);
-	spriteBullet->SetScale(scalex, scaley);
+	HealthPointBar* healthPointBar = gameObject->CreateComponent<HealthPointBar>();
+	healthPointBar->SetHealthPoint(enemy->GetHealthPoint());
+	healthPointBar->SetMaxHealthPoint(enemy->GetMaxHealthPoint());
+	healthPointBar->SetAboveSprite(sprite->GetBounds().y / 2 + 50.f);
+	healthPointBar->SetPosition(_x, _y);
+	healthPointBar->SetSize(sprite->GetBounds().x, 5);
+	healthPointBar->SetScale(scalex, scaley);
+	healthPointBar->SetHealthPointBar();
 
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
@@ -244,15 +285,14 @@ GameObject* SceneGameAbstract::CreateTurretGameObject(const std::string& name, f
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
 
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(_texture);
+	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
+
 	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
-
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(_texture);
-	spriteBullet->SetScale(scalex, scaley);
-
-	Gravity* gravity = gameObject->CreateComponent<Gravity>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scalex, scaley);
 
 	return gameObject;
 
@@ -263,14 +303,18 @@ GameObject* SceneGameAbstract::CreateBulletGameObject(const std::string& name, c
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
 
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(textureBullet);
-	spriteBullet->SetScale(scalex, scaley);
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(textureBullet);
+	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(0.5, 0.5);
 
 	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
 	fireBullet->setDirection(_player);
 
-	std::cout << gameObject << std::endl;
 	return gameObject;
 
 }

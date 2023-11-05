@@ -7,6 +7,7 @@
 #include "Scenes/SceneGame1.h"
 #include "Scenes/SceneGame2.h"
 #include "Scenes/SceneMainMenu.h"
+#include "Scenes/SceneSuccessMenu.h"
 
 class SceneManager
 {

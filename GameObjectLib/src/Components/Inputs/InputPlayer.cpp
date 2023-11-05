@@ -104,4 +104,5 @@ InputPlayer::~InputPlayer() {
 	delete 	this->KeyQ_;
 	delete 	this->KeySpace_;
 	delete 	this->KeyEscape_;
+	delete 	this->KeyZ_;
 }

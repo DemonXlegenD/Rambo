@@ -13,6 +13,7 @@ void GameObject::AddComponent(Component* _component)
 void GameObject::RemoveComponent(Component* _component)
 {
 	components.erase(std::remove(components.begin(), components.end(), _component), components.end());
+	delete _component;
 }
 
 void GameObject::Start() {
@@ -24,9 +25,9 @@ void GameObject::Start() {
 void GameObject::Update(sf::Time _delta) const
 {
 	if (this->isActive) {
-		for (Component* const& component : components)
+		for (size_t i = 0; i < components.size(); i++)
 		{
-			component->Update(_delta);
+			components[i]->Update(_delta);
 		}
 	}
 

@@ -10,7 +10,6 @@
 
 SceneGame1::SceneGame1(sf::RenderWindow* _window) : SceneGameAbstract(_window) {
 	this->Awake();
-	Scene::Create();
 	srand(time(nullptr));
 }
 
@@ -25,11 +24,14 @@ void SceneGame1::Create() {
 	SceneGameAbstract::Create();
 	this->CreatePlayer();
 	CreatePlatform(sf::Texture());
-	for (size_t i = 0; i < 10; i++) {
+	for (size_t i = 0; i < 7; i++) {
 		this->CreateGrunt();
 	}
-	
-	
+}
+
+void SceneGame1::Delete()
+{
+	SceneGameAbstract::Delete();
 }
 
 
@@ -40,6 +42,14 @@ void SceneGame1::Awake() {
 void SceneGame1::Update(sf::Time _delta) {
 
 	SceneGameAbstract::Update(_delta);
+
+	if (enemies.empty())
+	{
+		int random_number = rand() % 10 + 5;
+		for (size_t i = 0; i < random_number; i++) {
+			this->CreateGrunt();
+		}
+	}
 }
 
 void SceneGame1::CreatePlatform(sf::Texture textureplatforme) {

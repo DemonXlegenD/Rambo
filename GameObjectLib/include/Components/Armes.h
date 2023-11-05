@@ -18,7 +18,14 @@ public :
 			}), bullets.end());
 	}
 
+	void ClearBullets();
+	int GetDamage() const { return damage; }
+	void SetDamage(const int _damage) { damage = _damage; }
+	std::vector<GameObject*> GetBullets() { return bullets; }
+	GameObject* GetBullet(int _index) const { return bullets[_index];}
+
 private :
+	int damage = 20;
 	float fireRate = 1.f;
 	float fireCooldown = 0.f;
 	int mag = 10;

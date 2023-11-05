@@ -8,6 +8,11 @@ SceneSuccessMenu::SceneSuccessMenu(sf::RenderWindow* _window) : Scene(_window) {
 	Scene::Create();
 }
 
+SceneSuccessMenu::~SceneSuccessMenu() {
+	this->Delete();
+}
+
+
 void SceneSuccessMenu::Create() {
 	Scene::Create();
 	sf::Texture backgroundTexture2;
@@ -18,6 +23,10 @@ void SceneSuccessMenu::Create() {
 	}
 	GameObject* background2 = CreateBackgroundGameObject("Background2", SceneManager::GetWindowWidth() / 2, SceneManager::GetWindowHeight() / 2, backgroundTexture2);
 	this->CreateSceneButtonsMenu();
+}
+
+void SceneSuccessMenu::Delete() {
+	Scene::Delete();
 }
 
 void SceneSuccessMenu::Render(sf::RenderWindow* _window) {

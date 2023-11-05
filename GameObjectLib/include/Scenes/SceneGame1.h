@@ -19,11 +19,11 @@ public:
 	void CreatePlatform(sf::Texture texture);
 	void CreateBackground();
 	void Create() override;
+	void Delete() override;
 	void Update(sf::Time _delta) override;
 	void Render(sf::RenderWindow* _window) override;
 
 private:
-	sf::Texture* texture ;
 	bool gamePause;
 	bool escapeIsPress = true;
 };

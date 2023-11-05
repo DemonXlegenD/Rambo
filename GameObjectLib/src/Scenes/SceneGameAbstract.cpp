@@ -16,8 +16,12 @@
 
 SceneGameAbstract::SceneGameAbstract(sf::RenderWindow* _window) : Scene(_window) {
 	this->Awake();
-	Scene::Create();
 	srand(time(nullptr));
+}
+
+
+SceneGameAbstract::~SceneGameAbstract() {
+	this->Delete();
 }
 
 void SceneGameAbstract::Create() {
@@ -27,6 +31,14 @@ void SceneGameAbstract::Create() {
 	gamePause = false;
 	escapeIsPress = false;
 }
+
+void SceneGameAbstract::Delete() {
+	this->enemies.clear();
+	this->platforms.clear();
+	delete texture;
+	Scene::Delete();
+}
+
 
 void SceneGameAbstract::CreatePauseMenuButtons() {
 	float widthScreen = SceneManager::GetWindow()->getSize().x;
@@ -50,15 +62,10 @@ void SceneGameAbstract::CreateGrunt()
 {
 	if (!platforms.empty()) {
 		int random = rand() % platforms.size();
-		if (random != 0) {
-			GameObject* rand_platform = platforms[random];
-			int rand_grunt = rand() % 700 + 100;
-			enemies.push_back(CreateGruntGameObject("Grunt1", rand_grunt, 100.f, 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
-		}
-
+		GameObject* rand_platform = platforms[random];
+		int rand_grunt = rand() % (int)(rand_platform->GetComponent<Sprite>()->GetSize().x) - rand_platform->GetComponent<Sprite>()->GetSize().x /2;
+		enemies.push_back(CreateGruntGameObject("Grunt", rand_platform->GetPosition().GetX() - rand_grunt, rand_platform->GetPosition().GetY() - rand_platform->GetComponent<Sprite>()->GetBottom(), 2.5f, 2.5f, AssetManager::GetAsset("Grunt0")));
 	}
-
-
 }
 
 void SceneGameAbstract::RemoveEnemy(GameObject* _enemyToRemove) {
@@ -134,8 +141,11 @@ void SceneGameAbstract::Update(sf::Time _delta) {
 		this->Collision(this->player);
 		this->player->GetComponent<Sprite>()->PlayerPlayAnimation();
 		for (GameObject* enemy : this->enemies) {
-			this->Collision(enemy);
-			enemy->GetComponent<Sprite>()->GruntPlayAnimation();
+			if (enemy->GetName() != "Turret")
+			{
+				this->Collision(enemy);
+				enemy->GetComponent<Sprite>()->GruntPlayAnimation();
+			}
 		}
 
 		if (!this->player->GetComponent<Player>()->directionPlayer)
@@ -273,8 +283,6 @@ GameObject* SceneGameAbstract::CreateTurretGameObject(const std::string& name, f
 	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
 	squareCollider->SetScale(scalex, scaley);
 
-	Gravity* gravity = gameObject->CreateComponent<Gravity>();
-
 	return gameObject;
 
 }
@@ -296,7 +304,6 @@ GameObject* SceneGameAbstract::CreateBulletGameObject(const std::string& name, c
 	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
 	fireBullet->setDirection(_player);
 
-	std::cout << gameObject << std::endl;
 	return gameObject;
 
 }

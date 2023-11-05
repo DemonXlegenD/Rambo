@@ -15,7 +15,7 @@ Sprite::Sprite()
 	frameDuration = 0.2f;
 	animationClock.restart();
 	LoadPlayAnimation();
-	LoadPlayAnimationGrunt();
+	LoadPlayAnimationGrunt();                                        
 
 }
 sf::Vector2f Sprite::GetBounds()

@@ -8,10 +8,9 @@ public:
 
 
 	void CreateSceneButtonsMenu();
-	void CreatePlayer(sf::Texture* texture);
-	void CreateBullet(sf::Texture* textureBullet);
 
 	void Create() override;
+	void Delete() override;
 	void Render(sf::RenderWindow* _window) override;
 	void Update(sf::Time _delta) override;
 	void activeOption(bool _state);

@@ -16,6 +16,8 @@ public:
     void SetSpeed(const float _speed)  {  speed = _speed; }
 
     void TakeDamage(int damage);
+    virtual void Die();
+    void Update(sf::Time _delta) override;
 
 protected:
     int healthPoint;

@@ -49,9 +49,7 @@ void FireBullet::Collided()
 	for (size_t i = 0; i < SceneManager::GetActiveGameScene()->GetEnemies().size(); i++) {
 		GameObject* enemy = SceneManager::GetActiveGameScene()->GetEnemie(i);
 		if (SquareCollider::IsColliding(*(enemy->GetComponent<SquareCollider>()), *(GetOwner()->GetComponent<SquareCollider>()))) {
-			std::cout << "Damage " << arme->GetDamage() << std::endl;
 			enemy->GetComponent<Entity>()->TakeDamage((arme->GetDamage()));
-			std::cout << "HP " << enemy->GetComponent<Entity>()->GetHealthPoint() << std::endl;
 			this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
 			SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
 		}

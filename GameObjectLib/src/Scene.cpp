@@ -26,6 +26,13 @@ void Scene::Create() {
 	interval = sf::seconds(0.1f);
 }
 
+void Scene::Delete() {
+	for (GameObject* gameObject : this->gameObjects) {
+		delete gameObject;
+	}
+	gameObjects.clear();
+}
+
 void Scene::Awake() {
 	for (GameObject* const& gameObject : gameObjects)
 	{

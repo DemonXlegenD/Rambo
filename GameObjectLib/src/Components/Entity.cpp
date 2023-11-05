@@ -13,9 +13,25 @@ void Entity::TakeDamage(int _damage) {
 
 	if(healthPoint <= 0)
 	{
-		healthPoint = 0;
-		AudioManager::PlaySound("dead");
-		SceneManager::GetActiveGameScene()->RemoveEnemy(GetOwner());
-		SceneManager::GetActiveGameScene()->RemoveGameObject(GetOwner());
+		this->Die();
+	}
+}
+
+void Entity::Die() {
+	healthPoint = 0;
+	AudioManager::PlaySound("dead");
+	SceneManager::GetActiveGameScene()->RemoveGameObject(GetOwner());
+}
+
+void Entity::Update(sf::Time _delta) {
+	Component::Update(_delta);
+
+	if (GetOwner()->GetPosition().GetX() > SceneManager::GetWindowWidth()
+		|| GetOwner()->GetPosition().GetY() > SceneManager::GetWindowHeight()
+		|| GetOwner()->GetPosition().GetY() < 0
+		|| GetOwner()->GetPosition().GetX() < 0
+		)
+	{
+		SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
 	}
 }

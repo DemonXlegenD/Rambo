@@ -7,6 +7,7 @@ class SceneGameAbstract : public Scene
 {
 public:
 	SceneGameAbstract(sf::RenderWindow* window);
+	~SceneGameAbstract();
 
 	void Awake() override;
 
@@ -34,10 +35,13 @@ public:
 	void CreatePlatform(sf::Texture texture);
 	void CreateBackground();
 	void Create() override;
+	void Delete() override;
 	void Update(sf::Time _delta) override;
 	void Render(sf::RenderWindow* _window) override;
 	std::vector<GameObject*> GetEnemies() {return enemies;}
 	GameObject* GetEnemie(int _index) {return enemies[_index];}
+
+
 protected:
 	//TODO : Lorsque vous retirez un ennemi du vector, il faut bien pensé à le supprimer du vector gameObjects de la Scene
 	std::vector<GameObject*> platforms;

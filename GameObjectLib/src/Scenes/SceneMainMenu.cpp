@@ -29,6 +29,11 @@ void SceneMainMenu::Create() {
 	this->activeMenu(true);
 
 }
+void SceneMainMenu::Delete() {
+	delete texture;
+	delete textureBullet;
+	Scene::Delete();
+}
 
 void SceneMainMenu::Render(sf::RenderWindow* _window) {
 	Scene::Render(_window);
@@ -52,25 +57,32 @@ void SceneMainMenu::Update(sf::Time _delta) {
 	if (playButton->GetComponent<Button>()->IsClicked()) {
 		SceneManager::RunScene("SceneGame2");
 	}
-	if (optionsButton->GetComponent<Button>()->IsClicked() && optionsButton->GetActive()) {
+	else if (optionsButton->GetComponent<Button>()->IsClicked() && optionsButton->GetActive()) {
 		this->activeMenu(false);
 		this->activeOption(true);
 	}
-	if (quitButton->GetComponent<Button>()->IsClicked() && quitButton->GetActive()) {
+	else if (quitButton->GetComponent<Button>()->IsClicked() && quitButton->GetActive()) {
 		SceneManager::GetWindow()->close();
 	}
-	if (backButton->GetComponent<Button>()->IsClicked() && backButton->GetActive()) {
+	else if (backButton->GetComponent<Button>()->IsClicked() && backButton->GetActive()) {
 		this->activeOption(false);
 		this->activeMenu(true);
 	}
-	if (successButton->GetComponent<Button>()->IsClicked() && successButton->GetActive()) {
+	else if (successButton->GetComponent<Button>()->IsClicked() && successButton->GetActive()) {
 		SceneManager::RunScene("SceneSuccessMenu");
 	}
-	if (rankButton->GetComponent<Button>()->IsClicked() && rankButton->GetActive()) {
+	else if (rankButton->GetComponent<Button>()->IsClicked() && rankButton->GetActive()) {
 		SceneManager::RunScene("SceneRankMenu");
 	}
-	SceneManager::SetFps(sliderFPS->GetComponent<Slider>()->GetDataInt());
-	AudioManager::SetVolume(sliderVolume->GetComponent<Slider>()->GetDataInt());
+	else if (sliderFPS) 
+	{
+		SceneManager::SetFps(sliderFPS->GetComponent<Slider>()->GetDataInt());
+	}
+	else if (sliderVolume)
+	{
+		AudioManager::SetVolume(sliderVolume->GetComponent<Slider>()->GetDataInt());
+	}
+	
 }
 
 void SceneMainMenu::activeMenu(bool _state) {
@@ -86,6 +98,5 @@ void SceneMainMenu::activeOption(bool _state) {
 }
 
 SceneMainMenu::~SceneMainMenu() {
-	delete texture;
-	delete textureBullet;
+	this->Delete();
 }

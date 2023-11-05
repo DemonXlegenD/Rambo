@@ -25,9 +25,9 @@ void GameObject::Start() {
 void GameObject::Update(sf::Time _delta) const
 {
 	if (this->isActive) {
-		for (Component* const& component : components)
+		for (size_t i = 0; i < components.size(); i++)
 		{
-			component->Update(_delta);
+			components[i]->Update(_delta);
 		}
 	}
 

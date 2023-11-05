@@ -13,7 +13,7 @@ public:
 	void Update(sf::Time _delta);
 	void SetTexture(const sf::Texture& _texture) { texture = _texture; }
 	void SetScale(float _scalex, float _scaley) { scalex = _scalex; scaley = _scaley; }
-
+	sf::Vector2f GetSize() { return sf::Vector2f(sprite.getLocalBounds().width * scalex, sprite.getLocalBounds().height * scaley); }
 	sf::Vector2f GetBounds();
 	
 	void LoadPlayAnimation();
@@ -23,6 +23,10 @@ public:
 	void GruntPlayAnimation();
 	void GruntPlayAnimationRun();
 	
+	float GetTop() { return sprite.getLocalBounds().top * scaley; }
+	float GetBottom() { return (sprite.getLocalBounds().top + sprite.getLocalBounds().height) * scaley; }
+	float GetLeft() { return sprite.getLocalBounds().left * scalex; }
+	float GetRight() { return (sprite.getLocalBounds().left + sprite.getLocalBounds().width) * scalex; }
 
 	void Render(sf::RenderWindow* _window) override;
 	void SetSprite();
@@ -40,4 +44,5 @@ private:
 	int currentFrame;
 	float frameDuration;
 	sf::Clock animationClock;
+
 };

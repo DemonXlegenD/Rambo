@@ -18,6 +18,7 @@ public:
 	Scene(sf::RenderWindow* _window);
 
 	virtual void Create();
+	virtual void Delete();
 	virtual void Update(sf::Time _delta);
 	virtual void Render(sf::RenderWindow* _window);
 

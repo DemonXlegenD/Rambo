@@ -7,5 +7,7 @@ public:
     EnemyAbstract();
     EnemyAbstract(int _hp, int _damage, float _speed);
 
+    void Update(sf::Time _delta) override;
 
+    void Die() override;
 };

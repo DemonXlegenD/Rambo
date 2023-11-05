@@ -15,6 +15,7 @@ void SceneManager::StopScene() {
 void SceneManager::RunScene(std::string _key) {
 	if (SceneManager::scenes.find(_key) != SceneManager::scenes.end()) {
 		if (SceneManager::activeScene) {
+			SceneManager::activeScene->Delete();
 			SceneManager::StopScene();
 		}
 		SceneManager::activeScene = scenes.at(_key);
@@ -23,5 +24,10 @@ void SceneManager::RunScene(std::string _key) {
 }
 
 SceneManager::~SceneManager() {
-	delete activeScene;
+	delete SceneManager::activeScene;
+	for (const auto scene : SceneManager::scenes)
+	{
+		delete scene.second;
+	}
+	SceneManager::scenes.clear();
 }

@@ -26,8 +26,8 @@ public:
 	{ 
 		scaleX = _scaleX;
 		width *= _scaleX;
-		scaleY = _scaleY;
 		height *= _scaleY;
+		scaleY = _scaleY;
 	}
 
 	static bool IsColliding(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
@@ -37,13 +37,9 @@ public:
 	bool IsRight(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
 	bool IsBelow(const SquareCollider& _colliderA, const SquareCollider& _colliderB);
 
-
-
-
 private:
 	float width = 1.0f;
 	float height = 1.0f;
 	float scaleX = 1.0f;
 	float scaleY = 1.0f;
-	sf::RectangleShape rectangle;
 };

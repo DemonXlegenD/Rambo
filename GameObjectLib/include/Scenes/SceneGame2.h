@@ -26,14 +26,11 @@ public:
 	void CreatePlatform(sf::Texture texture);
 	
 	void Create() override;
+	void Delete() override;
 	void Update(sf::Time _delta) override;
 	void Render(sf::RenderWindow* _window) override;
 
 private:
-	GameObject* turret1 = nullptr;
-	GameObject* turret2 = nullptr;
-	GameObject* player = nullptr;
-	sf::Texture* texture;
 	bool gamePause = false;
 	bool escapeIsPress = true;
 };

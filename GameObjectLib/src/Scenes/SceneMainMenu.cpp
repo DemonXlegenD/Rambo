@@ -55,7 +55,16 @@ void SceneMainMenu::CreateSceneButtonsMenu () {
 void SceneMainMenu::Update(sf::Time _delta) {
 	Scene::Update(_delta);
 	if (playButton->GetComponent<Button>()->IsClicked()) {
-		SceneManager::RunScene("SceneGame2");
+		int random_scene_game = rand() % 2 + 1;
+		if (random_scene_game == 1)
+		{
+			SceneManager::RunScene("SceneGame1");
+		}
+		else if (random_scene_game == 2)
+		{
+			SceneManager::RunScene("SceneGame2");
+		}
+		
 	}
 	else if (optionsButton->GetComponent<Button>()->IsClicked() && optionsButton->GetActive()) {
 		this->activeMenu(false);

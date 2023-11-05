@@ -85,7 +85,7 @@ float InputPlayer::AddSpeed(float _addSpeed) {
 
 void InputPlayer::Jump(sf::Time _delta)
 {
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Down + Maths::Vector2f(0, -100) * _delta.asSeconds() * speed);
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Down + Maths::Vector2f(0, -130) * _delta.asSeconds() * speed);
 }
 
 void InputPlayer::MoveRightBullet()

@@ -100,14 +100,17 @@ GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float 
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(x, y));
 
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(_rectSource->getSize().x * scaleX);
-	squareCollider->SetHeight(_rectSource->getSize().y * scaleY);
-
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetRect(_rectSource);
 	sprite->SetScale(scaleX, scaleY);
+	sprite->SetSprite();
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scaleX, scaleY);
+
+	
 
 	return gameObject;
 }
@@ -139,11 +142,13 @@ GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, 
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(x, y));
 
-	Sprite* background = gameObject->CreateComponent<Sprite>();
-	background->SetTexture(texture);
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(texture);
+	
 	float scalerX = (float)SceneManager::GetWindow()->getSize().x / texture.getSize().x;
 	float scalerY = (float)SceneManager::GetWindow()->getSize().y / texture.getSize().y;
-	background->SetScale(scalerX, scalerY);
+	sprite->SetScale(scalerX, scalerY);
+	sprite->SetSprite();
 
 	return gameObject;
 }

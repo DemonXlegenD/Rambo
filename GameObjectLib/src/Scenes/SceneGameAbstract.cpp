@@ -187,9 +187,6 @@ GameObject* SceneGameAbstract::CreateCharacterGameObject(const std::string& name
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
 
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
 
 	Player* playerController = gameObject->CreateComponent<Player>();
 
@@ -198,6 +195,11 @@ GameObject* SceneGameAbstract::CreateCharacterGameObject(const std::string& name
 	Sprite* sprite = gameObject->CreateComponent<Sprite>();
 	sprite->SetTexture(texture);
 	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scalex, scaley);
 
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
@@ -213,13 +215,14 @@ GameObject* SceneGameAbstract::CreateGruntGameObject(const std::string& name, fl
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
 
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(_texture);
+	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
 
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(_texture);
-	spriteBullet->SetScale(scalex, scaley);
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scalex, scaley);
 
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
@@ -233,13 +236,14 @@ GameObject* SceneGameAbstract::CreateTurretGameObject(const std::string& name, f
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
 
-	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
-	squareCollider->SetWidth(60.f);
-	squareCollider->SetHeight(60.f);
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(_texture);
+	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
 
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(_texture);
-	spriteBullet->SetScale(scalex, scaley);
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scalex, scaley);
 
 	Gravity* gravity = gameObject->CreateComponent<Gravity>();
 
@@ -252,9 +256,14 @@ GameObject* SceneGameAbstract::CreateBulletGameObject(const std::string& name, c
 	GameObject* gameObject = CreateGameObject(name);
 	gameObject->SetPosition(Maths::Vector2f(_player->GetPosition().GetX(), _player->GetPosition().GetY()));
 
-	Sprite* spriteBullet = gameObject->CreateComponent<Sprite>();
-	spriteBullet->SetTexture(textureBullet);
-	spriteBullet->SetScale(scalex, scaley);
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(textureBullet);
+	sprite->SetScale(scalex, scaley);
+	sprite->SetSprite();
+
+	SquareCollider* squareCollider = gameObject->CreateComponent<SquareCollider>();
+	squareCollider->SetSize(sprite->GetBounds().x, sprite->GetBounds().y);
+	squareCollider->SetScale(scalex, scaley);
 
 	FireBullet* fireBullet = gameObject->CreateComponent<FireBullet>();
 	fireBullet->setDirection(_player);

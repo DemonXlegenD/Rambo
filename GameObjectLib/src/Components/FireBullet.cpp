@@ -1,6 +1,7 @@
 #include "Components/FireBullet.h"
 #include "Components/Armes.h"
 #include "SceneManager.h"
+#include "Components/SquareCollider.h"
 
 FireBullet::FireBullet() {
 	this->player = nullptr;
@@ -28,6 +29,7 @@ void FireBullet::Update(sf::Time _delta)
 		this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
 		SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
 	}
+	isColliding();
 }
 
 void FireBullet::setDirection(GameObject* _player) {
@@ -39,4 +41,27 @@ void FireBullet::setDirection(GameObject* _player) {
 		this->dirBullet = FireBullet::DirectionBullet::Left;
 	}
 	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right * 6.0f);
+}
+
+void FireBullet::isColliding()
+{
+
+	bool colliding = false;
+	Armes* arme = SceneManager::GetActiveGameScene()->GetGameObject("Player")->GetComponent<Armes>();
+	if (!arme->GetBullets().empty()) {
+		for (size_t i = 0; i < arme->GetBullets().size(); i++)
+		{
+			GameObject* bullet = arme->GetBullet(i);
+			for (size_t j = 0; j < SceneManager::GetActiveGameScene()->GetEnemies().size(); j++) {
+				GameObject* enemy = SceneManager::GetActiveGameScene()->GetEnemie(j);
+				if (SquareCollider::IsColliding(*(enemy->GetComponent<SquareCollider>()), *(bullet->GetComponent<SquareCollider>()))) {
+					colliding = true;
+					std::cout << "c'est bon";
+					break;
+				}
+			}
+		}
+	}
+
+
 }

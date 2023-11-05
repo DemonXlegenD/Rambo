@@ -12,6 +12,7 @@ public:
 
 	void CreatePlayer();
 	void CreateGrunt();
+	void CreateButtonAtout();
 
 	void Collision(GameObject* _entity);
 
@@ -27,6 +28,8 @@ public:
 
 	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
+	GameObject* CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony);
+
 	GameObject* CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
 
@@ -40,13 +43,20 @@ protected:
 	//TODO : Lorsque vous retirez un ennemi du vector, il faut bien pensé à le supprimer du vector gameObjects de la Scene
 	std::vector<GameObject*> platforms;
 	std::vector<GameObject*> enemies;
+	std::vector<GameObject*> atouts;
 	GameObject* player = nullptr;
 	GameObject* pausePlayButton = nullptr;
 	GameObject* pauseOptionsButton = nullptr;
 	GameObject* pauseMenuPrincipalButton = nullptr;
 	GameObject* pauseQuitButton = nullptr;
+	GameObject* addSpeed = nullptr;
+	GameObject* addDamamge = nullptr;
+	GameObject* addHealt = nullptr;
 	sf::Texture* texture;
 	bool gamePause;
 	bool escapeIsPress;
+	bool speed;
+	bool damage;
+	bool health;
 };
 

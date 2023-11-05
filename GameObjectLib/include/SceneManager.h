@@ -32,6 +32,7 @@ public:
 
 	//Get the current scene
 	static Scene* GetActiveScene() { return activeScene; }
+	static SceneGameAbstract* GetActiveGameScene() { return static_cast<SceneGameAbstract*>(activeScene); }
 
 	static sf::RenderWindow* GetWindow() { return window; }
 	static void SetWindow(sf::RenderWindow* _window) { window = _window; }

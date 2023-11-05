@@ -12,7 +12,7 @@ public:
 
 	void CreatePlayer();
 	void CreateGrunt();
-	void CreateButtonAtout();
+	void CreateAtout();
 
 	void Collision(GameObject* _entity);
 
@@ -28,7 +28,7 @@ public:
 
 	GameObject* CreateGruntGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
-	GameObject* CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony);
+	GameObject* CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony, float scalex, float scaley);
 
 	GameObject* CreateTurretGameObject(const std::string& name, float positionx, float positiony, float scalex, float scaley, sf::Texture _texture);
 
@@ -38,6 +38,9 @@ public:
 	void Create() override;
 	void Update(sf::Time _delta) override;
 	void Render(sf::RenderWindow* _window) override;
+
+	std::vector<GameObject*> GetAtouts() { return atouts; }
+	GameObject* GetAtout(int _index) { return atouts[_index];  }
 
 protected:
 	//TODO : Lorsque vous retirez un ennemi du vector, il faut bien pensé à le supprimer du vector gameObjects de la Scene
@@ -58,5 +61,6 @@ protected:
 	bool speed;
 	bool damage;
 	bool health;
+	int bonus = 0;
 };
 

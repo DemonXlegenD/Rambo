@@ -19,7 +19,8 @@ public:
 	void GamePauseMenu();
 	void MoveLeft(sf::Time _delta);
 	void Jump(sf::Time _delta);
-
+	float GetSpeed() { return speed; }
+	float AddSpeed(float _speed);
 	~InputPlayer();
 
 private:

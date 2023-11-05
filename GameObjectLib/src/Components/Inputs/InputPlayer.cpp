@@ -73,6 +73,10 @@ void InputPlayer::MoveLeft(sf::Time _delta)
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Left);
 	GetOwner()->GetComponent<Sprite>()->PlayerPlayAnimationRun();
 }
+float InputPlayer::AddSpeed(float _addSpeed) {
+	speed = +_addSpeed;	
+	return speed;
+}
 
 void InputPlayer::Jump(sf::Time _delta)
 {

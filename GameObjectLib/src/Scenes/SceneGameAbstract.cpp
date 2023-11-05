@@ -12,6 +12,7 @@
 #include "Components/Entities/Enemies/Turret.h"
 #include "Components/FireBullet.h"
 #include "Components/Armes.h"
+#include "Components/Atout.h"
 #include "Components/HealthPointBar.h"
 
 SceneGameAbstract::SceneGameAbstract(sf::RenderWindow* _window) : Scene(_window) {
@@ -30,6 +31,9 @@ void SceneGameAbstract::Create() {
 	this->CreatePauseMenuButtons();
 	gamePause = false;
 	escapeIsPress = false;
+	speed = false;
+	damage = false;
+	health = false;
 }
 
 void SceneGameAbstract::Delete() {
@@ -55,7 +59,8 @@ void SceneGameAbstract::Awake() {
 }
 
 void SceneGameAbstract::CreatePlayer() {
-	player = this->CreateCharacterGameObject("Player", SceneManager::GetWindowWidth() / 2, 50.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);
+	player = this->CreateCharacterGameObject("Player", SceneManager::GetWindowWidth() / 2, 50.f, AssetManager::GetAsset("Player0"), 2.5f, 2.5f);	
+  CreateAtout();
 }
 
 void SceneGameAbstract::CreateGrunt()
@@ -73,6 +78,12 @@ void SceneGameAbstract::RemoveEnemy(GameObject* _enemyToRemove) {
 		[_enemyToRemove](GameObject* obj) {
 			return obj == _enemyToRemove;
 		}), enemies.end());
+}
+
+void SceneGameAbstract::CreateAtout()
+{
+	CreateAtoutGameObject("Atout", 0, 0.f, 0.f, 0.5f, 0.5f);
+	Atout* atout = player->CreateComponent<Atout>();
 }
 
 void SceneGameAbstract::Collision(GameObject* _entity)
@@ -307,3 +318,13 @@ GameObject* SceneGameAbstract::CreateBulletGameObject(const std::string& name, c
 	return gameObject;
 
 }
+
+GameObject* SceneGameAbstract::CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
+	gameObject->SetBonus(bonus);
+
+
+	return gameObject;
+};

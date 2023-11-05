@@ -20,7 +20,4 @@
   <ItemGroup>
     <Text Include="SaveFile.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="openal32.dll" />
-  </ItemGroup>
 </Project>

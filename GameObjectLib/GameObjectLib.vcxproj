@@ -50,10 +50,12 @@
     <ClInclude Include="include\Components\Entities\Enemies\Turret.h" />
     <ClInclude Include="include\Components\Slider.h" />
     <ClInclude Include="include\Scenes\SceneGameAbstract.h" />
+    <ClInclude Include="include\Components\Atout.h" />
     <ClInclude Include="include\Scenes\SceneSuccessMenu.h" />
     <ClInclude Include="include\Scenes\SceneRankMenu.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\Atout.cpp" />
     <ClCompile Include="src\Components\Entity.cpp" />
     <ClCompile Include="src\Components\HealthPointBar.cpp" />
     <ClCompile Include="src\Scenes\SceneRankMenu.cpp" />

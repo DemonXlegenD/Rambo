@@ -23,6 +23,9 @@ public:
 	void SetActive(bool _state) { isActive = _state; }
 	bool GetActive() { return isActive; }
 
+	void SetBonus(int _bonus) { bonus = _bonus; }
+	int GetBonus() { return bonus; }
+
 	void AddComponent(Component* _component);
 
 	template<typename T>
@@ -37,13 +40,13 @@ public:
 	template<typename T>
 	T* GetComponent() {
 		for (Component* component : components) {
-			// Vérifie si le composant est un Collider
+			// VÃ©rifie si le composant est un Collider
 			T* componentResult = dynamic_cast<T*>(component);
 			if (componentResult) {
-				return componentResult; // Renvoie le Collider trouvé
+				return componentResult; // Renvoie le Collider trouvÃ©
 			}
 		}
-		return nullptr; // Renvoie nullptr si aucun Collider n'est trouvé
+		return nullptr; // Renvoie nullptr si aucun Collider n'est trouvÃ©
 	}
 
 
@@ -58,5 +61,5 @@ protected:
 	Maths::Vector2<float> position = Maths::Vector2f::Zero;
 	std::vector<Component*> components;
 	bool isActive = true;
-
+	int bonus = 0; 
 };

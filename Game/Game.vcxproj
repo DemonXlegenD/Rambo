@@ -180,9 +180,6 @@
   <ItemGroup>
     <Text Include="SaveFile.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="openal32.dll" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -29,6 +29,7 @@
     <ClCompile Include="src\AudioManager.cpp" />
     <ClCompile Include="src\Components\Slider.cpp" />
     <ClCompile Include="src\Scenes\SceneGameAbstract.cpp" />
+    <ClCompile Include="src\Components\Atout.cpp" />
     <ClCompile Include="src\Components\HealthPointBar.cpp" />
     <ClCompile Include="src\Components\Entity.cpp" />
     <ClCompile Include="src\Scenes\SceneSuccessMenu.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="include\Components\Slider.h" />
     <ClInclude Include="include\Scenes\SceneGameAbstract.h" />
     <ClInclude Include="include\Scenes\SceneGame2.h" />
+    <ClInclude Include="include\Components\Atout.h" />
     <ClInclude Include="include\Components\HealthPointBar.h" />
     <ClInclude Include="include\Components\Entity.h" />
     <ClInclude Include="include\Scenes\SceneSuccessMenu.h" />

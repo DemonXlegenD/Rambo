@@ -1,13 +1,17 @@
 
-#include "Components/Player.h"
+#include "Components/Entities/Player.h"
 
 
-Player::Player()
+Player::Player() : Entity(200, 30, 20.f)
 {
-	this->health = 200;
-	this->damage = 10;
-	this->boostDamage = 1;
+    directionPlayer = false;
 	direction = Direction::Right;
+}
+
+Player::Player(int _hp, int _damage, float _speed) : Entity(_hp, _damage, _speed)
+{
+    directionPlayer = false;
+    direction = Direction::Right;
 }
 
 void Player::setDirection(Direction newDirection) {

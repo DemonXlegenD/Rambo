@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "Components/Button.h"
 #include "Components/Slider.h"
-//#include "AudioManager.h"
+#include "AudioManager.h"
 
 SceneMainMenu::SceneMainMenu(sf::RenderWindow* _window) : Scene(_window) {
 	texture = nullptr;
@@ -42,7 +42,7 @@ void SceneMainMenu::CreateSceneButtonsMenu () {
 	quitButton = CreateButtonGameObject("Quit", widthScreen / 2, heightScreen / 1.5, 50);
 	backButton = CreateButtonGameObject("Back", widthScreen / 10, heightScreen / 10, 20);
 	sliderFPS = CreateSliderGameObject("SliderFPS", widthScreen / 2, heightScreen / 2, 1200, 40, 50, 50, 20, SceneManager::GetFps(), SceneManager::GetMinFps(), SceneManager::GetMaxFps());
-	//sliderVolume = CreateSliderGameObject("SliderVolume", widthScreen / 2, heightScreen / 1.5, 1200, 40, 50, 50, 20, AudioManager::GetVolume(), AudioManager::GetMaxVolume());
+	sliderVolume = CreateSliderGameObject("SliderVolume", widthScreen / 2, heightScreen / 1.5, 1200, 40, 50, 50, 20, AudioManager::GetVolume(), AudioManager::GetMaxVolume());
 }
 
 void SceneMainMenu::Update(sf::Time _delta) {
@@ -62,7 +62,7 @@ void SceneMainMenu::Update(sf::Time _delta) {
 		this->activeMenu(true);
 	}
 	SceneManager::SetFps(sliderFPS->GetComponent<Slider>()->GetDataInt());
-	//AudioManager::SetVolume(sliderVolume->GetComponent<Slider>()->GetDataInt());
+	AudioManager::SetVolume(sliderVolume->GetComponent<Slider>()->GetDataInt());
 }
 
 void SceneMainMenu::activeMenu(bool _state) {
@@ -74,7 +74,7 @@ void SceneMainMenu::activeMenu(bool _state) {
 void SceneMainMenu::activeOption(bool _state) {
 	this->backButton->SetActive(_state);
 	this->sliderFPS->SetActive(_state);
-	//this->sliderVolume->SetActive(_state);
+	this->sliderVolume->SetActive(_state);
 }
 
 SceneMainMenu::~SceneMainMenu() {

@@ -12,7 +12,7 @@ public:
 	FireBullet();
 	void setDirection(GameObject* _player);
 	void Update(sf::Time _delta) override;
-	void isColliding();
+	void Collided();
 
 private:
 	GameObject* player;

@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
-#include "Components/Player.h"
+#include "Components/Entities/Player.h"
 #include "Components/Inputs/InputPlayer.h"
 
 

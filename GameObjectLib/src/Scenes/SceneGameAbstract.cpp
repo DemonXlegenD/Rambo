@@ -82,7 +82,7 @@ void SceneGameAbstract::RemoveEnemy(GameObject* _enemyToRemove) {
 
 void SceneGameAbstract::CreateAtout()
 {
-	CreateAtoutGameObject("Atout", 0, 0.f, 0.f, 0.5f, 0.5f);
+	CreateAtoutGameObject("Atout", 0, 0.5f, 0.5f);
 	Atout* atout = player->CreateComponent<Atout>();
 }
 

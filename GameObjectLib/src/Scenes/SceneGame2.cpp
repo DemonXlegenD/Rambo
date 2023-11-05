@@ -62,7 +62,7 @@ void SceneGame2::Update(sf::Time _delta)
 	{
 		SceneGameAbstract::Update(_delta);
 
-		if (enemies.empty())
+		if (enemies.size() < 3)
 		{
 			int random_number = rand() % 20 + 5;
 			for (size_t i = 0; i < random_number; i++) {

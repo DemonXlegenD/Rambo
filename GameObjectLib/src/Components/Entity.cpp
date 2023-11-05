@@ -32,6 +32,6 @@ void Entity::Update(sf::Time _delta) {
 		|| GetOwner()->GetPosition().GetX() < 0
 		)
 	{
-		SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
+		this->Die();
 	}
 }

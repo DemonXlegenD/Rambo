@@ -48,8 +48,10 @@
     <ClInclude Include="include\Components\Enemy\Turret.h" />
     <ClInclude Include="include\Components\Slider.h" />
     <ClInclude Include="include\Scenes\SceneGameAbstract.h" />
+    <ClInclude Include="include\Components\Atout.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\Atout.cpp" />
     <ClCompile Include="src\Scenes\SceneGameAbstract.cpp" />
     <ClCompile Include="src\Scenes\SceneGame2.cpp" />
     <ClCompile Include="src\Components\Armes.cpp" />

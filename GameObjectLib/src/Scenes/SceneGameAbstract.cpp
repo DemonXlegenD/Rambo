@@ -25,6 +25,9 @@ void SceneGameAbstract::Create() {
 	this->CreatePauseMenuButtons();
 	gamePause = false;
 	escapeIsPress = false;
+	speed = false;
+	damage = false;
+	health = false;
 }
 
 void SceneGameAbstract::CreatePauseMenuButtons() {
@@ -58,6 +61,16 @@ void SceneGameAbstract::CreateGrunt()
 	}
 
 
+}
+
+void SceneGameAbstract::CreateButtonAtout() {
+
+	float widthScreen = SceneManager::GetWindow()->getSize().x;
+	float heightScreen = SceneManager::GetWindow()->getSize().y;
+
+	addSpeed = CreateButtonGameObject("Speed", widthScreen / 2, heightScreen / 3, 50);
+	addDamamge = CreateButtonGameObject("Damage", widthScreen / 2, heightScreen / 2, 20);
+	addHealt = CreateButtonGameObject("Healt", widthScreen / 2, heightScreen / 1.5, 50);
 }
 
 void SceneGameAbstract::Collision(GameObject* _entity)
@@ -161,6 +174,19 @@ void SceneGameAbstract::Update(sf::Time _delta) {
 			SceneManager::GetWindow()->close();
 		}
 	}
+	
+	if (addSpeed->GetComponent<Button>()->IsClicked() && addSpeed->GetActive() && !speed) {
+		atouts.push_back(CreateAtoutGameObject("Speed", 5, 0.f, 0.f));
+		speed = true;
+	}
+	if (addDamamge->GetComponent<Button>()->IsClicked() && addDamamge->GetActive() && !damage) {
+		atouts.push_back(CreateAtoutGameObject("Damage", 15, 5.f, 5.f));
+		damage = true;
+	}
+	if (addHealt->GetComponent<Button>()->IsClicked() && addHealt->GetActive() && !health) {
+		atouts.push_back(CreateAtoutGameObject("Damage", 10, 5.f, 5.f));
+		health = true;
+	}
 }
 
 void SceneGameAbstract::CreatePlatform(sf::Texture textureplatforme) {
@@ -263,3 +289,9 @@ GameObject* SceneGameAbstract::CreateBulletGameObject(const std::string& name, c
 	return gameObject;
 
 }
+
+GameObject* SceneGameAbstract::CreateAtoutGameObject(const std::string& name, int bonus, float positionx, float positiony)
+{
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(positionx, positiony));
+};

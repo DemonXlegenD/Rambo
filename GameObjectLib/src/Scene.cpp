@@ -115,6 +115,18 @@ GameObject* Scene::CreatePlatformObject(const std::string& name, float x, float 
 	return gameObject;
 }
 
+GameObject* Scene::CreateDecorObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture) {
+
+	GameObject* gameObject = CreateGameObject(name);
+	gameObject->SetPosition(Maths::Vector2f(x, y));
+
+	Sprite* sprite = gameObject->CreateComponent<Sprite>();
+	sprite->SetTexture(texture);
+	sprite->SetScale(scaleX, scaleY);
+
+	return gameObject;
+}
+
 GameObject* Scene::CreateBackgroundGameObject(const std::string& name, float x, float y, sf::Color _color) {
 
 	GameObject* gameObject = CreateGameObject(name);

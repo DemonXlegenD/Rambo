@@ -47,6 +47,7 @@ protected:
 	GameObject* pauseOptionsButton = nullptr;
 	GameObject* pauseMenuPrincipalButton = nullptr;
 	GameObject* pauseQuitButton = nullptr;
+	GameObject* pauseBongoButton = nullptr;
 	sf::Texture* texture;
 	bool gamePause;
 	bool escapeIsPress;

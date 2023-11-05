@@ -1,4 +1,6 @@
-ENH: Colliders
+NEW: Enemy death
 
-- Amélioration des colliders qui prennent en compte la taille des sprites
-- Détection des ennemis lorsqu'ils sont touchés
+- Création d'une barre de vie pour les entités
+- Création d'un component entity pour représenter les entités du jeu (ex: player, enemy)
+- Les ennemis meurent lorsque leur HP tombe à 0 et ils font un son
+

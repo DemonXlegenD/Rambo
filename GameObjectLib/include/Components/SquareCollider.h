@@ -17,12 +17,12 @@ public:
 	float GetWidth() const { return width; }
 	float GetHeight() const { return height; }
 
-	void SetSize(const float _width, const float _height)
+	void SetSize(const float& _width, const float& _height)
 	{
 		width = _width;
 		height = _height;
 	}
-	void SetScale(const float _scaleX, const float _scaleY) 
+	void SetScale(const float& _scaleX, const float& _scaleY) 
 	{ 
 		scaleX = _scaleX;
 		width *= _scaleX;

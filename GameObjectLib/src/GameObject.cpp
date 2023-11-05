@@ -13,6 +13,7 @@ void GameObject::AddComponent(Component* _component)
 void GameObject::RemoveComponent(Component* _component)
 {
 	components.erase(std::remove(components.begin(), components.end(), _component), components.end());
+	delete _component;
 }
 
 void GameObject::Start() {

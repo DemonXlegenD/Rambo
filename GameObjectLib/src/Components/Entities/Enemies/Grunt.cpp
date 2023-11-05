@@ -1,14 +1,16 @@
-#include "Components/Enemy/Grunt.h"
+#include "Components/Entities/Enemies/Grunt.h"
 #include "AssetManager.h"
 
 std::map<std::string, sf::Texture> AssetManager::assets;
 
-Grunt::Grunt() : EnemyAbstract(200, 10, 20) {};
+Grunt::Grunt() : EnemyAbstract(200, 10, 20) {}
+Grunt::Grunt(int _hp, int _damage, float _speed) : EnemyAbstract(_hp, _damage, _speed) {}
 
 void Grunt::setDirection(Direction newDirection) {
     direction = newDirection;
 
 }
+
 void Grunt::MouvementGrunt() {
     srand(time(nullptr));
     //int rand_attack = rand() % 3 + 1;
@@ -27,7 +29,7 @@ void Grunt::MouvementGrunt() {
         GetOwner()->GetComponent<Grunt>()->setDirection(Grunt::Direction::Right);
         GetOwner()->GetComponent<Sprite>()->GruntPlayAnimationRun();
     }
-    else if (hp == 0) {
+    else if (healthPoint == 0) {
         //enemy.loadFromFile("Sprite/enemy/grunt_death.png");
     }
 }

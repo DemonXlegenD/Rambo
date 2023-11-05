@@ -2,8 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="src\Components\SpriteRenderer.cpp" />
-    <ClCompile Include="src\Components\EnemyAbstract.cpp" />
-    <ClCompile Include="src\Components\Enemy\Grunt.cpp" />
+    <ClCompile Include="src\Components\Entities\EnemyAbstract.cpp" />
+    <ClCompile Include="src\Components\Entities\Enemies\Grunt.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\Components\SquareCollider.cpp" />
@@ -19,16 +19,18 @@
     <ClCompile Include="src\Command.cpp" />
     <ClCompile Include="src\Components\FireBullet.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
-    <ClCompile Include="src\Components\Player.cpp" />
+    <ClCompile Include="src\Components\Entities\Player.cpp" />
     <ClCompile Include="src\Components\GamePauseMenu.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Components\Rectangle.cpp" />
     <ClCompile Include="src\Scenes\SceneGame2.cpp" />
-    <ClCompile Include="src\Components\Enemy\Turret.cpp" />
+    <ClCompile Include="src\Components\Entities\Enemies\Turret.cpp" />
     <ClCompile Include="src\Components\Armes.cpp" />
     <ClCompile Include="src\AudioManager.cpp" />
     <ClCompile Include="src\Components\Slider.cpp" />
     <ClCompile Include="src\Scenes\SceneGameAbstract.cpp" />
+    <ClCompile Include="src\Components\HealthPointBar.cpp" />
+    <ClCompile Include="src\Components\Entity.cpp" />
     <ClCompile Include="src\Scenes\SceneSuccessMenu.cpp" />
     <ClCompile Include="src\Scenes\SceneRankMenu.cpp" />
   </ItemGroup>
@@ -36,8 +38,8 @@
     <ClInclude Include="include\Components\SpriteRenderer.h" />
     <ClInclude Include="include\Components\SquareCollider.h" />
     <ClInclude Include="include\Components\Component.h" />
-    <ClInclude Include="include\Components\EnemyAbstract.h" />
-    <ClInclude Include="include\Components\Enemy\Grunt.h" />
+    <ClInclude Include="include\Components\Entities\EnemyAbstract.h" />
+    <ClInclude Include="include\Components\Entities\Enemies\Grunt.h" />
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Maths\Vector2.h" />
@@ -52,16 +54,18 @@
     <ClInclude Include="include\Components\Input.h" />
     <ClInclude Include="include\Components\FireBullet.h" />
     <ClInclude Include="include\SceneManager.h" />
-    <ClInclude Include="include\Components\Player.h" />
+    <ClInclude Include="include\Components\Entities\Player.h" />
     <ClInclude Include="include\Components\GamePauseMenu.h" />
     <ClInclude Include="include\AssetManager.h" />
     <ClInclude Include="include\Components\Rectangle.h" />
-    <ClInclude Include="include\Components\Enemy\Turret.h" />
+    <ClInclude Include="include\Components\Entities\Enemies\Turret.h" />
     <ClInclude Include="include\Components\Armes.h" />
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\Components\Slider.h" />
     <ClInclude Include="include\Scenes\SceneGameAbstract.h" />
     <ClInclude Include="include\Scenes\SceneGame2.h" />
+    <ClInclude Include="include\Components\HealthPointBar.h" />
+    <ClInclude Include="include\Components\Entity.h" />
     <ClInclude Include="include\Scenes\SceneSuccessMenu.h" />
     <ClInclude Include="include\Scenes\SceneRankMenu.h" />
   </ItemGroup>

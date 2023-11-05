@@ -8,7 +8,7 @@ Armes::Armes() {
 	fireCooldown = 0;
 	mag = 10;
 	maxAmo = 10;
-	reload = 5.f;
+	reload = 2.f;
 	activeReload = 0.f;
 	texture = new sf::Texture();
 	if (!texture->loadFromFile("../assets/Sprite/player/weaponBullet/weapon_bullet_0.png")) {

@@ -12,6 +12,7 @@ public:
 
 	void CreatePlayer();
 	void CreateGrunt();
+	void RemoveEnemy(GameObject* _enemyToRemove);
 
 	void Collision(GameObject* _entity);
 

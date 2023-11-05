@@ -19,17 +19,7 @@ void FireBullet::Update(sf::Time _delta)
 	{
 		GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right * 500.0f * _delta.asSeconds());
 	}
-
-	if (GetOwner()->GetPosition().GetX() > SceneManager::GetWindowWidth()
-		|| GetOwner()->GetPosition().GetY() > SceneManager::GetWindowHeight()
-		|| GetOwner()->GetPosition().GetY() < 0
-		|| GetOwner()->GetPosition().GetX() < 0
-		)
-	{
-		this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
-		SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
-	}
-	isColliding();
+	Collided();
 }
 
 void FireBullet::setDirection(GameObject* _player) {
@@ -43,25 +33,28 @@ void FireBullet::setDirection(GameObject* _player) {
 	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Right * 6.0f);
 }
 
-void FireBullet::isColliding()
+void FireBullet::Collided()
 {
-
-	bool colliding = false;
-	Armes* arme = SceneManager::GetActiveGameScene()->GetGameObject("Player")->GetComponent<Armes>();
-	if (!arme->GetBullets().empty()) {
-		for (size_t i = 0; i < arme->GetBullets().size(); i++)
-		{
-			GameObject* bullet = arme->GetBullet(i);
-			for (size_t j = 0; j < SceneManager::GetActiveGameScene()->GetEnemies().size(); j++) {
-				GameObject* enemy = SceneManager::GetActiveGameScene()->GetEnemie(j);
-				if (SquareCollider::IsColliding(*(enemy->GetComponent<SquareCollider>()), *(bullet->GetComponent<SquareCollider>()))) {
-					colliding = true;
-					std::cout << "c'est bon";
-					break;
-				}
-			}
-		}
+	if (GetOwner()->GetPosition().GetX() > SceneManager::GetWindowWidth()
+		|| GetOwner()->GetPosition().GetY() > SceneManager::GetWindowHeight()
+		|| GetOwner()->GetPosition().GetY() < 0
+		|| GetOwner()->GetPosition().GetX() < 0
+		)
+	{
+		this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
+		SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
 	}
 
+	Armes* arme = this->player->GetComponent<Armes>();
+	for (size_t i = 0; i < SceneManager::GetActiveGameScene()->GetEnemies().size(); i++) {
+		GameObject* enemy = SceneManager::GetActiveGameScene()->GetEnemie(i);
+		if (SquareCollider::IsColliding(*(enemy->GetComponent<SquareCollider>()), *(GetOwner()->GetComponent<SquareCollider>()))) {
+			std::cout << "Damage " << arme->GetDamage() << std::endl;
+			enemy->GetComponent<Entity>()->TakeDamage((arme->GetDamage()));
+			std::cout << "HP " << enemy->GetComponent<Entity>()->GetHealthPoint() << std::endl;
+			this->player->GetComponent<Armes>()->RemoveBullet(GetOwner());
+			SceneManager::GetActiveScene()->RemoveGameObject(GetOwner());
+		}
+	}
 
 }

@@ -13,6 +13,7 @@ public:
 	void setDirection(GameObject* _player);
 	void Update(sf::Time _delta) override;
 	void isColliding();
+
 private:
 	GameObject* player;
 };

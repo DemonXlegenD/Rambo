@@ -45,20 +45,23 @@ void FireBullet::setDirection(GameObject* _player) {
 
 void FireBullet::isColliding()
 {
-	
+
 	bool colliding = false;
-	Armes* arme = GetOwner()->GetComponent<Armes>();
-	
-	for(size_t i = 0; i < arme->GetBullets().size(); i++ )
-	{
-		std::cout << "carre";
-		for (size_t j = 0; j < SceneManager::GetActiveGameScene()->GetEnemies().size(); j++ ) {
-			if (SquareCollider::IsColliding(*(SceneManager::GetActiveGameScene()->GetEnemie(j)->GetComponent<SquareCollider>()), *(arme->GetBullet(i)->GetComponent<SquareCollider>()))) {
-				colliding = true;
-				std::cout << "c'est bon";
-				break;
+	Armes* arme = SceneManager::GetActiveGameScene()->GetGameObject("Player")->GetComponent<Armes>();
+	if (!arme->GetBullets().empty()) {
+		for (size_t i = 0; i < arme->GetBullets().size(); i++)
+		{
+			GameObject* bullet = arme->GetBullet(i);
+			for (size_t j = 0; j < SceneManager::GetActiveGameScene()->GetEnemies().size(); j++) {
+				GameObject* enemy = SceneManager::GetActiveGameScene()->GetEnemie(j);
+				if (SquareCollider::IsColliding(*(enemy->GetComponent<SquareCollider>()), *(bullet->GetComponent<SquareCollider>()))) {
+					colliding = true;
+					std::cout << "c'est bon";
+					break;
+				}
 			}
 		}
 	}
-	
+
+
 }

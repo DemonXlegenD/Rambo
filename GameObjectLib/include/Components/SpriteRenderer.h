@@ -14,7 +14,7 @@ public:
 	void SetTexture(const sf::Texture& _texture) { texture = _texture; }
 	void SetScale(float _scalex, float _scaley) { scalex = _scalex; scaley = _scaley; }
 
-	sf::Vector2f GetBounds() { return sf::Vector2f(sprite.getLocalBounds().width, sprite.getLocalBounds().height); }
+	sf::Vector2f GetBounds();
 	
 	void LoadPlayAnimation();
 	void PlayerPlayAnimation();
@@ -25,6 +25,7 @@ public:
 	
 
 	void Render(sf::RenderWindow* _window) override;
+	void SetSprite();
 	void SetRect(sf::IntRect* _rectSource) { rectTexture = _rectSource; }
 
 private:

@@ -20,6 +20,10 @@ void InputPlayer::Update(sf::Time _delta) {
 	if (commandMoves) {
 		commandMoves->Execute(_delta);
 	}
+	Command* commandJump = this->JumpInput();
+	if (commandJump) {
+		commandJump->Execute(_delta);
+	}
 	Command* fireBullet = this->FireInput();
 	if (fireBullet) {
 		fireBullet->Execute(_delta);
@@ -73,6 +77,7 @@ void InputPlayer::MoveLeft(sf::Time _delta)
 	GetOwner()->GetComponent<Player>()->setDirection(Player::Direction::Left);
 	GetOwner()->GetComponent<Sprite>()->PlayerPlayAnimationRun();
 }
+
 float InputPlayer::AddSpeed(float _addSpeed) {
 	speed = +_addSpeed;	
 	return speed;
@@ -80,13 +85,7 @@ float InputPlayer::AddSpeed(float _addSpeed) {
 
 void InputPlayer::Jump(sf::Time _delta)
 {
-	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Down + Maths::Vector2f(0, -80) * _delta.asSeconds() * speed);
-
-	//if (Player::GetIsOnGround())
-	//{
-	//	std::cout << "jump" << std::endl;
-
-	//}
+	GetOwner()->SetPosition(GetOwner()->GetPosition() + Maths::Vector2f::Down + Maths::Vector2f(0, -100) * _delta.asSeconds() * speed);
 }
 
 void InputPlayer::MoveRightBullet()

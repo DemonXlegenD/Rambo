@@ -28,13 +28,13 @@ void Atout::Render(sf::RenderWindow* _window) {
 	GetOwner()->GetComponent<Scene>()->Render(_window);
 }
 
-void Atout::CreateButtonAdd() {
-	float widthScreen = SceneManager::GetWindow()->getSize().x;
-	float heightScreen = SceneManager::GetWindow()->getSize().y;
-	addSpeed = GetOwner()->GetComponent<Scene>()->CreateButtonGameObject("Speed", widthScreen / 2, heightScreen / 3, 50);
-	addDamamge = GetOwner()->GetComponent<Scene>()->CreateButtonGameObject("Damage", widthScreen / 2, heightScreen / 2, 20);
-	addHealt = GetOwner()->GetComponent<Scene>()->CreateButtonGameObject("Healt", widthScreen / 2, heightScreen / 1.5, 50);
-}
+//void Atout::CreateButtonAdd() {
+//	float widthScreen = SceneManager::GetWindow()->getSize().x;
+//	float heightScreen = SceneManager::GetWindow()->getSize().y;
+//	addSpeed = GetOwner()->GetComponent<Scene>()->CreateButtonGameObject("Speed", widthScreen / 2, heightScreen / 3, 50);
+//	addDamamge = GetOwner()->GetComponent<Scene>()->CreateButtonGameObject("Damage", widthScreen / 2, heightScreen / 2, 20);
+//	addHealt = GetOwner()->GetComponent<Scene>()->CreateButtonGameObject("Healt", widthScreen / 2, heightScreen / 1.5, 50);
+//}
 
 void Atout::Update(sf::Time _delta) {
 	GetOwner()->GetComponent<Scene>()->Update(_delta);

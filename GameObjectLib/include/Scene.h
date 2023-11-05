@@ -43,6 +43,8 @@ public:
 	GameObject* CreateGameObject(const std::string& _name);
 
 	//GAME ELEMENT
+	GameObject* CreateDecorObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture);
+
 	GameObject* CreateButtonGameObject(const std::string& name, float x, float y, unsigned int fontSize);
 	GameObject* CreatePlatformObject(const std::string& name, float x, float y, float scaleX, float scaleY, const sf::Texture texture, sf::IntRect* _rectSource);
 

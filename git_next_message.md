@@ -1,4 +1,5 @@
-FIX: Fix master
+FIX: Propriétés
 
-- Jet PACK CAR LE JUMP DE HUGO MARCHETOUJOURS PAS 
+- fix des propriétés du projets
+- ajout des copies de assets, Fonts, Sounds et openal32.dll
 
